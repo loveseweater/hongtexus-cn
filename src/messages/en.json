@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "blog": "Blog",
+    "about": "About Us",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "home": {
+    "hero": {
+      "title": "Premium Textile Solutions for Global Markets",
+      "subtitle": "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
+      "cta": "Explore Products",
+      "ctaSecondary": "Contact Us"
+    },
+    "categories": {
+      "title": "Product Categories",
+      "subtitle": "Comprehensive textile solutions across multiple categories"
+    },
+    "features": {
+      "title": "Why Choose Hongtexus",
+      "quality": {
+        "title": "Premium Quality",
+        "desc": "Rigorous quality control at every stage of production ensures consistent excellence."
+      },
+      "delivery": {
+        "title": "Reliable Delivery",
+        "desc": "Efficient logistics network ensures on-time delivery to destinations worldwide."
+      },
+      "customization": {
+        "title": "Custom Solutions",
+        "desc": "Tailored textile solutions to meet your specific requirements and specifications."
+      },
+      "experience": {
+        "title": "Industry Expertise",
+        "desc": "Years of experience serving international markets with deep industry knowledge."
+      }
+    },
+    "featured": {
+      "title": "Featured Products",
+      "subtitle": "Our most popular textile products trusted by clients worldwide"
+    },
+    "about": {
+      "title": "About Hongtexus",
+      "desc": "Hongtexus is a leading textile supplier dedicated to providing high-quality fabrics and textile products to global markets. With advanced manufacturing facilities and a professional team, we serve clients across various industries.",
+      "stats": {
+        "years": "Years of Experience",
+        "clients": "Global Clients",
+        "products": "Product Varieties",
+        "countries": "Countries Exported"
+      },
+      "cta": "Learn More About Us"
+    },
+    "blog": {
+      "title": "Latest Insights",
+      "subtitle": "Industry trends, textile knowledge, and company news",
+      "cta": "View All Articles"
+    },
+    "cta": {
+      "title": "Ready to Source Quality Textiles?",
+      "subtitle": "Get in touch with our team for a personalized quote and consultation.",
+      "button": "Request a Quote"
+    }
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Browse our comprehensive range of textile products",
+    "all": "All Categories",
+    "details": "Product Details",
+    "specs": "Specifications",
+    "related": "Related Products",
+    "inquiry": "Inquire About This Product",
+    "inquiryForm": "Send Inquiry",
+    "name": "Product Name",
+    "category": "Category",
+    "noProducts": "No products found in this category."
+  },
+  "blog": {
+    "title": "Blog & Insights",
+    "subtitle": "Stay updated with the latest in textile industry",
+    "readMore": "Read More",
+    "latest": "Latest Articles",
+    "categories": "Categories",
+    "noPosts": "No articles yet. Check back soon!",
+    "backToBlog": "Back to Blog"
+  },
+  "about": {
+    "title": "About Hongtexus",
+    "subtitle": "Your Trusted Partner in Textile Industry",
+    "story": {
+      "title": "Our Story",
+      "p1": "Founded with a vision to bridge global textile markets, Hongtexus has grown into a reliable supplier of premium textile products. Our journey is driven by a commitment to quality, innovation, and customer satisfaction.",
+      "p2": "We combine traditional textile craftsmanship with modern manufacturing technology to deliver products that meet the highest international standards."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "desc": "To provide sustainable, high-quality textile solutions that empower businesses worldwide, while fostering long-term partnerships built on trust and excellence."
+    },
+    "values": {
+      "title": "Our Values",
+      "quality": "Quality First",
+      "integrity": "Integrity & Trust",
+      "innovation": "Continuous Innovation",
+      "sustainability": "Sustainability"
+    },
+    "timeline": {
+      "title": "Our Journey"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team for inquiries, quotes, or collaboration",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Sorry, something went wrong. Please try again.",
+      "placeholder": "Tell us about your requirements..."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "hoursValue": "Monday - Friday: 9:00 AM - 6:00 PM"
+    }
+  },
+  "footer": {
+    "description": "Hongtexus — your trusted partner in premium textile solutions for global markets.",
+    "quickLinks": "Quick Links",
+    "products": "Products",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "close": "Close",
+    "menu": "Menu"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "products": "Produkte",
+    "blog": "Blog",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "getQuote": "Angebot Anfordern"
+  },
+  "home": {
+    "hero": {
+      "title": "Premium Textillösungen für Globale Märkte",
+      "subtitle": "Von Rohstoffen bis zu Fertigprodukten — Hongtexus liefert Qualitätstextilien, die auf Ihre Geschäftsanforderungen zugeschnitten sind.",
+      "cta": "Produkte Entdecken",
+      "ctaSecondary": "Kontaktieren Sie Uns"
+    },
+    "categories": {
+      "title": "Produktkategorien",
+      "subtitle": "Umfassende Textillösungen in mehreren Kategorien"
+    },
+    "features": {
+      "title": "Warum Hongtexus Wählen",
+      "quality": {
+        "title": "Premium-Qualität",
+        "desc": "Strenge Qualitätskontrolle in jeder Produktionsphase gewährleistet konstante Exzellenz."
+      },
+      "delivery": {
+        "title": "Zuverlässige Lieferung",
+        "desc": "Effizientes Logistiknetzwerk sorgt für pünktliche Lieferungen weltweit."
+      },
+      "customization": {
+        "title": "Maßgeschneiderte Lösungen",
+        "desc": "Textillösungen, die auf Ihre spezifischen Anforderungen und Spezifikationen zugeschnitten sind."
+      },
+      "experience": {
+        "title": "Branchenexpertise",
+        "desc": "Jahrelange Erfahrung im Dienst internationaler Märkte mit tiefgehendem Branchenwissen."
+      }
+    },
+    "featured": {
+      "title": "Ausgewählte Produkte",
+      "subtitle": "Unsere beliebtesten Textilprodukte, vertrauenswürdig bei Kunden weltweit"
+    },
+    "about": {
+      "title": "Über Hongtexus",
+      "desc": "Hongtexus ist ein führender Textillieferant, der sich der Bereitstellung hochwertiger Stoffe und Textilprodukte für globale Märkte widmet. Mit modernen Fertigungsanlagen und einem professionellen Team bedienen wir Kunden aus verschiedenen Branchen.",
+      "stats": {
+        "years": "Jahre Erfahrung",
+        "clients": "Globale Kunden",
+        "products": "Produktvarianten",
+        "countries": "Exportländer"
+      },
+      "cta": "Mehr Erfahren"
+    },
+    "blog": {
+      "title": "Aktuelle Einblicke",
+      "subtitle": "Branchentrends, Textilwissen und Unternehmensnachrichten",
+      "cta": "Alle Artikel Anzeigen"
+    },
+    "cta": {
+      "title": "Bereit, Qualitätstextilien zu Beziehen?",
+      "subtitle": "Kontaktieren Sie unser Team für ein persönliches Angebot und Beratung.",
+      "button": "Angebot Anfordern"
+    }
+  },
+  "products": {
+    "title": "Unsere Produkte",
+    "subtitle": "Durchstöbern Sie unser umfassendes Sortiment an Textilprodukten",
+    "all": "Alle Kategorien",
+    "details": "Produktdetails",
+    "specs": "Spezifikationen",
+    "related": "Ähnliche Produkte",
+    "inquiry": "Anfrage zu Diesem Produkt",
+    "inquiryForm": "Anfrage Senden",
+    "name": "Produktname",
+    "category": "Kategorie",
+    "noProducts": "Keine Produkte in dieser Kategorie gefunden."
+  },
+  "blog": {
+    "title": "Blog & Einblicke",
+    "subtitle": "Bleiben Sie auf dem Laufenden mit den neuesten Entwicklungen in der Textilindustrie",
+    "readMore": "Weiterlesen",
+    "latest": "Neueste Artikel",
+    "categories": "Kategorien",
+    "noPosts": "Noch keine Artikel. Schauen Sie bald wieder vorbei!",
+    "backToBlog": "Zurück zum Blog"
+  },
+  "about": {
+    "title": "Über Hongtexus",
+    "subtitle": "Ihr Vertrauenspartner in der Textilindustrie",
+    "story": {
+      "title": "Unsere Geschichte",
+      "p1": "Gegründet mit der Vision, globale Textilmärkte zu verbinden, hat sich Hongtexus zu einem zuverlässigen Lieferanten von Premium-Textilprodukten entwickelt. Unser Weg wird von einem Engagement für Qualität, Innovation und Kundenzufriedenheit angetrieben.",
+      "p2": "Wir verbinden traditionelles textile Handwerk mit moderner Fertigungstechnologie, um Produkte zu liefern, die den höchsten internationalen Standards entsprechen."
+    },
+    "mission": {
+      "title": "Unsere Mission",
+      "desc": "Nachhaltige, hochwertige Textillösungen bereitzustellen, die Unternehmen weltweit stärken, während wir langfristige Partnerschaften aufbauen, die auf Vertrauen und Exzellenz basieren."
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "quality": "Qualität an Erster Stelle",
+      "integrity": "Integrität und Vertrauen",
+      "innovation": "Kontinuierliche Innovation",
+      "sustainability": "Nachhaltigkeit"
+    },
+    "timeline": {
+      "title": "Unser Weg"
+    }
+  },
+  "contact": {
+    "title": "Kontaktieren Sie Uns",
+    "subtitle": "Kontaktieren Sie unser Team für Anfragen, Angebote oder Zusammenarbeit",
+    "form": {
+      "name": "Ihr Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "company": "Unternehmensname",
+      "message": "Ihre Nachricht",
+      "submit": "Nachricht Senden",
+      "success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+      "error": "Entschuldigung, etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      "placeholder": "Erzählen Sie uns von Ihren Anforderungen..."
+    },
+    "info": {
+      "title": "Kontaktinformationen",
+      "address": "Adresse",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "hours": "Geschäftszeiten",
+      "hoursValue": "Montag - Freitag: 9:00 - 18:00 Uhr"
+    }
+  },
+  "footer": {
+    "description": "Hongtexus — Ihr vertrauenswürdiger Partner für Premium-Textillösungen auf globalen Märkten.",
+    "quickLinks": "Schnelllinks",
+    "products": "Produkte",
+    "contact": "Kontakt",
+    "followUs": "Folgen Sie Uns",
+    "copyright": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen"
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Etwas ist schief gelaufen",
+    "retry": "Erneut Versuchen",
+    "viewAll": "Alle Anzeigen",
+    "learnMore": "Mehr Erfahren",
+    "close": "Schließen",
+    "menu": "Menü"
+  }
+}

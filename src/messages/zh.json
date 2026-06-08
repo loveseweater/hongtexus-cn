@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "首页",
+    "products": "产品中心",
+    "blog": "行业资讯",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "getQuote": "获取报价"
+  },
+  "home": {
+    "hero": {
+      "title": "面向全球市场的优质纺织解决方案",
+      "subtitle": "从原材料到成品 — Hongtexus 为您提供量身定制的优质纺织品，满足您的业务需求。",
+      "cta": "浏览产品",
+      "ctaSecondary": "联系我们"
+    },
+    "categories": {
+      "title": "产品分类",
+      "subtitle": "涵盖多品类纺织品的综合解决方案"
+    },
+    "features": {
+      "title": "为什么选择 Hongtexus",
+      "quality": {
+        "title": "卓越品质",
+        "desc": "每个生产环节都经过严格的质量控制，确保始终如一的卓越品质。"
+      },
+      "delivery": {
+        "title": "可靠交付",
+        "desc": "高效的物流网络确保准时送达全球各地。"
+      },
+      "customization": {
+        "title": "定制方案",
+        "desc": "根据您的具体需求和规格提供量身定制的纺织解决方案。"
+      },
+      "experience": {
+        "title": "行业专长",
+        "desc": "多年服务国际市场的经验，深厚的行业知识积累。"
+      }
+    },
+    "featured": {
+      "title": "精选产品",
+      "subtitle": "深受全球客户信赖的畅销纺织品"
+    },
+    "about": {
+      "title": "关于 Hongtexus",
+      "desc": "Hongtexus 是一家领先的纺织品供应商，致力于为全球市场提供高品质的面料和纺织产品。我们拥有先进的制造设施和专业团队，服务于各行各业的客户。",
+      "stats": {
+        "years": "年行业经验",
+        "clients": "全球客户",
+        "products": "产品种类",
+        "countries": "出口国家"
+      },
+      "cta": "了解更多"
+    },
+    "blog": {
+      "title": "最新资讯",
+      "subtitle": "行业趋势、纺织知识和公司动态",
+      "cta": "查看全部文章"
+    },
+    "cta": {
+      "title": "准备好采购优质纺织品了吗？",
+      "subtitle": "联系我们的团队，获取个性化报价和咨询。",
+      "button": "立即询价"
+    }
+  },
+  "products": {
+    "title": "产品中心",
+    "subtitle": "浏览我们全面的纺织产品系列",
+    "all": "全部分类",
+    "details": "产品详情",
+    "specs": "规格参数",
+    "related": "相关产品",
+    "inquiry": "咨询此产品",
+    "inquiryForm": "发送询盘",
+    "name": "产品名称",
+    "category": "分类",
+    "noProducts": "该分类暂无产品。"
+  },
+  "blog": {
+    "title": "行业资讯",
+    "subtitle": "了解纺织行业最新动态",
+    "readMore": "阅读更多",
+    "latest": "最新文章",
+    "categories": "分类",
+    "noPosts": "暂无文章，敬请期待！",
+    "backToBlog": "返回资讯列表"
+  },
+  "about": {
+    "title": "关于 Hongtexus",
+    "subtitle": "您值得信赖的纺织行业合作伙伴",
+    "story": {
+      "title": "我们的故事",
+      "p1": "Hongtexus 以连接全球纺织市场为愿景创立，现已发展成为优质纺织产品的可靠供应商。我们的旅程由对品质、创新和客户满意度的承诺驱动。",
+      "p2": "我们将传统纺织工艺与现代制造技术相结合，提供符合最高国际标准的产品。"
+    },
+    "mission": {
+      "title": "我们的使命",
+      "desc": "提供可持续、高品质的纺织解决方案，赋能全球企业，同时建立在信任和卓越基础上的长期合作伙伴关系。"
+    },
+    "values": {
+      "title": "核心价值观",
+      "quality": "品质至上",
+      "integrity": "诚信为本",
+      "innovation": "持续创新",
+      "sustainability": "可持续发展"
+    },
+    "timeline": {
+      "title": "发展历程"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "联系我们进行询价、咨询或合作",
+    "form": {
+      "name": "您的姓名",
+      "email": "邮箱地址",
+      "phone": "联系电话",
+      "company": "公司名称",
+      "message": "留言内容",
+      "submit": "发送消息",
+      "success": "感谢您！您的消息已成功发送。",
+      "error": "抱歉，出了点问题，请稍后重试。",
+      "placeholder": "请描述您的需求..."
+    },
+    "info": {
+      "title": "联系方式",
+      "address": "公司地址",
+      "phone": "电话",
+      "email": "邮箱",
+      "hours": "工作时间",
+      "hoursValue": "周一至周五：9:00 - 18:00"
+    }
+  },
+  "footer": {
+    "description": "Hongtexus — 您值得信赖的全球优质纺织解决方案合作伙伴。",
+    "quickLinks": "快速链接",
+    "products": "产品中心",
+    "contact": "联系我们",
+    "followUs": "关注我们",
+    "copyright": "版权所有。",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出了点问题",
+    "retry": "重试",
+    "viewAll": "查看全部",
+    "learnMore": "了解更多",
+    "close": "关闭",
+    "menu": "菜单"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "products": "Productos",
+    "blog": "Blog",
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "getQuote": "Solicitar Presupuesto"
+  },
+  "home": {
+    "hero": {
+      "title": "Soluciones Textiles Premium para Mercados Globales",
+      "subtitle": "Desde materias primas hasta productos terminados — Hongtexus ofrece textiles de calidad adaptados a las necesidades de su negocio.",
+      "cta": "Explorar Productos",
+      "ctaSecondary": "Contáctenos"
+    },
+    "categories": {
+      "title": "Categorías de Productos",
+      "subtitle": "Soluciones textiles integrales en múltiples categorías"
+    },
+    "features": {
+      "title": "Por Qué Elegir Hongtexus",
+      "quality": {
+        "title": "Calidad Premium",
+        "desc": "Control de calidad riguroso en cada etapa de producción para garantizar una excelencia constante."
+      },
+      "delivery": {
+        "title": "Entrega Confiable",
+        "desc": "Red logística eficiente que garantiza entregas puntuales a destinos en todo el mundo."
+      },
+      "customization": {
+        "title": "Soluciones Personalizadas",
+        "desc": "Soluciones textiles adaptadas a sus requisitos y especificaciones particulares."
+      },
+      "experience": {
+        "title": "Experiencia en la Industria",
+        "desc": "Años de experiencia sirviendo a mercados internacionales con profundo conocimiento del sector."
+      }
+    },
+    "featured": {
+      "title": "Productos Destacados",
+      "subtitle": "Nuestros productos textiles más populares, confiables por clientes en todo el mundo"
+    },
+    "about": {
+      "title": "Sobre Hongtexus",
+      "desc": "Hongtexus es un proveedor líder de textiles dedicado a proporcionar telas y productos textiles de alta calidad a los mercados globales. Con instalaciones de fabricación avanzadas y un equipo profesional, servimos a clientes de diversas industrias.",
+      "stats": {
+        "years": "Años de Experiencia",
+        "clients": "Clientes Globales",
+        "products": "Variedades de Productos",
+        "countries": "Países de Exportación"
+      },
+      "cta": "Conozca Más"
+    },
+    "blog": {
+      "title": "Últimas Noticias",
+      "subtitle": "Tendencias de la industria, conocimiento textil y noticias de la empresa",
+      "cta": "Ver Todos los Artículos"
+    },
+    "cta": {
+      "title": "¿Listo para Adquirir Textiles de Calidad?",
+      "subtitle": "Póngase en contacto con nuestro equipo para obtener un presupuesto y asesoramiento personalizados.",
+      "button": "Solicitar Presupuesto"
+    }
+  },
+  "products": {
+    "title": "Nuestros Productos",
+    "subtitle": "Explore nuestra completa gama de productos textiles",
+    "all": "Todas las Categorías",
+    "details": "Detalles del Producto",
+    "specs": "Especificaciones",
+    "related": "Productos Relacionados",
+    "inquiry": "Consultar sobre este Producto",
+    "inquiryForm": "Enviar Consulta",
+    "name": "Nombre del Producto",
+    "category": "Categoría",
+    "noProducts": "No se encontraron productos en esta categoría."
+  },
+  "blog": {
+    "title": "Blog y Noticias",
+    "subtitle": "Manténgase al día con las últimas novedades de la industria textil",
+    "readMore": "Leer Más",
+    "latest": "Artículos Recientes",
+    "categories": "Categorías",
+    "noPosts": "Aún no hay artículos. ¡Vuelva pronto!",
+    "backToBlog": "Volver al Blog"
+  },
+  "about": {
+    "title": "Sobre Hongtexus",
+    "subtitle": "Su Socio de Confianza en la Industria Textil",
+    "story": {
+      "title": "Nuestra Historia",
+      "p1": "Fundada con la visión de conectar los mercados textiles globales, Hongtexus se ha convertido en un proveedor confiable de productos textiles premium. Nuestro camino está impulsado por el compromiso con la calidad, la innovación y la satisfacción del cliente.",
+      "p2": "Combinamos la artesanía textil tradicional con la tecnología de fabricación moderna para ofrecer productos que cumplen con los más altos estándares internacionales."
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "desc": "Proporcionar soluciones textiles sostenibles y de alta calidad que empoderen a empresas en todo el mundo, fomentando asociaciones a largo plazo basadas en la confianza y la excelencia."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "quality": "Calidad Primero",
+      "integrity": "Integridad y Confianza",
+      "innovation": "Innovación Continua",
+      "sustainability": "Sostenibilidad"
+    },
+    "timeline": {
+      "title": "Nuestra Trayectoria"
+    }
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Póngase en contacto con nuestro equipo para consultas, presupuestos o colaboración",
+    "form": {
+      "name": "Su Nombre",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "company": "Empresa",
+      "message": "Su Mensaje",
+      "submit": "Enviar Mensaje",
+      "success": "Gracias! Su mensaje ha sido enviado con éxito.",
+      "error": "Lo sentimos, algo salió mal. Por favor intente de nuevo.",
+      "placeholder": "Cuéntenos sobre sus requisitos..."
+    },
+    "info": {
+      "title": "Información de Contacto",
+      "address": "Dirección",
+      "phone": "Teléfono",
+      "email": "Correo Electrónico",
+      "hours": "Horario Comercial",
+      "hoursValue": "Lunes - Viernes: 9:00 AM - 6:00 PM"
+    }
+  },
+  "footer": {
+    "description": "Hongtexus — su socio de confianza en soluciones textiles premium para mercados globales.",
+    "quickLinks": "Enlaces Rápidos",
+    "products": "Productos",
+    "contact": "Contacto",
+    "followUs": "Síganos",
+    "copyright": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos del Servicio"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de Nuevo",
+    "viewAll": "Ver Todo",
+    "learnMore": "Más Información",
+    "close": "Cerrar",
+    "menu": "Menú"
+  }
+}
