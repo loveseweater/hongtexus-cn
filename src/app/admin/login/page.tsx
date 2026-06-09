@@ -44,17 +44,17 @@ export default function AdminLoginPage() {
             <Lock size={28} className="text-primary" />
           </div>
           <h1 className="mt-4 font-display text-2xl font-bold text-primary">
-            Admin Login
+            管理员登录
           </h1>
           <p className="mt-2 text-sm text-text-muted">
-            HONGTEX CMS — Enter your password to continue
+            HONGTEX CMS — 请输入密码继续
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-text">
-              Password
+              密码
             </label>
             <div className="relative mt-1.5">
               <input
@@ -62,7 +62,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-lg border border-border bg-white px-4 py-3 pr-12 text-sm text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                placeholder="Enter admin password"
+                placeholder="请输入管理员密码"
                 autoFocus
               />
               <button
@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
             disabled={loading || !password}
             className="btn-primary w-full"
           >
-            {loading ? "Verifying..." : "Sign In"}
+            {loading ? "验证中..." : "登录"}
           </button>
         </form>
 
@@ -95,7 +95,7 @@ export default function AdminLoginPage() {
             href="/"
             className="text-sm text-text-muted hover:text-primary underline"
           >
-            &larr; Back to website
+            &larr; 返回网站首页
           </a>
         </div>
       </div>

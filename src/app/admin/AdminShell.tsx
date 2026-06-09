@@ -19,27 +19,27 @@ import { cn } from "@/lib/utils";
 const sidebarLinks = [
   {
     href: "/admin",
-    label: "Dashboard",
+    label: "控制台",
     icon: LayoutDashboard,
   },
   {
     href: "/admin/products",
-    label: "Products",
+    label: "产品管理",
     icon: Package,
   },
   {
     href: "/admin/blog",
-    label: "Blog Posts",
+    label: "博客管理",
     icon: FileText,
   },
   {
     href: "/admin/messages",
-    label: "Messages",
+    label: "消息管理",
     icon: MessageSquare,
   },
   {
     href: "/admin/settings",
-    label: "Settings",
+    label: "系统设置",
     icon: Settings,
   },
 ];
@@ -53,7 +53,7 @@ export default function AdminShell({
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleLogout = async () => {
+  const handle退出登录 = async () => {
     await fetch("/api/admin/auth/logout", { method: "POST" });
     router.push("/admin/login");
   };
@@ -114,7 +114,7 @@ export default function AdminShell({
             className="flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
           >
             <Globe size={18} />
-            View Website
+            查看网站
           </Link>
           <button
             onClick={handleLogout}
@@ -151,7 +151,7 @@ export default function AdminShell({
             className="hidden items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm text-text-muted hover:bg-bg-alt sm:flex"
           >
             <Globe size={16} />
-            View Site
+            查看网站
           </a>
         </header>
 

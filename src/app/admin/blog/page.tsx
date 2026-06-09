@@ -44,7 +44,7 @@ export default function AdminBlogPage() {
   );
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this blog post?")) return;
+    if (!confirm("确定要删除这篇博客文章吗？")) return;
     await fetch(`/api/admin/blog?id=${id}`, { method: "DELETE" });
     loadPosts();
   };
@@ -81,7 +81,7 @@ export default function AdminBlogPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="text-text-muted">Loading...</div>
+        <div className="text-text-muted">加载中...</div>
       </div>
     );
   }
@@ -91,10 +91,10 @@ export default function AdminBlogPage() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-bold text-primary">
-            Blog Posts
+            博客管理
           </h1>
           <p className="mt-1 text-sm text-text-muted">
-            Manage your blog ({posts.length} posts)
+            管理您的博客文章（共 {posts.length} 篇）
           </p>
         </div>
         <button
@@ -106,7 +106,7 @@ export default function AdminBlogPage() {
           className="btn-primary inline-flex items-center gap-2"
         >
           <Plus size={16} />
-          Add Post
+          添加文章
         </button>
       </div>
 
@@ -117,7 +117,7 @@ export default function AdminBlogPage() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search posts..."
+          placeholder="搜索文章..."
           className="w-full rounded-lg border border-border bg-white py-2.5 pl-10 pr-4 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
       </div>
@@ -127,11 +127,11 @@ export default function AdminBlogPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
             <h2 className="font-display text-lg font-semibold text-primary">
-              {editing ? "Edit Post" : "Add Post"}
+              {editing ? "编辑文章" : "添加文章"}
             </h2>
             <form onSubmit={handleSubmit} className="mt-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-text">Slug</label>
+                <label className="block text-sm font-medium text-text">文章标识（Slug）</label>
                 <input
                   type="text"
                   required
@@ -143,7 +143,7 @@ export default function AdminBlogPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text">Date</label>
+                <label className="block text-sm font-medium text-text">日期</label>
                 <input
                   type="date"
                   required
@@ -155,7 +155,7 @@ export default function AdminBlogPage() {
 
               <div>
                 <label className="block text-sm font-medium text-text">
-                  Tags <span className="text-text-muted">(comma separated)</span>
+                  标签 <span className="text-text-muted">（英文逗号分隔）</span>
                 </label>
                 <input
                   type="text"
@@ -168,14 +168,14 @@ export default function AdminBlogPage() {
 
               <div className="flex gap-3 pt-2">
                 <button type="submit" className="btn-primary flex-1">
-                  {editing ? "Update" : "Create"}
+                  {editing ? "更新" : "创建"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
                   className="flex-1 rounded-lg border border-border px-4 py-2.5 text-sm text-text-muted hover:bg-bg-alt"
                 >
-                  Cancel
+                  取消
                 </button>
               </div>
             </form>
@@ -188,17 +188,17 @@ export default function AdminBlogPage() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-bg-alt">
-              <th className="px-4 py-3 text-left font-medium text-text-muted">Post</th>
-              <th className="px-4 py-3 text-left font-medium text-text-muted hidden md:table-cell">Date</th>
-              <th className="px-4 py-3 text-left font-medium text-text-muted hidden sm:table-cell">Tags</th>
-              <th className="px-4 py-3 text-right font-medium text-text-muted">Actions</th>
+              <th className="px-4 py-3 text-left font-medium text-text-muted">文章</th>
+              <th className="px-4 py-3 text-left font-medium text-text-muted hidden md:table-cell">日期</th>
+              <th className="px-4 py-3 text-left font-medium text-text-muted hidden sm:table-cell">标签</th>
+              <th className="px-4 py-3 text-right font-medium text-text-muted">操作</th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
               <tr>
                 <td colSpan={4} className="px-4 py-12 text-center text-text-muted">
-                  No posts found.
+                  暂无文章。
                 </td>
               </tr>
             ) : (

@@ -22,10 +22,10 @@ export default function AdminSettingsPage() {
     <div>
       <div className="mb-6">
         <h1 className="font-display text-2xl font-bold text-primary">
-          Settings
+          系统设置
         </h1>
         <p className="mt-1 text-sm text-text-muted">
-          Manage your website configuration
+          管理您的网站配置
         </p>
       </div>
 
@@ -37,13 +37,13 @@ export default function AdminSettingsPage() {
               <Globe size={20} />
             </div>
             <h2 className="font-display text-lg font-semibold text-primary">
-              Site Settings
+              网站设置
             </h2>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-text">Site Name</label>
+              <label className="block text-sm font-medium text-text">网站名称</label>
               <input
                 type="text"
                 value={form.siteName}
@@ -53,7 +53,7 @@ export default function AdminSettingsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-text">Site Description</label>
+              <label className="block text-sm font-medium text-text">网站描述</label>
               <textarea
                 rows={3}
                 value={form.siteDescription}
@@ -64,7 +64,7 @@ export default function AdminSettingsPage() {
 
             <button type="submit" className="btn-primary inline-flex items-center gap-2">
               <Save size={16} />
-              {saved ? "Saved!" : "Save Settings"}
+              {saved ? "已保存！" : "保存设置"}
             </button>
           </form>
         </div>
@@ -76,13 +76,13 @@ export default function AdminSettingsPage() {
               <Mail size={20} />
             </div>
             <h2 className="font-display text-lg font-semibold text-primary">
-              Email & Contact
+              邮箱与联系
             </h2>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-text">Contact Email</label>
+              <label className="block text-sm font-medium text-text">联系邮箱</label>
               <input
                 type="email"
                 value={form.contactEmail}
@@ -93,14 +93,14 @@ export default function AdminSettingsPage() {
 
             <div>
               <label className="block text-sm font-medium text-text">
-                Admin Password <span className="text-text-muted">(set via ADMIN_PASSWORD env var)</span>
+                管理员密码 <span className="text-text-muted">（通过 ADMIN_PASSWORD 环境变量设置）</span>
               </label>
               <input
                 type="password"
                 value={form.adminPassword}
                 onChange={(e) => setForm({ ...form, adminPassword: e.target.value })}
                 className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                placeholder="Leave blank to keep current"
+                placeholder="留空则保持当前密码"
               />
             </div>
 
@@ -120,22 +120,22 @@ export default function AdminSettingsPage() {
               <Globe size={20} />
             </div>
             <h2 className="font-display text-lg font-semibold text-primary">
-              Deployment
+              部署信息
             </h2>
           </div>
           <div className="mt-4 space-y-3 text-sm">
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Platform</span>
+              <span className="text-text-muted">平台</span>
               <span className="text-text">Cloudflare Pages</span>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Domain</span>
+              <span className="text-text-muted">域名</span>
               <a href="https://hongtexus.cn" target="_blank" className="text-primary hover:underline">
                 hongtexus.cn
               </a>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Admin URL</span>
+              <span className="text-text-muted">后台地址</span>
               <a href="/admin" className="text-primary hover:underline">
                 /admin
               </a>

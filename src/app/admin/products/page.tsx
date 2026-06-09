@@ -46,7 +46,7 @@ export default function AdminProductsPage() {
   );
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this product?")) return;
+    if (!confirm("确定要删除这个产品吗？")) return;
     await fetch(`/api/admin/products?id=${id}`, { method: "DELETE" });
     loadProducts();
   };
@@ -96,7 +96,7 @@ export default function AdminProductsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="text-text-muted">Loading...</div>
+        <div className="text-text-muted">加载中...</div>
       </div>
     );
   }
@@ -106,10 +106,10 @@ export default function AdminProductsPage() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display text-2xl font-bold text-primary">
-            Products
+            产品管理
           </h1>
           <p className="mt-1 text-sm text-text-muted">
-            Manage your product catalog ({products.length} products)
+            管理您的产品目录（共 {products.length} 个产品）
           </p>
         </div>
         <button
@@ -121,7 +121,7 @@ export default function AdminProductsPage() {
           className="btn-primary inline-flex items-center gap-2"
         >
           <Plus size={16} />
-          Add Product
+          添加产品
         </button>
       </div>
 
@@ -132,7 +132,7 @@ export default function AdminProductsPage() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search products..."
+          placeholder="搜索产品..."
           className="w-full rounded-lg border border-border bg-white py-2.5 pl-10 pr-4 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
       </div>
@@ -142,11 +142,11 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
             <h2 className="font-display text-lg font-semibold text-primary">
-              {editing ? "Edit Product" : "Add Product"}
+              {editing ? "编辑产品" : "添加产品"}
             </h2>
             <form onSubmit={handleSubmit} className="mt-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-text">Slug</label>
+                <label className="block text-sm font-medium text-text">产品标识（Slug）</label>
                 <input
                   type="text"
                   required
@@ -158,16 +158,16 @@ export default function AdminProductsPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-text">Category</label>
+                <label className="block text-sm font-medium text-text">分类</label>
                 <select
                   value={form.category}
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                   className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 >
-                  <option value="cotton-fabrics">Cotton Fabrics</option>
-                  <option value="linen-fabrics">Linen Fabrics</option>
-                  <option value="silk-fabrics">Silk Fabrics</option>
-                  <option value="polyester-fabrics">Polyester Fabrics</option>
+                  <option value="cotton-fabrics">棉织物</option>
+                  <option value="linen-fabrics">麻织物</option>
+                  <option value="silk-fabrics">丝织物</option>
+                  <option value="polyester-fabrics">涤纶织物</option>
                 </select>
               </div>
 
@@ -180,16 +180,16 @@ export default function AdminProductsPage() {
                   className="rounded border-border"
                 />
                 <label htmlFor="featured" className="text-sm text-text">
-                  Featured product
+                  设为推荐产品
                 </label>
               </div>
 
               {/* Specs */}
               <div>
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-text">Specifications</label>
+                  <label className="text-sm font-medium text-text">规格参数</label>
                   <button type="button" onClick={addSpec} className="text-xs text-primary hover:underline">
-                    + Add spec
+                    + 添加规格
                   </button>
                 </div>
                 <div className="mt-2 space-y-2">
@@ -199,14 +199,14 @@ export default function AdminProductsPage() {
                         type="text"
                         value={spec.label}
                         onChange={(e) => updateSpec(i, "label", e.target.value)}
-                        placeholder="Label (e.g. Weight)"
+                        placeholder="名称（如：重量）"
                         className="flex-1 rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none"
                       />
                       <input
                         type="text"
                         value={spec.value}
                         onChange={(e) => updateSpec(i, "value", e.target.value)}
-                        placeholder="Value (e.g. 180 gsm)"
+                        placeholder="值（如：180 gsm）"
                         className="flex-1 rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none"
                       />
                       {form.specs.length > 1 && (
@@ -221,14 +221,14 @@ export default function AdminProductsPage() {
 
               <div className="flex gap-3 pt-2">
                 <button type="submit" className="btn-primary flex-1">
-                  {editing ? "Update" : "Create"}
+                  {editing ? "更新" : "创建"}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
                   className="flex-1 rounded-lg border border-border px-4 py-2.5 text-sm text-text-muted hover:bg-bg-alt"
                 >
-                  Cancel
+                  取消
                 </button>
               </div>
             </form>
@@ -241,17 +241,17 @@ export default function AdminProductsPage() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-bg-alt">
-              <th className="px-4 py-3 text-left font-medium text-text-muted">Product</th>
-              <th className="px-4 py-3 text-left font-medium text-text-muted hidden md:table-cell">Category</th>
-              <th className="px-4 py-3 text-center font-medium text-text-muted hidden sm:table-cell">Featured</th>
-              <th className="px-4 py-3 text-right font-medium text-text-muted">Actions</th>
+              <th className="px-4 py-3 text-left font-medium text-text-muted">产品</th>
+              <th className="px-4 py-3 text-left font-medium text-text-muted hidden md:table-cell">分类</th>
+              <th className="px-4 py-3 text-center font-medium text-text-muted hidden sm:table-cell">推荐</th>
+              <th className="px-4 py-3 text-right font-medium text-text-muted">操作</th>
             </tr>
           </thead>
           <tbody>
             {filtered.length === 0 ? (
               <tr>
                 <td colSpan={4} className="px-4 py-12 text-center text-text-muted">
-                  No products found.
+                  暂无产品。
                 </td>
               </tr>
             ) : (
@@ -261,7 +261,7 @@ export default function AdminProductsPage() {
                     <div className="font-medium text-primary capitalize">
                       {product.slug.replace(/-/g, " ")}
                     </div>
-                    <div className="text-xs text-text-muted mt-0.5">{product.specs.length} specs</div>
+                    <div className="text-xs text-text-muted mt-0.5">{product.specs.length} 个规格</div>
                   </td>
                   <td className="px-4 py-3 text-text-muted capitalize hidden md:table-cell">
                     {product.category.replace("-", " ")}
@@ -269,11 +269,11 @@ export default function AdminProductsPage() {
                   <td className="px-4 py-3 text-center hidden sm:table-cell">
                     {product.featured ? (
                       <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                        Yes
+                        是
                       </span>
                     ) : (
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-500">
-                        No
+                        否
                       </span>
                     )}
                   </td>

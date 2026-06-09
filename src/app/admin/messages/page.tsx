@@ -35,7 +35,7 @@ export default function AdminMessagesPage() {
   }, []);
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this message?")) return;
+    if (!confirm("确定要删除这条消息吗？")) return;
     await fetch(`/api/admin/messages?id=${id}`, { method: "DELETE" });
     if (selected?.id === id) setSelected(null);
     load();
@@ -44,7 +44,7 @@ export default function AdminMessagesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="text-text-muted">Loading...</div>
+        <div className="text-text-muted">加载中...</div>
       </div>
     );
   }
@@ -53,17 +53,17 @@ export default function AdminMessagesPage() {
     <div>
       <div className="mb-6">
         <h1 className="font-display text-2xl font-bold text-primary">
-          Messages
+          消息管理
         </h1>
         <p className="mt-1 text-sm text-text-muted">
-          Contact form submissions ({submissions.length} total)
+          联系表单提交记录（共 {submissions.length} 条）
         </p>
       </div>
 
       {submissions.length === 0 ? (
         <div className="rounded-xl border border-border bg-white py-20 text-center">
           <Mail size={40} className="mx-auto text-text-muted/40" />
-          <p className="mt-4 text-text-muted">No messages yet.</p>
+          <p className="mt-4 text-text-muted">暂无消息。</p>
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-3">
@@ -138,7 +138,7 @@ export default function AdminMessagesPage() {
               </div>
             ) : (
               <div className="flex h-full items-center justify-center rounded-xl border border-border bg-white py-20">
-                <p className="text-text-muted">Select a message to view details</p>
+                <p className="text-text-muted">选择一条消息查看详情</p>
               </div>
             )}
           </div>

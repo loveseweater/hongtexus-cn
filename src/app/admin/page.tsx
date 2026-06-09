@@ -20,21 +20,21 @@ export default function AdminDashboard() {
 
   const cards = [
     {
-      label: "Products",
+      label: "产品",
       value: stats.products,
       icon: Package,
       href: "/admin/products",
       color: "text-blue-600 bg-blue-100",
     },
     {
-      label: "Blog Posts",
+      label: "博客文章",
       value: stats.blogPosts,
       icon: FileText,
       href: "/admin/blog",
       color: "text-green-600 bg-green-100",
     },
     {
-      label: "Messages",
+      label: "消息",
       value: stats.messages,
       icon: MessageSquare,
       href: "/admin/messages",
@@ -46,10 +46,10 @@ export default function AdminDashboard() {
     <div>
       <div className="mb-8">
         <h1 className="font-display text-2xl font-bold text-primary">
-          Dashboard
+          控制台
         </h1>
         <p className="mt-1 text-sm text-text-muted">
-          Welcome to HONGTEX CMS. Manage your website content from here.
+          欢迎使用 HONGTEX 内容管理系统，在这里管理您的网站内容。
         </p>
       </div>
 
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
         <div className="rounded-xl border border-border bg-white p-6">
           <h2 className="font-display text-lg font-semibold text-primary">
-            Quick Actions
+            快捷操作
           </h2>
           <div className="mt-4 space-y-3">
             <Link
@@ -85,32 +85,32 @@ export default function AdminDashboard() {
               className="flex items-center gap-3 rounded-lg border border-border p-4 text-sm text-text-muted transition-colors hover:border-primary hover:text-primary"
             >
               <Package size={18} />
-              Manage Products
+              管理产品
             </Link>
             <Link
               href="/admin/blog"
               className="flex items-center gap-3 rounded-lg border border-border p-4 text-sm text-text-muted transition-colors hover:border-primary hover:text-primary"
             >
               <FileText size={18} />
-              Manage Blog Posts
+              管理博客文章
             </Link>
             <Link
               href="/admin/messages"
               className="flex items-center gap-3 rounded-lg border border-border p-4 text-sm text-text-muted transition-colors hover:border-primary hover:text-primary"
             >
               <MessageSquare size={18} />
-              View Messages
+              查看消息
             </Link>
           </div>
         </div>
 
         <div className="rounded-xl border border-border bg-white p-6">
           <h2 className="font-display text-lg font-semibold text-primary">
-            Site Info
+            站点信息
           </h2>
           <div className="mt-4 space-y-3 text-sm">
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Website</span>
+              <span className="text-text-muted">网站</span>
               <a
                 href="https://hongtexus.cn"
                 target="_blank"
@@ -120,11 +120,11 @@ export default function AdminDashboard() {
               </a>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Languages</span>
+              <span className="text-text-muted">语言</span>
               <span className="text-text">EN / ZH / ES / FR / DE</span>
             </div>
             <div className="flex justify-between border-b border-border pb-2">
-              <span className="text-text-muted">Deployment</span>
+              <span className="text-text-muted">部署平台</span>
               <span className="text-text">Cloudflare Pages</span>
             </div>
           </div>
