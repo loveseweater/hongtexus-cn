@@ -1,11 +1,26 @@
+export const runtime = "edge";
+
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { ArrowRight, ShieldCheck, Heart, Lightbulb, Leaf } from "lucide-react";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
+  return {
+    title: `${t("title")} — Hongtexus`,
+    description: t("subtitle"),
+    alternates: {
+      canonical: `https://hongtexus.cn/${locale}/about`,
+    },
+  };
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;

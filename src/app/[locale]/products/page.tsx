@@ -1,12 +1,27 @@
+export const runtime = "edge";
+
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { products, categories } from "@/lib/data/products";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ category?: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "products" });
+  return {
+    title: `${t("title")} — Hongtexus`,
+    description: t("subtitle"),
+    alternates: {
+      canonical: `https://hongtexus.cn/${locale}/products`,
+    },
+  };
+}
 
 export default async function ProductsPage({ params, searchParams }: Props) {
   const { locale } = await params;

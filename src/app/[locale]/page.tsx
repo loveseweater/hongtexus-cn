@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -10,10 +12,38 @@ import {
   BarChart3,
   ArrowRight,
 } from "lucide-react";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  return {
+    title: "HONGTEX — Premium Knitwear & Textile Solutions",
+    description: t("hero.subtitle"),
+    openGraph: {
+      title: "HONGTEX — Premium Knitwear & Textile Solutions",
+      description: t("hero.subtitle"),
+      url: `https://hongtexus.cn/${locale}`,
+      siteName: "Hongtexus",
+      locale: locale === "zh" ? "zh_CN" : locale === "es" ? "es_ES" : locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" : "en_US",
+      type: "website",
+    },
+    alternates: {
+      canonical: `https://hongtexus.cn/${locale}`,
+      languages: {
+        en: "https://hongtexus.cn/en",
+        zh: "https://hongtexus.cn/zh",
+        es: "https://hongtexus.cn/es",
+        fr: "https://hongtexus.cn/fr",
+        de: "https://hongtexus.cn/de",
+      },
+    },
+  };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;

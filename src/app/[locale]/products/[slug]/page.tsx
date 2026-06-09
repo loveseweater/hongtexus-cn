@@ -1,12 +1,31 @@
+export const runtime = "edge";
+
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import { getProductBySlug, getProductsByCategory } from "@/lib/data/products";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) {
+    return { title: "Product Not Found — Hongtexus" };
+  }
+  const name = product.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  return {
+    title: `${name} — Hongtexus Products`,
+    description: `Premium ${product.category.replace("-", " ")} — ${name}. ${product.specs.map((s) => `${s.label}: ${s.value}`).join(", ")}.`,
+    alternates: {
+      canonical: `https://hongtexus.cn/${locale}/products/${slug}`,
+    },
+  };
+}
 
 export default async function ProductDetailPage({ params }: Props) {
   const { locale, slug } = await params;

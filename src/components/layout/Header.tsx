@@ -42,10 +42,13 @@ export default function Header() {
         {/* Logo */}
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-2 font-display text-xl font-bold text-primary"
+          className="flex items-center gap-3"
         >
-          <span className="text-2xl">H</span>
-          <span>ongtexus</span>
+          <img
+            src="/images/logo.png"
+            alt="HONGTEX"
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Nav */}

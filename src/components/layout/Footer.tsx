@@ -16,9 +16,12 @@ export default async function Footer({ locale }: Props) {
       <div className="container-custom py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link href={`/${locale}`} className="flex items-center gap-2 font-display text-xl font-bold text-white">
-              <span className="text-2xl">H</span>
-              <span>ongtexus</span>
+            <Link href={`/${locale}`} className="flex items-center gap-3">
+              <img
+                src="/images/logo.png"
+                alt="HONGTEX"
+                className="h-10 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-300">
               {t("description")}
@@ -117,7 +120,7 @@ export default async function Footer({ locale }: Props) {
       <div className="border-t border-white/10">
         <div className="container-custom flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
           <p className="text-sm text-gray-400">
-            &copy; {currentYear} Hongtexus. {t("copyright")}
+            &copy; {currentYear} HONGTEX. {t("copyright")}
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
             <a href="#" className="transition-colors hover:text-accent">

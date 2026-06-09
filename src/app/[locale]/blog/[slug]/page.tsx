@@ -1,12 +1,31 @@
+export const runtime = "edge";
+
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { getBlogPostBySlug } from "@/lib/data/blog";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const post = getBlogPostBySlug(slug);
+  if (!post) {
+    return { title: "Post Not Found — Hongtexus" };
+  }
+  const title = post.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  return {
+    title: `${title} — Hongtexus Blog`,
+    description: `Read about ${title} — insights and updates from Hongtexus textile industry experts.`,
+    alternates: {
+      canonical: `https://hongtexus.cn/${locale}/blog/${slug}`,
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;

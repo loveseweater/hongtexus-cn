@@ -1,4 +1,8 @@
+export const runtime = "edge";
+
 import { NextRequest, NextResponse } from "next/server";
+import { saveSubmission } from "@/lib/kv";
+import { sendContactEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,13 +17,29 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In production, this would send an email or save to database
-    console.log("Contact form submission:", {
+    // Save to KV store
+    await saveSubmission({
       name,
       email,
-      phone,
-      company,
+      phone: phone || "",
+      company: company || "",
       message,
+    });
+
+    // Send email notification (non-blocking)
+    sendContactEmail({
+      name,
+      email,
+      phone: phone || "",
+      company: company || "",
+      message,
+    }).catch((err) => {
+      console.error("[Contact] Email notification failed:", err);
+    });
+
+    console.log("[Contact] Form submission saved:", {
+      name,
+      email,
       timestamp: new Date().toISOString(),
     });
 
@@ -28,7 +48,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("[Contact] Form error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
