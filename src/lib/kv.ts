@@ -1,9 +1,10 @@
 /**
  * Cloudflare KV data store abstraction layer.
- * In production (Cloudflare Pages), uses KV bindings via global env.
+ * In production (Cloudflare Pages), uses KV bindings via getRequestContext.
  * Falls back to in-memory store for development.
  */
 
+import { getOptionalRequestContext } from "@cloudflare/next-on-pages";
 import { products as staticProducts } from "./data/products";
 import { blogPosts as staticBlogPosts } from "./data/blog";
 
@@ -19,18 +20,13 @@ type KVStore = {
 
 /**
  * Try to get the KV binding from the Cloudflare Pages runtime.
- * In Cloudflare Pages, the binding is available via globalThis or process.env.
+ * Uses getOptionalRequestContext from @cloudflare/next-on-pages.
  */
 function getKvBinding(): any {
   try {
-    // Cloudflare Pages runtime exposes bindings via globalThis
-    const global = globalThis as any;
-    if (global.HONGTE_KV) {
-      return global.HONGTE_KV;
-    }
-    // Also check process.env for direct binding reference
-    if (typeof process !== "undefined" && (process as any).env?.HONGTE_KV) {
-      return (process as any).env.HONGTE_KV;
+    const ctx = getOptionalRequestContext();
+    if (ctx?.env?.HONGTE_KV) {
+      return ctx.env.HONGTE_KV;
     }
   } catch {}
   return null;

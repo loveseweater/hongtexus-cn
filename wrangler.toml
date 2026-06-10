@@ -6,12 +6,3 @@ pages_build_output_dir = ".vercel/output/static"
 
 [placement]
 mode = "smart"
-
-# KV Namespace Binding
-# IMPORTANT: You must also add this binding in Cloudflare Dashboard:
-# Go to Workers & Pages > hongtexus > Settings > Functions > KV Namespace Bindings
-# Variable name: HONGTE_KV
-# KV Namespace: Create a new one named "HONGTE_KV" or use existing
-[[kv_namespaces]]
-binding = "HONGTE_KV"
-id = "HONGTE_KV"
