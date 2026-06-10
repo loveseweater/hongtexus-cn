@@ -85,19 +85,19 @@ export default async function ProductsPage({ params, searchParams }: Props) {
                   href={`/${locale}/products/${product.slug}`}
                   className="group card overflow-hidden p-0"
                 >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10">
-                    <div className="flex h-full items-center justify-center">
-                      <span className="font-display text-5xl font-bold text-primary/10">
-                        {product.slug.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
+                  <div className="aspect-[4/3] overflow-hidden bg-bg-alt">
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-5">
                     <span className="text-xs font-medium uppercase tracking-wider text-accent">
                       {product.category.replace("-", " ")}
                     </span>
-                    <h3 className="mt-1 font-display text-base font-semibold text-primary capitalize group-hover:text-primary-light">
-                      {product.slug.replace(/-/g, " ")}
+                    <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
+                      {product.title}
                     </h3>
                     <p className="mt-2 text-xs text-text-muted">
                       {product.specs[0]?.value} &middot; {product.specs[1]?.value}

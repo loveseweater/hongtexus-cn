@@ -17,10 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return { title: "Post Not Found — Hongtexus" };
   }
-  const title = post.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `${title} — Hongtexus Blog`,
-    description: `Read about ${title} — insights and updates from Hongtexus textile industry experts.`,
+    title: `${post.title} — Hongtexus Blog`,
+    description: post.excerpt,
     alternates: {
       canonical: `https://hongtexus.cn/${locale}/blog/${slug}`,
     },
@@ -37,6 +36,88 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  // Render markdown-like content to HTML
+  const renderContent = (content: string) => {
+    const lines = content.split("\n");
+    const elements: JSX.Element[] = [];
+    let key = 0;
+    let inList = false;
+    const listItems: JSX.Element[] = [];
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={key++} className="mt-4 space-y-2">
+            {listItems}
+          </ul>
+        );
+        listItems.length = 0;
+        inList = false;
+      }
+    };
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      if (line.startsWith("## ")) {
+        flushList();
+        elements.push(
+          <h2 key={key++} className="mt-10 font-display text-2xl font-bold text-primary">
+            {line.replace("## ", "")}
+          </h2>
+        );
+      } else if (line.startsWith("### ")) {
+        flushList();
+        elements.push(
+          <h3 key={key++} className="mt-6 font-display text-xl font-semibold text-primary">
+            {line.replace("### ", "")}
+          </h3>
+        );
+      } else if (line.startsWith("- **")) {
+        inList = true;
+        const match = line.match(/- \*\*(.+?)\*\*(.*)/);
+        if (match) {
+          listItems.push(
+            <li key={`li-${key++}`} className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+              <span className="text-text-muted">
+                <strong className="text-primary">{match[1]}</strong>
+                {match[2]}
+              </span>
+            </li>
+          );
+        }
+      } else if (line.startsWith("- ")) {
+        inList = true;
+        listItems.push(
+          <li key={`li-${key++}`} className="flex items-start gap-2">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+            <span className="text-text-muted">{line.replace("- ", "")}</span>
+          </li>
+        );
+      } else if (line.match(/^\d+\.\s/)) {
+        inList = true;
+        listItems.push(
+          <li key={`li-${key++}`} className="flex items-start gap-2">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+            <span className="text-text-muted">{line.replace(/^\d+\.\s/, "")}</span>
+          </li>
+        );
+      } else if (line.trim() === "") {
+        flushList();
+      } else {
+        flushList();
+        elements.push(
+          <p key={key++} className="mt-4 leading-relaxed text-text-muted">
+            {line}
+          </p>
+        );
+      }
+    }
+    flushList();
+    return elements;
+  };
+
   return (
     <>
       <section className="border-b border-border bg-bg-alt">
@@ -49,9 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
             {t("title")}
           </Link>
           <span>/</span>
-          <span className="text-primary capitalize">
-            {post.slug.replace(/-/g, " ")}
-          </span>
+          <span className="text-primary">{post.title}</span>
         </div>
       </section>
 
@@ -82,66 +161,21 @@ export default async function BlogPostPage({ params }: Props) {
                   </span>
                 ))}
               </div>
-              <h1 className="mt-4 font-display text-3xl font-bold text-primary capitalize md:text-4xl">
-                {post.slug.replace(/-/g, " ")}
+              <h1 className="mt-4 font-display text-3xl font-bold text-primary md:text-4xl">
+                {post.title}
               </h1>
             </div>
 
-            <div className="aspect-[16/9] rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
-              <div className="flex h-full items-center justify-center">
-                <span className="font-display text-6xl font-bold text-primary/10">
-                  {post.slug.charAt(0).toUpperCase()}
-                </span>
-              </div>
+            <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-bg-alt">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="h-full w-full object-cover"
+              />
             </div>
 
             <div className="mt-10">
-              <p className="text-lg leading-relaxed text-text-muted">
-                This is a sample blog post about {post.slug.replace(/-/g, " ")}. 
-                In a production environment, this content would be managed through 
-                a CMS or Markdown files with full article content including images, 
-                headings, and rich text formatting.
-              </p>
-
-              <h2 className="mt-10 font-display text-2xl font-bold text-primary">
-                Introduction
-              </h2>
-              <p className="mt-4 leading-relaxed text-text-muted">
-                The textile industry continues to evolve rapidly, with new technologies 
-                and sustainable practices shaping the future of fabric manufacturing. 
-                At Hongtexus, we stay at the forefront of these developments to provide 
-                our clients with the best possible products and services.
-              </p>
-
-              <h2 className="mt-8 font-display text-2xl font-bold text-primary">
-                Key Insights
-              </h2>
-              <p className="mt-4 leading-relaxed text-text-muted">
-                Understanding market trends and consumer preferences is essential for 
-                making informed decisions in textile sourcing. Our team of experts 
-                continuously monitors industry developments to bring you the most 
-                relevant and up-to-date information.
-              </p>
-
-              <div className="mt-8 rounded-xl border border-border bg-bg-alt p-6">
-                <h3 className="font-display text-lg font-semibold text-primary">
-                  Key Takeaways
-                </h3>
-                <ul className="mt-4 space-y-2 text-sm text-text-muted">
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    Stay informed about the latest industry trends and innovations
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    Quality control remains a critical factor in textile manufacturing
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    Sustainable practices are becoming increasingly important
-                  </li>
-                </ul>
-              </div>
+              {renderContent(post.content)}
             </div>
           </div>
         </div>

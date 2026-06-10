@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -20,6 +20,8 @@ export default function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const locale = pathname.split("/")[1] || "en";
 
@@ -30,6 +32,27 @@ export default function Header() {
     { href: `/${locale}/about`, label: t("about") },
     { href: `/${locale}/contact`, label: t("contact") },
   ];
+
+  const productCategories = [
+    { href: `/${locale}/products?category=knit-fabrics`, label: "Knit Fabrics" },
+    { href: `/${locale}/products?category=t-shirts`, label: "T-Shirts" },
+    { href: `/${locale}/products?category=hoodies`, label: "Hoodies" },
+    { href: `/${locale}/products?category=leg-warmers`, label: "Leg Warmers" },
+    { href: `/${locale}/products?category=hats`, label: "Hats" },
+    { href: `/${locale}/products?category=gloves`, label: "Gloves" },
+    { href: `/${locale}/products?category=socks`, label: "Socks" },
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProductsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const isActive = (href: string) => {
     if (href === `/${locale}`) return pathname === href;
@@ -53,20 +76,82 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                isActive(link.href)
-                  ? "bg-primary/10 text-primary"
-                  : "text-text-muted hover:bg-bg-alt hover:text-text"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            if (link.href.includes("/products")) {
+              return (
+                <div key={link.href} className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setProductsOpen(!productsOpen)}
+                    className={cn(
+                      "flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                      isActive(link.href)
+                        ? "bg-primary/10 text-primary"
+                        : "text-text-muted hover:bg-bg-alt hover:text-text"
+                    )}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={14}
+                      className={cn(
+                        "transition-transform",
+                        productsOpen && "rotate-180"
+                      )}
+                    />
+                  </button>
+                  {productsOpen && (
+                    <div className="absolute left-0 top-full z-50 mt-1 w-48 rounded-xl border border-border bg-white py-2 shadow-lg">
+                      <Link
+                        href={`/${locale}/products`}
+                        className="block px-4 py-2 text-sm font-medium text-text-muted hover:bg-bg-alt hover:text-primary"
+                        onClick={() => setProductsOpen(false)}
+                      >
+                        All Products
+                      </Link>
+                      <div className="mx-3 my-1 border-t border-border" />
+                      <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Knit Fabrics
+                      </div>
+                      <Link
+                        href={`/${locale}/products?category=knit-fabrics`}
+                        className="block px-4 py-1.5 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                        onClick={() => setProductsOpen(false)}
+                      >
+                        Knit Fabrics
+                      </Link>
+                      <div className="mx-3 my-1 border-t border-border" />
+                      <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Finished Products
+                      </div>
+                      {productCategories.slice(1).map((cat) => (
+                        <Link
+                          key={cat.href}
+                          href={cat.href}
+                          className="block px-4 py-1.5 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                          onClick={() => setProductsOpen(false)}
+                        >
+                          {cat.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                  isActive(link.href)
+                    ? "bg-primary/10 text-primary"
+                    : "text-text-muted hover:bg-bg-alt hover:text-text"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right side */}
@@ -95,21 +180,66 @@ export default function Header() {
       {mobileOpen && (
         <div className="border-t border-border bg-white md:hidden">
           <div className="container-custom space-y-1 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
-                  isActive(link.href)
-                    ? "bg-primary/10 text-primary"
-                    : "text-text-muted hover:bg-bg-alt hover:text-text"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.href.includes("/products")) {
+                return (
+                  <div key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
+                        isActive(link.href)
+                          ? "bg-primary/10 text-primary"
+                          : "text-text-muted hover:bg-bg-alt hover:text-text"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                    <div className="ml-4 space-y-1 pb-2">
+                      <div className="px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Knit Fabrics
+                      </div>
+                      <Link
+                        href={`/${locale}/products?category=knit-fabrics`}
+                        onClick={() => setMobileOpen(false)}
+                        className="block rounded-lg px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                      >
+                        Knit Fabrics
+                      </Link>
+                      <div className="px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                        Finished Products
+                      </div>
+                      {productCategories.slice(1).map((cat) => (
+                        <Link
+                          key={cat.href}
+                          href={cat.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="block rounded-lg px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                        >
+                          {cat.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
+                    isActive(link.href)
+                      ? "bg-primary/10 text-primary"
+                      : "text-text-muted hover:bg-bg-alt hover:text-text"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               href={`/${locale}/contact`}
               onClick={() => setMobileOpen(false)}

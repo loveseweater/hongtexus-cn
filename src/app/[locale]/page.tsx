@@ -111,14 +111,12 @@ export default async function HomePage({ params }: Props) {
                 href={`/${locale}/products?category=${cat.slug}`}
                 className="group relative overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/5 to-accent/5">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center">
-                      <div className="mb-3 text-4xl font-display font-bold text-primary/20">
-                        {cat.slug.split("-")[0].charAt(0).toUpperCase()}
-                      </div>
-                    </div>
-                  </div>
+                <div className="aspect-[4/3] overflow-hidden bg-bg-alt">
+                  <img
+                    src={cat.image}
+                    alt={cat.slug.replace("-", " ")}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg font-semibold text-primary capitalize">
@@ -194,19 +192,19 @@ export default async function HomePage({ params }: Props) {
                 href={`/${locale}/products/${product.slug}`}
                 className="group card overflow-hidden p-0"
               >
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10">
-                  <div className="flex h-full items-center justify-center">
-                    <span className="font-display text-5xl font-bold text-primary/10">
-                      {product.slug.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
+                <div className="aspect-[4/3] overflow-hidden bg-bg-alt">
+                  <img
+                    src={product.images[0]}
+                    alt={product.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium uppercase tracking-wider text-accent">
                     {product.category.replace("-", " ")}
                   </span>
-                  <h3 className="mt-1 font-display text-base font-semibold text-primary capitalize group-hover:text-primary-light">
-                    {product.slug.replace(/-/g, " ")}
+                  <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
+                    {product.title}
                   </h3>
                   <p className="mt-2 text-xs text-text-muted">
                     {product.specs[0]?.value} &middot; {product.specs[1]?.value}
@@ -263,14 +261,12 @@ export default async function HomePage({ params }: Props) {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20">
-                <div className="flex h-full items-center justify-center">
-                  <div className="text-center">
-                    <span className="font-display text-8xl font-bold text-primary/10">
-                      H
-                    </span>
-                  </div>
-                </div>
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-bg-alt">
+                <img
+                  src="/images/product-knit-fabric.jpg"
+                  alt="Knit fabric showcase"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border-2 border-accent/30" />
             </div>
@@ -293,12 +289,12 @@ export default async function HomePage({ params }: Props) {
                 href={`/${locale}/blog/${post.slug}`}
                 className="group card overflow-hidden p-0"
               >
-                <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 to-accent/10">
-                  <div className="flex h-full items-center justify-center">
-                    <span className="font-display text-3xl font-bold text-primary/10">
-                      {post.slug.charAt(0).toUpperCase()}
-                    </span>
-                  </div>
+                <div className="aspect-[16/9] overflow-hidden bg-bg-alt">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-3 text-xs text-text-muted">
@@ -307,8 +303,8 @@ export default async function HomePage({ params }: Props) {
                       {post.tags[0]}
                     </span>
                   </div>
-                  <h3 className="mt-2 font-display text-lg font-semibold text-primary capitalize group-hover:text-primary-light">
-                    {post.slug.replace(/-/g, " ")}
+                  <h3 className="mt-2 font-display text-lg font-semibold text-primary group-hover:text-primary-light">
+                    {post.title}
                   </h3>
                   <p className="mt-2 text-sm text-text-muted line-clamp-2">
                     {c("learnMore")}

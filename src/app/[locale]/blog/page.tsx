@@ -48,12 +48,12 @@ export default async function BlogPage({ params }: Props) {
                   href={`/${locale}/blog/${post.slug}`}
                   className="group card overflow-hidden p-0"
                 >
-                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/10 to-accent/10">
-                    <div className="flex h-full items-center justify-center">
-                      <span className="font-display text-4xl font-bold text-primary/10">
-                        {post.slug.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
+                  <div className="aspect-[16/9] overflow-hidden bg-bg-alt">
+                    <img
+                      src={post.image}
+                      alt={post.slug.replace(/-/g, " ")}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-3 text-xs text-text-muted">
@@ -67,11 +67,11 @@ export default async function BlogPage({ params }: Props) {
                         </span>
                       ))}
                     </div>
-                    <h3 className="mt-3 font-display text-lg font-semibold text-primary capitalize group-hover:text-primary-light">
-                      {post.slug.replace(/-/g, " ")}
+                    <h3 className="mt-3 font-display text-lg font-semibold text-primary group-hover:text-primary-light">
+                      {post.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-text-muted line-clamp-3">
-                      Industry insights and updates from Hongtexus team.
+                      {post.excerpt}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
                       {t("readMore")}

@@ -27,13 +27,13 @@ export default async function Footer({ locale }: Props) {
               {t("description")}
             </p>
             <div className="mt-6 flex gap-3">
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a href="https://www.linkedin.com/company/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a href="https://www.facebook.com/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a href="https://www.instagram.com/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
                 <Instagram size={18} />
               </a>
             </div>
@@ -73,23 +73,38 @@ export default async function Footer({ locale }: Props) {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <Link href={`/${locale}/products?category=cotton-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Cotton Fabrics
+                <Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Knit Fabrics
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=linen-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Linen Fabrics
+                <Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  T-Shirts
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=silk-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Silk Fabrics
+                <Link href={`/${locale}/products?category=hoodies`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Hoodies
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/products?category=polyester-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Polyester Fabrics
+                <Link href={`/${locale}/products?category=leg-warmers`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Leg Warmers
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products?category=hats`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Hats
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products?category=gloves`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Gloves
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/products?category=socks`} className="text-sm text-gray-300 transition-colors hover:text-accent">
+                  Socks
                 </Link>
               </li>
             </ul>

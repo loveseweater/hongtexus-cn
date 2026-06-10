@@ -17,10 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) {
     return { title: "Product Not Found — Hongtexus" };
   }
-  const name = product.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `${name} — Hongtexus Products`,
-    description: `Premium ${product.category.replace("-", " ")} — ${name}. ${product.specs.map((s) => `${s.label}: ${s.value}`).join(", ")}.`,
+    title: `${product.title} — Hongtexus Products`,
+    description: product.description,
     alternates: {
       canonical: `https://hongtexus.cn/${locale}/products/${slug}`,
     },
@@ -70,21 +69,25 @@ export default async function ProductDetailPage({ params }: Props) {
           </Link>
 
           <div className="grid gap-12 lg:grid-cols-2">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
-              <div className="flex h-full items-center justify-center">
-                <span className="font-display text-8xl font-bold text-primary/10">
-                  {product.slug.charAt(0).toUpperCase()}
-                </span>
-              </div>
+            <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-bg-alt">
+              <img
+                src={product.images[0]}
+                alt={product.title}
+                className="h-full w-full object-cover"
+              />
             </div>
 
             <div>
               <span className="text-sm font-medium uppercase tracking-wider text-accent">
                 {product.category.replace("-", " ")}
               </span>
-              <h1 className="mt-2 font-display text-3xl font-bold text-primary capitalize md:text-4xl">
-                {product.slug.replace(/-/g, " ")}
+              <h1 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
+                {product.title}
               </h1>
+
+              <p className="mt-4 leading-relaxed text-text-muted">
+                {product.description}
+              </p>
 
               <div className="mt-8">
                 <h3 className="font-display text-lg font-semibold text-primary">
@@ -143,16 +146,16 @@ export default async function ProductDetailPage({ params }: Props) {
                   href={`/${locale}/products/${rp.slug}`}
                   className="group card overflow-hidden p-0"
                 >
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10">
-                    <div className="flex h-full items-center justify-center">
-                      <span className="font-display text-4xl font-bold text-primary/10">
-                        {rp.slug.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
+                  <div className="aspect-[4/3] overflow-hidden bg-bg-alt">
+                    <img
+                      src={rp.images[0]}
+                      alt={rp.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-5">
-                    <h3 className="font-display text-base font-semibold text-primary capitalize group-hover:text-primary-light">
-                      {rp.slug.replace(/-/g, " ")}
+                    <h3 className="font-display text-base font-semibold text-primary group-hover:text-primary-light">
+                      {rp.title}
                     </h3>
                     <p className="mt-1 text-xs text-text-muted">
                       {rp.specs[0]?.value}
