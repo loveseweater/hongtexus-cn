@@ -25,8 +25,11 @@ type KVStore = {
 function getKvBinding(): any {
   try {
     const ctx = getOptionalRequestContext();
-    if (ctx?.env?.HONGTE_KV) {
-      return ctx.env.HONGTE_KV;
+    if (ctx) {
+      const env = ctx.env as any;
+      if (env.HONGTE_KV) {
+        return env.HONGTE_KV;
+      }
     }
   } catch {}
   return null;
