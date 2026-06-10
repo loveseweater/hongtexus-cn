@@ -3,7 +3,8 @@ export const runtime = "edge";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { products, categories } from "@/lib/data/products";
+import { categories } from "@/lib/data/products";
+import { getKvProducts } from "@/lib/kv";
 import type { Metadata } from "next";
 
 type Props = {
@@ -28,9 +29,10 @@ export default async function ProductsPage({ params, searchParams }: Props) {
   const { category } = await searchParams;
   const t = await getTranslations({ locale, namespace: "products" });
 
+  const allProducts = await getKvProducts();
   const filteredProducts = category
-    ? products.filter((p) => p.category === category)
-    : products;
+    ? allProducts.filter((p: any) => p.category === category)
+    : allProducts;
 
   return (
     <>

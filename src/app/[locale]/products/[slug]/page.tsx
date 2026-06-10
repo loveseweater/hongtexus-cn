@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle } from "lucide-react";
-import { getProductBySlug, getProductsByCategory } from "@/lib/data/products";
+import { getKvProductBySlug, getKvProducts } from "@/lib/kv";
 import type { Metadata } from "next";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getKvProductBySlug(slug);
   if (!product) {
     return { title: "Product Not Found — Hongtexus" };
   }
@@ -30,14 +30,15 @@ export default async function ProductDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
 
-  const product = getProductBySlug(slug);
+  const product = await getKvProductBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = getProductsByCategory(product.category).filter(
-    (p) => p.id !== product.id
+  const allProducts = await getKvProducts();
+  const relatedProducts = allProducts.filter(
+    (p: any) => p.category === product.category && p.id !== product.id
   );
 
   return (

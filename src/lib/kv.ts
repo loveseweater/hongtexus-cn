@@ -100,6 +100,7 @@ const PRODUCTS_KEY = "products";
 const BLOG_KEY = "blog";
 const MESSAGES_KEY = "messages";
 const SUBMISSIONS_KEY = "submissions";
+const SUBSCRIBERS_KEY = "subscribers";
 
 export async function getProducts() {
   const store = getStore();
@@ -149,4 +150,55 @@ export async function saveSubmission(submission: any) {
   });
   await store.put(SUBMISSIONS_KEY, submissions);
   return submission;
+}
+
+export async function getSubscribers() {
+  const store = getStore();
+  const data = await store.get(SUBSCRIBERS_KEY);
+  return data || [];
+}
+
+export async function saveSubscriber(email: string) {
+  const store = getStore();
+  const subscribers = await getSubscribers();
+  // Check if already subscribed
+  const exists = subscribers.find((s: any) => s.email === email);
+  if (exists) return { success: false, message: "Already subscribed" };
+  subscribers.push({
+    email,
+    id: Date.now().toString(),
+    createdAt: new Date().toISOString(),
+  });
+  await store.put(SUBSCRIBERS_KEY, subscribers);
+  return { success: true };
+}
+
+// ---- KV-based Data Helpers (for front-end pages) ----
+// These read from KV first, fall back to static data
+
+export async function getKvProducts() {
+  const store = getStore();
+  const data = await store.get(PRODUCTS_KEY);
+  return data || staticProducts;
+}
+
+export async function getKvProductBySlug(slug: string) {
+  const products = await getKvProducts();
+  return products.find((p: any) => p.slug === slug) || null;
+}
+
+export async function getKvFeaturedProducts() {
+  const products = await getKvProducts();
+  return products.filter((p: any) => p.featured);
+}
+
+export async function getKvBlogPosts() {
+  const store = getStore();
+  const data = await store.get(BLOG_KEY);
+  return data || staticBlogPosts;
+}
+
+export async function getKvBlogPostBySlug(slug: string) {
+  const posts = await getKvBlogPosts();
+  return posts.find((p: any) => p.slug === slug) || null;
 }

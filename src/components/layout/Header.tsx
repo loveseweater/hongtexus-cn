@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -156,6 +156,46 @@ export default function Header() {
 
         {/* Right side */}
         <div className="flex items-center gap-3">
+          {/* Social Media Icons - Desktop */}
+          <div className="hidden items-center gap-1 md:flex">
+            <a
+              href="https://www.linkedin.com/company/hongtexus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
+              title="LinkedIn"
+            >
+              <Linkedin size={16} />
+            </a>
+            <a
+              href="https://www.facebook.com/hongtexus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
+              title="Facebook"
+            >
+              <Facebook size={16} />
+            </a>
+            <a
+              href="https://www.instagram.com/hongtexus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
+              title="Instagram"
+            >
+              <Instagram size={16} />
+            </a>
+            <a
+              href="https://wa.me/8612345678901"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-green-50 hover:text-green-600"
+              title="WhatsApp"
+            >
+              <MessageCircle size={16} />
+            </a>
+          </div>
+
           <LanguageSwitcher />
 
           <Link
@@ -240,10 +280,50 @@ export default function Header() {
                 </Link>
               );
             })}
+            {/* Social Media Icons - Mobile */}
+            <div className="mt-4 flex items-center justify-center gap-4 border-t border-border pt-4">
+              <a
+                href="https://www.linkedin.com/company/hongtexus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
+                title="LinkedIn"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="https://www.facebook.com/hongtexus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
+                title="Facebook"
+              >
+                <Facebook size={16} />
+              </a>
+              <a
+                href="https://www.instagram.com/hongtexus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
+                title="Instagram"
+              >
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://wa.me/8612345678901"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-green-500 hover:text-white"
+                title="WhatsApp"
+              >
+                <MessageCircle size={16} />
+              </a>
+            </div>
+
             <Link
               href={`/${locale}/contact`}
               onClick={() => setMobileOpen(false)}
-              className="mt-2 block rounded-lg bg-primary px-4 py-3 text-center text-sm font-semibold text-white"
+              className="mt-4 block rounded-lg bg-primary px-4 py-3 text-center text-sm font-semibold text-white"
             >
               {t("getQuote")}
             </Link>

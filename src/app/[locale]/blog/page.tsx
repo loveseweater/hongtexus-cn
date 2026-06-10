@@ -2,7 +2,7 @@ export const runtime = "edge";
 
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { blogPosts } from "@/lib/data/blog";
+import { getKvBlogPosts } from "@/lib/kv";
 import type { Metadata } from "next";
 
 type Props = {
@@ -25,6 +25,8 @@ export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
 
+  const posts = await getKvBlogPosts();
+
   return (
     <>
       <section className="bg-gradient-to-br from-primary to-primary-dark py-20">
@@ -40,9 +42,9 @@ export default async function BlogPage({ params }: Props) {
 
       <section className="section-padding">
         <div className="container-custom">
-          {blogPosts.length > 0 ? (
+          {posts.length > 0 ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {blogPosts.map((post) => (
+              {posts.map((post) => (
                 <Link
                   key={post.id}
                   href={`/${locale}/blog/${post.slug}`}
@@ -51,7 +53,7 @@ export default async function BlogPage({ params }: Props) {
                   <div className="aspect-[16/9] overflow-hidden bg-bg-alt">
                     <img
                       src={post.image}
-                      alt={post.slug.replace(/-/g, " ")}
+                      alt={post.title || post.slug.replace(/-/g, " ")}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>

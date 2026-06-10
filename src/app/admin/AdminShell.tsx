@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   Globe,
+  Bell,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,11 @@ const sidebarLinks = [
     href: "/admin/messages",
     label: "消息管理",
     icon: MessageSquare,
+  },
+  {
+    href: "/admin/subscribers",
+    label: "订阅管理",
+    icon: Bell,
   },
   {
     href: "/admin/settings",

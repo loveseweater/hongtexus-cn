@@ -1,13 +1,36 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
 
 type Props = {
   locale: string;
 };
 
+// Default settings (used when API is unavailable at build time)
+const defaultSettings = {
+  contactPhone: "+86-769-8888-8888",
+  contactWhatsapp: "+8612345678901",
+  contactEmail: "info@hongtexus.cn",
+  contactAddress: "Dongguan, Guangdong, China",
+  socialLinkedin: "https://www.linkedin.com/company/hongtexus",
+  socialFacebook: "https://www.facebook.com/hongtexus",
+  socialInstagram: "https://www.instagram.com/hongtexus",
+};
+
+async function getSettings() {
+  try {
+    const { getStore } = await import("@/lib/kv");
+    const store = getStore();
+    const settings = await store.get("site_settings");
+    return settings || defaultSettings;
+  } catch {
+    return defaultSettings;
+  }
+}
+
 export default async function Footer({ locale }: Props) {
   const t = await getTranslations({ locale, namespace: "footer" });
+  const settings = await getSettings();
 
   const currentYear = new Date().getFullYear();
 
@@ -27,14 +50,41 @@ export default async function Footer({ locale }: Props) {
               {t("description")}
             </p>
             <div className="mt-6 flex gap-3">
-              <a href="https://www.linkedin.com/company/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a
+                href={settings.socialLinkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
+                title="LinkedIn"
+              >
                 <Linkedin size={18} />
               </a>
-              <a href="https://www.facebook.com/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a
+                href={settings.socialFacebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
+                title="Facebook"
+              >
                 <Facebook size={18} />
               </a>
-              <a href="https://www.instagram.com/hongtexus" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent">
+              <a
+                href={settings.socialInstagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
+                title="Instagram"
+              >
                 <Instagram size={18} />
+              </a>
+              <a
+                href={`https://wa.me/${settings.contactWhatsapp?.replace(/\+/g, "") || "8612345678901"}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-green-500"
+                title="WhatsApp"
+              >
+                <MessageCircle size={18} />
               </a>
             </div>
           </div>
@@ -117,15 +167,15 @@ export default async function Footer({ locale }: Props) {
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3 text-sm text-gray-300">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
-                <span>Dongguan, Guangdong, China</span>
+                <span>{settings.contactAddress}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
                 <Phone size={16} className="shrink-0 text-accent" />
-                <span>+86-769-8888-8888</span>
+                <span>{settings.contactPhone}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
                 <Mail size={16} className="shrink-0 text-accent" />
-                <span>info@hongtexus.cn</span>
+                <span>{settings.contactEmail}</span>
               </li>
             </ul>
           </div>

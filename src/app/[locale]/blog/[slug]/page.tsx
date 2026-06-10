@@ -4,8 +4,9 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { getBlogPostBySlug } from "@/lib/data/blog";
+import { getKvBlogPostBySlug } from "@/lib/kv";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -13,7 +14,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getKvBlogPostBySlug(slug);
   if (!post) {
     return { title: "Post Not Found — Hongtexus" };
   }
@@ -30,7 +31,7 @@ export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
 
-  const post = getBlogPostBySlug(slug);
+  const post = await getKvBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -39,10 +40,10 @@ export default async function BlogPostPage({ params }: Props) {
   // Render markdown-like content to HTML
   const renderContent = (content: string) => {
     const lines = content.split("\n");
-    const elements: JSX.Element[] = [];
+    const elements: ReactNode[] = [];
     let key = 0;
     let inList = false;
-    const listItems: JSX.Element[] = [];
+    const listItems: ReactNode[] = [];
 
     const flushList = () => {
       if (listItems.length > 0) {
@@ -151,7 +152,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <Calendar size={14} />
                   {post.date}
                 </span>
-                {post.tags.map((tag) => (
+                {post.tags.map((tag: string) => (
                   <span
                     key={tag}
                     className="flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1 text-xs text-accent"

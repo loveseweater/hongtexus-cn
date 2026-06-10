@@ -1,1 +1,5 @@
+=== STDOUT ===
 
+
+=== STDERR ===
+[42196:0610/000246.874:ERROR:electron\shell\common\node_bindings.cc:485] Most NODE_OPTIONs are not supported in packaged apps. See documentation for more details.

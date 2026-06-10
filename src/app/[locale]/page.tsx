@@ -3,8 +3,7 @@ export const runtime = "edge";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { categories, getFeaturedProducts } from "@/lib/data/products";
-import { blogPosts } from "@/lib/data/blog";
+import { categories } from "@/lib/data/products";
 import {
   ShieldCheck,
   Truck,
@@ -13,6 +12,14 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getStore, getKvFeaturedProducts, getKvBlogPosts } from "@/lib/kv";
+
+const SETTINGS_KEY = "site_settings";
+
+const defaultSettings = {
+  heroTitle: "Premium Textile Solutions for Global Markets",
+  heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
+};
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -50,8 +57,21 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const c = await getTranslations({ locale, namespace: "common" });
 
-  const featuredProducts = getFeaturedProducts();
-  const latestPosts = blogPosts.slice(0, 3);
+  // Load dynamic settings from KV
+  let heroTitle = t("hero.title");
+  let heroSubtitle = t("hero.subtitle");
+  try {
+    const store = getStore();
+    const settings = await store.get(SETTINGS_KEY);
+    if (settings) {
+      heroTitle = settings.heroTitle || heroTitle;
+      heroSubtitle = settings.heroSubtitle || heroSubtitle;
+    }
+  } catch {}
+
+  const featuredProducts = await getKvFeaturedProducts();
+  const allPosts = await getKvBlogPosts();
+  const latestPosts = allPosts.slice(0, 3);
 
   return (
     <>
@@ -70,10 +90,10 @@ export default async function HomePage({ params }: Props) {
         <div className="container-custom relative py-24 md:py-32">
           <div className="max-w-3xl">
             <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
-              {t("hero.title")}
+              {heroTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">
-              {t("hero.subtitle")}
+              {heroSubtitle}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
