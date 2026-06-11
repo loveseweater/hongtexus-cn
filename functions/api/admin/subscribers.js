@@ -1,12 +1,2 @@
 import { getSubscribers, jsonResponse } from '../_kv.js';
-
-export async function onRequestGet(context) {
-  try {
-    const { env } = context;
-    const subscribers = await getSubscribers(env.HONGTE_KV);
-    return jsonResponse(subscribers);
-  } catch (error) {
-    console.error('Get subscribers error:', error);
-    return jsonResponse({ error: 'Failed to fetch subscribers' }, 500);
-  }
-}
+export async function onRequestGet(c) { try { return jsonResponse(await getSubscribers(c.env.HONGTE_KV)); } catch(e) { return jsonResponse({error:'Failed'},500); } }

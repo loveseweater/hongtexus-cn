@@ -7,6 +7,7 @@ import { routing } from "@/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SubscribePopup from "@/components/SubscribePopup";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 type Props = {
   children: React.ReactNode;
@@ -41,6 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Footer locale={locale} />
           </div>
           <SubscribePopup />
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
     </html>

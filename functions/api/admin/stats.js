@@ -1,19 +1,2 @@
 import { getProducts, getBlogPosts, getSubmissions, jsonResponse } from '../_kv.js';
-
-export async function onRequestGet(context) {
-  try {
-    const { env } = context;
-    const kv = env.HONGTE_KV;
-    const [products, blogPosts, submissions] = await Promise.all([
-      getProducts(kv), getBlogPosts(kv), getSubmissions(kv),
-    ]);
-    return jsonResponse({
-      products: Array.isArray(products) ? products.length : 0,
-      blogPosts: Array.isArray(blogPosts) ? blogPosts.length : 0,
-      messages: Array.isArray(submissions) ? submissions.length : 0,
-    });
-  } catch (error) {
-    console.error('Stats error:', error);
-    return jsonResponse({ products: 0, blogPosts: 0, messages: 0 });
-  }
-}
+export async function onRequestGet(c) { try { const kv=c.env.HONGTE_KV; const [p,b,s]=await Promise.all([getProducts(kv),getBlogPosts(kv),getSubmissions(kv)]); return jsonResponse({products:p.length||0,blogPosts:b.length||0,messages:s.length||0}); } catch(e) { return jsonResponse({products:0,blogPosts:0,messages:0}); } }

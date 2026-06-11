@@ -1,28 +1,3 @@
 import { getSubmissions, saveSubmissions, jsonResponse } from '../_kv.js';
-
-export async function onRequestGet(context) {
-  try {
-    const { env } = context;
-    const submissions = await getSubmissions(env.HONGTE_KV);
-    return jsonResponse(submissions);
-  } catch (error) {
-    console.error('Get submissions error:', error);
-    return jsonResponse({ error: 'Failed to fetch submissions' }, 500);
-  }
-}
-
-export async function onRequestDelete(context) {
-  try {
-    const { request, env } = context;
-    const url = new URL(request.url);
-    const id = url.searchParams.get('id');
-    if (!id) return jsonResponse({ error: 'Submission ID required' }, 400);
-    const submissions = await getSubmissions(env.HONGTE_KV);
-    const filtered = submissions.filter(s => s.id !== id);
-    await saveSubmissions(env.HONGTE_KV, filtered);
-    return jsonResponse({ success: true });
-  } catch (error) {
-    console.error('Delete submission error:', error);
-    return jsonResponse({ error: 'Failed to delete submission' }, 500);
-  }
-}
+export async function onRequestGet(c) { try { return jsonResponse(await getSubmissions(c.env.HONGTE_KV)); } catch(e) { return jsonResponse({error:'Failed'},500); } }
+export async function onRequestDelete(c) { try { const id=new URL(c.request.url).searchParams.get('id'); if(!id) return jsonResponse({error:'ID required'},400); const s=await getSubmissions(c.env.HONGTE_KV); await saveSubmissions(c.env.HONGTE_KV,s.filter(x=>x.id!==id)); return jsonResponse({success:true}); } catch(e) { return jsonResponse({error:'Failed'},500); } }
