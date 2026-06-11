@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node -e \"require('fs').cpSync('functions','.vercel/output/static/functions',{recursive:true});require('fs').cpSync('_routes.json','.vercel/output/static/_routes.json')\"",
     "start": "next start",
     "deploy": "npx wrangler pages deploy .vercel/output/static --project-name=hongtexus",
     "preview": "npx wrangler pages dev .vercel/output/static"
