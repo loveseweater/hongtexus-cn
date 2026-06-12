@@ -7,13 +7,10 @@ const intlMiddleware = createMiddleware(routing);
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Admin routes: protect with auth
-  // Note: /admin pages and /api/admin routes both need admin protection
-  if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
-    if (
-      pathname === "/admin/login" ||
-      pathname.startsWith("/api/admin/auth")
-    ) {
+  // Admin page routes: protect with auth
+  // API routes are excluded - they handle auth themselves
+  if (pathname.startsWith("/admin") && !pathname.startsWith("/api/")) {
+    if (pathname === "/admin/login") {
       return NextResponse.next();
     }
 
@@ -44,7 +41,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip static files and internal Next.js paths
-    "/((?!_next/static|_next/image|favicon.ico|images/|api/subscribe).*)",
+    // Skip API routes (handled by route handlers), static files, and internal paths
+    "/((?!api/|_next/static|_next/image|favicon.ico|images/).*)",
   ],
 };

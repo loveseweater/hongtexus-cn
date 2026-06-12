@@ -21,7 +21,20 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [whatsapp, setWhatsapp] = useState("8612345678901");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const whatsappUrl = `https://wa.me/${whatsapp}`;
+
+  useEffect(() => {
+    fetch("/api/admin/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.contactWhatsapp) {
+          setWhatsapp(data.contactWhatsapp.replace(/[^0-9]/g, ""));
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const locale = pathname.split("/")[1] || "en";
 
@@ -186,7 +199,7 @@ export default function Header() {
               <Instagram size={16} />
             </a>
             <a
-              href="https://wa.me/8612345678901"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-green-50 hover:text-green-600"
@@ -310,7 +323,7 @@ export default function Header() {
                 <Instagram size={16} />
               </a>
               <a
-                href="https://wa.me/8612345678901"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-green-500 hover:text-white"

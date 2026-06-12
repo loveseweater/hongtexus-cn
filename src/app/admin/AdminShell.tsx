@@ -14,6 +14,7 @@ import {
   X,
   Globe,
   Bell,
+  Layout,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +33,11 @@ const sidebarLinks = [
     href: "/admin/blog",
     label: "博客管理",
     icon: FileText,
+  },
+  {
+    href: "/admin/pages",
+    label: "页面管理",
+    icon: Layout,
   },
   {
     href: "/admin/messages",

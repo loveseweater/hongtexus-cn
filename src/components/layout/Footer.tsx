@@ -1,12 +1,9 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
 
-type Props = {
-  locale: string;
-};
-
-// Default settings (used when API is unavailable at build time)
 const defaultSettings = {
   contactPhone: "+86-769-8888-8888",
   contactWhatsapp: "+8612345678901",
@@ -17,22 +14,20 @@ const defaultSettings = {
   socialInstagram: "https://www.instagram.com/hongtexus",
 };
 
-async function getSettings() {
-  try {
-    const { getStore } = await import("@/lib/kv");
-    const store = getStore();
-    const settings = await store.get("site_settings");
-    return settings || defaultSettings;
-  } catch {
-    return defaultSettings;
-  }
-}
+export default function Footer({ locale }: { locale: string }) {
+  const [settings, setSettings] = useState(defaultSettings);
+  const [year] = useState(new Date().getFullYear());
 
-export default async function Footer({ locale }: Props) {
-  const t = await getTranslations({ locale, namespace: "footer" });
-  const settings = await getSettings();
-
-  const currentYear = new Date().getFullYear();
+  useEffect(() => {
+    fetch("/api/admin/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.contactWhatsapp) {
+          setSettings(data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className="border-t border-border bg-primary-dark text-white">
@@ -47,7 +42,7 @@ export default async function Footer({ locale }: Props) {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-300">
-              {t("description")}
+              Hongtexus is your trusted partner in premium textile solutions for global markets.
             </p>
             <div className="mt-6 flex gap-3">
               <a
@@ -78,7 +73,7 @@ export default async function Footer({ locale }: Props) {
                 <Instagram size={18} />
               </a>
               <a
-                href={`https://wa.me/${settings.contactWhatsapp?.replace(/\+/g, "") || "8612345678901"}`}
+                href={`https://wa.me/${(settings.contactWhatsapp || "8612345678901").replace(/[^0-9]/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-green-500"
@@ -90,80 +85,30 @@ export default async function Footer({ locale }: Props) {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">
-              {t("quickLinks")}
-            </h3>
+            <h3 className="font-display text-lg font-semibold text-white">Quick Links</h3>
             <ul className="mt-4 space-y-3">
-              <li>
-                <Link href={`/${locale}/products`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  {t("products")}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/blog`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/about`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/contact`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  {t("contact")}
-                </Link>
-              </li>
+              <li><Link href={`/${locale}/products`} className="text-sm text-gray-300 transition-colors hover:text-accent">Products</Link></li>
+              <li><Link href={`/${locale}/blog`} className="text-sm text-gray-300 transition-colors hover:text-accent">Blog</Link></li>
+              <li><Link href={`/${locale}/about`} className="text-sm text-gray-300 transition-colors hover:text-accent">About</Link></li>
+              <li><Link href={`/${locale}/contact`} className="text-sm text-gray-300 transition-colors hover:text-accent">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">
-              {t("products")}
-            </h3>
+            <h3 className="font-display text-lg font-semibold text-white">Products</h3>
             <ul className="mt-4 space-y-3">
-              <li>
-                <Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Knit Fabrics
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  T-Shirts
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=hoodies`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Hoodies
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=leg-warmers`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Leg Warmers
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=hats`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Hats
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=gloves`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Gloves
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/products?category=socks`} className="text-sm text-gray-300 transition-colors hover:text-accent">
-                  Socks
-                </Link>
-              </li>
+              <li><Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">Knit Fabrics</Link></li>
+              <li><Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">T-Shirts</Link></li>
+              <li><Link href={`/${locale}/products?category=hoodies`} className="text-sm text-gray-300 transition-colors hover:text-accent">Hoodies</Link></li>
+              <li><Link href={`/${locale}/products?category=leg-warmers`} className="text-sm text-gray-300 transition-colors hover:text-accent">Leg Warmers</Link></li>
+              <li><Link href={`/${locale}/products?category=hats`} className="text-sm text-gray-300 transition-colors hover:text-accent">Hats</Link></li>
+              <li><Link href={`/${locale}/products?category=gloves`} className="text-sm text-gray-300 transition-colors hover:text-accent">Gloves</Link></li>
+              <li><Link href={`/${locale}/products?category=socks`} className="text-sm text-gray-300 transition-colors hover:text-accent">Socks</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">
-              {t("contact")}
-            </h3>
+            <h3 className="font-display text-lg font-semibold text-white">Contact</h3>
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3 text-sm text-gray-300">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
@@ -185,15 +130,11 @@ export default async function Footer({ locale }: Props) {
       <div className="border-t border-white/10">
         <div className="container-custom flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
           <p className="text-sm text-gray-400">
-            &copy; {currentYear} HONGTEX. {t("copyright")}
+            &copy; {year} HONGTEX. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
-            <a href="#" className="transition-colors hover:text-accent">
-              {t("privacy")}
-            </a>
-            <a href="#" className="transition-colors hover:text-accent">
-              {t("terms")}
-            </a>
+            <a href="#" className="transition-colors hover:text-accent">Privacy Policy</a>
+            <a href="#" className="transition-colors hover:text-accent">Terms of Service</a>
           </div>
         </div>
       </div>

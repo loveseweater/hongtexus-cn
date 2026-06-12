@@ -2,18 +2,23 @@
 
 export const runtime = "edge";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-
-// @ts-ignore - params unused but required by Next.js convention
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
 
+const defaultInfo = {
+  contactPhone: "+86-769-8888-8888",
+  contactEmail: "info@hongtexus.cn",
+  contactAddress: "Dongguan, Guangdong, China",
+};
+
 export default function ContactPage() {
   const t = useTranslations("contact");
+  const [info, setInfo] = useState(defaultInfo);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -24,6 +29,21 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.contactPhone) {
+          setInfo({
+            contactPhone: data.contactPhone || defaultInfo.contactPhone,
+            contactEmail: data.contactEmail || defaultInfo.contactEmail,
+            contactAddress: data.contactAddress || defaultInfo.contactAddress,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -83,18 +103,21 @@ export default function ContactPage() {
                   <h3 className="mt-4 font-display text-xl font-semibold text-green-800">
                     {t("form.success")}
                   </h3>
+                  <p className="mt-2 text-sm text-green-600">
+                    {t("form.successMessage")}
+                  </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="btn-primary mt-6"
+                    className="btn-outline mt-6"
                   >
-                    {t("form.submit")}
+                    {t("form.sendAnother")}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
-                      <label className="block text-sm font-medium text-text">
+                      <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.name")} *
                       </label>
                       <input
@@ -103,12 +126,12 @@ export default function ContactPage() {
                         required
                         value={formState.name}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                         placeholder={t("form.name")}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text">
+                      <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.email")} *
                       </label>
                       <input
@@ -117,7 +140,7 @@ export default function ContactPage() {
                         required
                         value={formState.email}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                         placeholder={t("form.email")}
                       />
                     </div>
@@ -125,7 +148,7 @@ export default function ContactPage() {
 
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
-                      <label className="block text-sm font-medium text-text">
+                      <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.phone")}
                       </label>
                       <input
@@ -133,12 +156,12 @@ export default function ContactPage() {
                         name="phone"
                         value={formState.phone}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                         placeholder={t("form.phone")}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-text">
+                      <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.company")}
                       </label>
                       <input
@@ -146,14 +169,14 @@ export default function ContactPage() {
                         name="company"
                         value={formState.company}
                         onChange={handleChange}
-                        className="mt-1.5 w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="input-field"
                         placeholder={t("form.company")}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-text">
+                    <label className="mb-1 block text-sm font-medium text-text">
                       {t("form.message")} *
                     </label>
                     <textarea
@@ -162,8 +185,8 @@ export default function ContactPage() {
                       rows={5}
                       value={formState.message}
                       onChange={handleChange}
-                      className="mt-1.5 w-full rounded-lg border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder={t("form.placeholder")}
+                      className="input-field"
+                      placeholder={t("form.message")}
                     />
                   </div>
 
@@ -174,9 +197,10 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn-primary w-full"
+                    className="btn-primary inline-flex w-full items-center justify-center gap-2 sm:w-auto"
                   >
-                    {loading ? "Sending..." : t("form.submit")}
+                    {loading ? t("form.sending") : t("form.submit")}
+                    <Send size={16} />
                   </button>
                 </form>
               )}
@@ -196,7 +220,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-medium text-text">{t("info.address")}</h4>
                     <p className="mt-1 text-sm text-text-muted">
-                      Dongguan, Guangdong, China
+                      {info.contactAddress}
                     </p>
                   </div>
                 </div>
@@ -208,7 +232,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-medium text-text">{t("info.phone")}</h4>
                     <p className="mt-1 text-sm text-text-muted">
-                      +86-769-8888-8888
+                      {info.contactPhone}
                     </p>
                   </div>
                 </div>
@@ -220,7 +244,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-medium text-text">{t("info.email")}</h4>
                     <p className="mt-1 text-sm text-text-muted">
-                      info@hongtexus.cn
+                      {info.contactEmail}
                     </p>
                   </div>
                 </div>
@@ -244,7 +268,7 @@ export default function ContactPage() {
                   <div className="text-center">
                     <MapPin size={32} className="mx-auto text-accent" />
                     <p className="mt-2 text-sm text-text-muted">
-                      Dongguan, Guangdong, China
+                      {info.contactAddress}
                     </p>
                   </div>
                 </div>
