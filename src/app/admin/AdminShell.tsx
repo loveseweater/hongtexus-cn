@@ -20,6 +20,7 @@ import {
   FilePlus,
   Share2,
   BarChart3,
+  Smartphone,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -58,6 +59,11 @@ const sidebarLinks = [
     href: "/admin/navigation",
     label: "导航管理",
     icon: Navigation,
+  },
+  {
+    href: "/admin/mobile-nav",
+    label: "移动端导航",
+    icon: Smartphone,
   },
   {
     href: "/admin/social",
