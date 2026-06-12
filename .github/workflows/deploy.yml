@@ -26,11 +26,9 @@ jobs:
       - name: Build
         run: npx @cloudflare/next-on-pages
 
-      - name: Configure KV Binding
+      - name: Configure KV Binding via API
         run: |
-          npx wrangler pages project update hongtexus-cn --kv-binding HONGTE_KV=4f0cc3f6db124d23ae17d3fb59d521d2
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          curl -s -X PATCH "https://api.cloudflare.com/client/v4/accounts/970f447f7ce353f4561e125abfe42102/pages/projects/hongtexus-cn"             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}"             -H "Content-Type: application/json"             -d '{"deployment_configs":{"production":{"kv_namespaces":{"HONGTE_KV":{"namespace_id":"4f0cc3f6db124d23ae17d3fb59d521d2"}}}}}}'
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
