@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Globe, Youtube, Twitter, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Globe, Youtube, Twitter, CheckCircle, Send } from "lucide-react";
 
 const ICON_MAP: Record<string, any> = {
   linkedin: Linkedin,
@@ -36,6 +36,8 @@ export default function Footer({ locale }: { locale: string }) {
   const [subStatus, setSubStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [subMsg, setSubMsg] = useState("");
 
+  const isZh = locale === "zh";
+
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((res) => res.json())
@@ -49,7 +51,76 @@ export default function Footer({ locale }: { locale: string }) {
 
   return (
     <footer className="border-t border-border bg-primary-dark text-white">
-      <div className="container-custom py-16">
+      {/* Newsletter Banner - More prominent */}
+      <div className="border-b border-white/10 bg-primary-dark/95">
+        <div className="container-custom py-8">
+          <div className="flex flex-col items-center justify-between gap-4 rounded-xl bg-white/5 px-6 py-6 md:flex-row md:px-10">
+            <div>
+              <h3 className="font-display text-lg font-semibold text-white">
+                {isZh ? "订阅我们的资讯" : "Stay Updated"}
+              </h3>
+              <p className="mt-1 text-sm text-gray-400">
+                {isZh ? "获取最新产品和行业动态" : "Get the latest products and industry news delivered to your inbox."}
+              </p>
+            </div>
+            <div className="w-full md:w-auto md:min-w-[400px]">
+              {subStatus === "success" ? (
+                <div className="flex items-center gap-2 rounded-lg bg-green-500/10 px-4 py-3 text-sm text-green-400">
+                  <CheckCircle size={18} />
+                  <span>{isZh ? "感谢订阅！" : subMsg || "Thank you for subscribing!"}</span>
+                </div>
+              ) : (
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!subEmail.trim()) return;
+                  setSubStatus("loading");
+                  try {
+                    const res = await fetch("/api/subscribe", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ email: subEmail.trim() }),
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                      setSubStatus("success");
+                      setSubMsg(isZh ? "感谢订阅！" : "Thank you for subscribing!");
+                    } else {
+                      setSubStatus("error");
+                      setSubMsg(data.message || (isZh ? "订阅失败" : "Subscription failed"));
+                    }
+                  } catch {
+                    setSubStatus("error");
+                    setSubMsg(isZh ? "网络错误" : "Network error");
+                  }
+                }} className="flex gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={subEmail}
+                    onChange={(e) => setSubEmail(e.target.value)}
+                    placeholder={isZh ? "您的邮箱" : "Your email address"}
+                    className="flex-1 min-w-0 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50"
+                    disabled={subStatus === "loading"}
+                  />
+                  <button
+                    type="submit"
+                    disabled={subStatus === "loading"}
+                    className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent/80 disabled:opacity-50"
+                  >
+                    <Send size={16} />
+                    {subStatus === "loading" ? "..." : (isZh ? "订阅" : "Subscribe")}
+                  </button>
+                </form>
+              )}
+              {subStatus === "error" && (
+                <p className="mt-1 text-xs text-red-400">{subMsg}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-custom py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link href={`/${locale}`} className="flex items-center gap-3">
@@ -120,62 +191,6 @@ export default function Footer({ locale }: { locale: string }) {
                 <a href={`mailto:${settings.contactEmail}`} className="hover:text-accent transition-colors">{settings.contactEmail}</a>
               </li>
             </ul>
-
-            {/* Newsletter Subscription */}
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold text-white mb-2">订阅我们的资讯</h4>
-              <p className="text-xs text-gray-400 mb-3">获取最新产品和行业动态</p>
-              {subStatus === "success" ? (
-                <div className="flex items-center gap-2 text-sm text-green-400">
-                  <CheckCircle size={16} />
-                  <span>{subMsg}</span>
-                </div>
-              ) : (
-                <form onSubmit={async (e) => {
-                  e.preventDefault();
-                  if (!subEmail.trim()) return;
-                  setSubStatus("loading");
-                  try {
-                    const res = await fetch("/api/subscribe", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ email: subEmail.trim() }),
-                    });
-                    const data = await res.json();
-                    if (data.success) {
-                      setSubStatus("success");
-                      setSubMsg("感谢订阅！");
-                    } else {
-                      setSubStatus("error");
-                      setSubMsg(data.message || "订阅失败");
-                    }
-                  } catch {
-                    setSubStatus("error");
-                    setSubMsg("网络错误");
-                  }
-                }} className="flex gap-2">
-                  <input
-                    type="email"
-                    required
-                    value={subEmail}
-                    onChange={(e) => setSubEmail(e.target.value)}
-                    placeholder="您的邮箱"
-                    className="flex-1 min-w-0 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-gray-400 focus:border-accent focus:outline-none"
-                    disabled={subStatus === "loading"}
-                  />
-                  <button
-                    type="submit"
-                    disabled={subStatus === "loading"}
-                    className="shrink-0 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/80 disabled:opacity-50"
-                  >
-                    {subStatus === "loading" ? "..." : "订阅"}
-                  </button>
-                </form>
-              )}
-              {subStatus === "error" && (
-                <p className="mt-1 text-xs text-red-400">{subMsg}</p>
-              )}
-            </div>
           </div>
         </div>
       </div>
