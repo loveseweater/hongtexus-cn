@@ -9,6 +9,19 @@ const defaultSettings = {
   siteDescription: "Premium Knitwear & Textile Solutions",
   // Logo
   siteLogo: "/images/logo.png",
+  // Social links (dynamic array)
+  socialLinks: [
+    { platform: "LinkedIn", url: "https://www.linkedin.com/company/hongtexus", icon: "linkedin", order: 0 },
+    { platform: "Facebook", url: "https://www.facebook.com/hongtexus", icon: "facebook", order: 1 },
+    { platform: "Instagram", url: "https://www.instagram.com/hongtexus", icon: "instagram", order: 2 },
+  ],
+  // Email service config
+  emailService: {
+    provider: "", // "resend" | "mailgun" | "sendgrid"
+    apiKey: "",
+    fromEmail: "info@hongtexus.cn",
+    fromName: "HONGTEX",
+  },
   // Navigation links
   navLinks: [
     { label: "Home", href: "/", children: [] },
@@ -40,9 +53,6 @@ const defaultSettings = {
   contactPhone: "+86-769-8888-8888",
   contactWhatsapp: "+8612345678901",
   contactAddress: "Dongguan, Guangdong, China",
-  socialLinkedin: "https://www.linkedin.com/company/hongtexus",
-  socialFacebook: "https://www.facebook.com/hongtexus",
-  socialInstagram: "https://www.instagram.com/hongtexus",
   // Hero carousel images
   heroImages: [
     "/images/product-knit-fabric.jpg",
