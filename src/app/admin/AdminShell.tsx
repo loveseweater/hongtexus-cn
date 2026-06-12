@@ -15,6 +15,9 @@ import {
   Globe,
   Bell,
   Layout,
+  Layers,
+  Navigation,
+  FilePlus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +33,11 @@ const sidebarLinks = [
     icon: Package,
   },
   {
+    href: "/admin/categories",
+    label: "产品分类",
+    icon: Layers,
+  },
+  {
     href: "/admin/blog",
     label: "博客管理",
     icon: FileText,
@@ -38,6 +46,16 @@ const sidebarLinks = [
     href: "/admin/pages",
     label: "页面管理",
     icon: Layout,
+  },
+  {
+    href: "/admin/custom-pages",
+    label: "自定义页面",
+    icon: FilePlus,
+  },
+  {
+    href: "/admin/navigation",
+    label: "导航管理",
+    icon: Navigation,
   },
   {
     href: "/admin/messages",
