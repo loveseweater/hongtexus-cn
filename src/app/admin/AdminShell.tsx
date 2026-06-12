@@ -18,6 +18,8 @@ import {
   Layers,
   Navigation,
   FilePlus,
+  Share2,
+  BarChart3,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -56,6 +58,16 @@ const sidebarLinks = [
     href: "/admin/navigation",
     label: "导航管理",
     icon: Navigation,
+  },
+  {
+    href: "/admin/social",
+    label: "社媒管理",
+    icon: Share2,
+  },
+  {
+    href: "/admin/analytics",
+    label: "流量统计",
+    icon: BarChart3,
   },
   {
     href: "/admin/messages",
