@@ -26,9 +26,12 @@ jobs:
       - name: Build
         run: npx @cloudflare/next-on-pages
 
-      - name: Configure KV Binding via API
+      - name: Copy Functions directory
         run: |
-          curl -s -X PATCH "https://api.cloudflare.com/client/v4/accounts/970f447f7ce353f4561e125abfe42102/pages/projects/hongtexus-cn"             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}"             -H "Content-Type: application/json"             -d '{"deployment_configs":{"production":{"kv_namespaces":{"HONGTE_KV":{"namespace_id":"4f0cc3f6db124d23ae17d3fb59d521d2"}}}}}'
+          if [ -d "functions" ]; then
+            cp -r functions .vercel/output/static/functions
+            echo "Functions directory copied"
+          fi
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
