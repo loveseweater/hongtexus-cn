@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Save, Globe, Mail, Phone, Linkedin, Facebook, Instagram, MapPin, MessageCircle } from "lucide-react";
+import { Save, Globe, Mail, Phone, Linkedin, Facebook, Instagram, MapPin, MessageCircle, Image, FileText, Plus, Trash2 } from "lucide-react";
 
 export default function AdminSettingsPage() {
   const [saved, setSaved] = useState(false);
@@ -9,6 +9,7 @@ export default function AdminSettingsPage() {
   const [form, setForm] = useState({
     siteName: "HONGTEX",
     siteDescription: "Premium Knitwear & Textile Solutions",
+    siteLogo: "/images/logo.png",
     heroTitle: "Premium Textile Solutions for Global Markets",
     heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
     contactEmail: "info@hongtexus.cn",
@@ -18,14 +19,17 @@ export default function AdminSettingsPage() {
     socialLinkedin: "https://www.linkedin.com/company/hongtexus",
     socialFacebook: "https://www.facebook.com/hongtexus",
     socialInstagram: "https://www.instagram.com/hongtexus",
+    blogCategories: [] as { id: string; name: string; slug: string }[],
   });
+  const [newCatName, setNewCatName] = useState("");
+  const [newCatSlug, setNewCatSlug] = useState("");
 
   // Load settings on mount
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
-        if (data) setForm(data);
+        if (data) setForm({ ...form, ...data, blogCategories: data.blogCategories || [] });
       })
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -48,6 +52,20 @@ export default function AdminSettingsPage() {
     }
   };
 
+  const addBlogCategory = () => {
+    if (!newCatName.trim() || !newCatSlug.trim()) return;
+    setForm({
+      ...form,
+      blogCategories: [...form.blogCategories, { id: Date.now().toString(), name: newCatName.trim(), slug: newCatSlug.trim() }],
+    });
+    setNewCatName("");
+    setNewCatSlug("");
+  };
+
+  const removeBlogCategory = (id: string) => {
+    setForm({ ...form, blogCategories: form.blogCategories.filter((c) => c.id !== id) });
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -63,7 +81,7 @@ export default function AdminSettingsPage() {
           系统设置
         </h1>
         <p className="mt-1 text-sm text-text-muted">
-          管理您的网站配置、联系信息和社交媒体链接
+          管理您的网站配置、Logo、联系信息和博客分类
         </p>
       </div>
 
@@ -98,6 +116,33 @@ export default function AdminSettingsPage() {
                 onChange={(e) => setForm({ ...form, siteDescription: e.target.value })}
                 className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
+            </div>
+
+            {/* Logo */}
+            <div>
+              <label className="block text-sm font-medium text-text">
+                <span className="flex items-center gap-2">
+                  <Image size={14} /> Logo 图片
+                </span>
+              </label>
+              <div className="mt-2 flex items-center gap-4">
+                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-border bg-bg-alt">
+                  <img
+                    src={form.siteLogo}
+                    alt="Logo"
+                    className="h-full w-full object-contain"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Crect fill='%23f3f4f6' width='56' height='56'/%3E%3Ctext x='28' y='30' font-size='8' text-anchor='middle' fill='%239ca3af'%3ENo%3C/text%3E%3C/svg%3E"; }}
+                  />
+                </div>
+                <input
+                  type="text"
+                  value={form.siteLogo}
+                  onChange={(e) => setForm({ ...form, siteLogo: e.target.value })}
+                  className="flex-1 rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  placeholder="/images/logo.png"
+                />
+              </div>
+              <p className="mt-1 text-xs text-text-muted">输入 Logo 图片的 URL 路径</p>
             </div>
 
             <div>
@@ -249,6 +294,57 @@ export default function AdminSettingsPage() {
                 className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 placeholder="https://www.instagram.com/..."
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Blog Categories */}
+        <div className="rounded-xl border border-border bg-white p-6">
+          <div className="flex items-center gap-3">
+            <div className="rounded-lg bg-orange-100 p-2.5 text-orange-600">
+              <FileText size={20} />
+            </div>
+            <h2 className="font-display text-lg font-semibold text-primary">
+              博客分类
+            </h2>
+          </div>
+
+          <div className="mt-6 space-y-4">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={newCatName}
+                onChange={(e) => setNewCatName(e.target.value)}
+                placeholder="分类名称"
+                className="flex-1 rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none"
+              />
+              <input
+                type="text"
+                value={newCatSlug}
+                onChange={(e) => setNewCatSlug(e.target.value)}
+                placeholder="标识 slug"
+                className="flex-1 rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none"
+              />
+              <button type="button" onClick={addBlogCategory} className="btn-outline inline-flex items-center gap-1 text-sm">
+                <Plus size={14} /> 添加
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {form.blogCategories.map((cat) => (
+                <div key={cat.id} className="flex items-center justify-between rounded-lg border border-border bg-gray-50 px-3 py-2">
+                  <div>
+                    <span className="text-sm font-medium text-text">{cat.name}</span>
+                    <span className="ml-2 text-xs text-text-muted">/{cat.slug}</span>
+                  </div>
+                  <button type="button" onClick={() => removeBlogCategory(cat.id)} className="text-red-400 hover:text-red-600">
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              ))}
+              {form.blogCategories.length === 0 && (
+                <p className="text-sm text-text-muted">暂无博客分类</p>
+              )}
             </div>
           </div>
         </div>
