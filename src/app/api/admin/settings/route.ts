@@ -80,7 +80,43 @@ export async function GET() {
   try {
     const store = getStore();
     const settings = await store.get(SETTINGS_KEY);
-    return Response.json(settings || defaultSettings);
+    const merged = { ...defaultSettings, ...(settings || {}) };
+
+    // Backward compatibility: convert old social fields to socialLinks array
+    if (!merged.socialLinks || !Array.isArray(merged.socialLinks) || merged.socialLinks.length === 0) {
+      const oldSocial = [];
+      const platformMap: Record<string, { platform: string; icon: string }> = {
+        socialLinkedin: { platform: "LinkedIn", icon: "linkedin" },
+        socialFacebook: { platform: "Facebook", icon: "facebook" },
+        socialInstagram: { platform: "Instagram", icon: "instagram" },
+        socialYoutube: { platform: "YouTube", icon: "youtube" },
+        socialTwitter: { platform: "Twitter / X", icon: "twitter" },
+        socialTiktok: { platform: "TikTok", icon: "tiktok" },
+      };
+      let order = 0;
+      for (const [key, info] of Object.entries(platformMap)) {
+        const url = (merged as any)[key];
+        if (url && typeof url === "string" && url.trim()) {
+          oldSocial.push({ ...info, url: url.trim(), order: order++ });
+        }
+        delete (merged as any)[key];
+      }
+      if (oldSocial.length > 0) {
+        merged.socialLinks = oldSocial;
+      }
+    }
+
+    // Backward compatibility: ensure mobileNavItems exists
+    if (!merged.mobileNavItems) {
+      merged.mobileNavItems = [
+        { id: "1", label: "Home", href: "/", icon: "home", order: 0 },
+        { id: "2", label: "Products", href: "/products", icon: "package", order: 1 },
+        { id: "3", label: "Blog", href: "/blog", icon: "filetext", order: 2 },
+        { id: "4", label: "Contact", href: "/contact", icon: "messagesquare", order: 3 },
+      ];
+    }
+
+    return Response.json(merged);
   } catch (error) {
     return Response.json(defaultSettings);
   }
