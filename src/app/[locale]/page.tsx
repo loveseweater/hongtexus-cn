@@ -12,14 +12,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { getStore, getKvFeaturedProducts, getKvBlogPosts } from "@/lib/kv";
-
-const SETTINGS_KEY = "site_settings";
-
-const defaultSettings = {
-  heroTitle: "Premium Textile Solutions for Global Markets",
-  heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
-};
+import { getKvFeaturedProducts, getKvBlogPosts } from "@/lib/kv";
+import HeroSection from "@/components/HeroSection";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -57,17 +51,7 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const c = await getTranslations({ locale, namespace: "common" });
 
-  // Load dynamic settings from KV
-  let heroTitle = t("hero.title");
-  let heroSubtitle = t("hero.subtitle");
-  try {
-    const store = getStore();
-    const settings = await store.get(SETTINGS_KEY);
-    if (settings) {
-      heroTitle = settings.heroTitle || heroTitle;
-      heroSubtitle = settings.heroSubtitle || heroSubtitle;
-    }
-  } catch {}
+  // Hero section is now a client component that fetches from API
 
   const featuredProducts = await getKvFeaturedProducts();
   const allPosts = await getKvBlogPosts();
@@ -75,46 +59,8 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* ===== Hero Section ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-primary">
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 25% 25%, rgba(200,169,110,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-            }}
-          />
-        </div>
-
-        <div className="container-custom relative py-24 md:py-32">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
-              {heroTitle}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">
-              {heroSubtitle}
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href={`/${locale}/products`}
-                className="btn-accent text-base"
-              >
-                {t("hero.cta")}
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-6 py-3 text-base font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white/10"
-              >
-                {t("hero.ctaSecondary")}
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
-      </section>
+      {/* ===== Hero Section (dynamic) ===== */}
+      <HeroSection locale={locale} />
 
       {/* ===== Categories Section ===== */}
       <section className="section-padding bg-bg-alt">
