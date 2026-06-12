@@ -16,6 +16,27 @@ const defaultSettings = {
   socialLinkedin: "https://www.linkedin.com/company/hongtexus",
   socialFacebook: "https://www.facebook.com/hongtexus",
   socialInstagram: "https://www.instagram.com/hongtexus",
+  // Hero carousel images
+  heroImages: [
+    "/images/product-knit-fabric.jpg",
+    "/images/product-tshirt.jpg",
+    "/images/product-hoodie.jpg",
+    "/images/product-gloves.jpg",
+    "/images/product-hat.jpg",
+    "/images/product-socks.jpg",
+    "/images/product-legwarmers.jpg",
+  ],
+  // About page content
+  aboutContent: {
+    story: "Hongtexus is a leading textile supplier dedicated to providing high-quality fabrics and textile products to global markets. With advanced manufacturing facilities and a professional team, we serve clients across various industries.",
+    mission: "To deliver premium textile solutions that empower businesses worldwide through quality, innovation, and reliability.",
+    stats: {
+      years: "15+",
+      clients: "500+",
+      products: "2000+",
+      countries: "50+",
+    },
+  },
 };
 
 export async function GET() {
