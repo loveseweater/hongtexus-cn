@@ -26,15 +26,6 @@ jobs:
       - name: Build
         run: npx @cloudflare/next-on-pages
 
-      - name: Copy Functions directory
-        run: |
-          if [ -d "functions" ]; then
-            cp -r functions .vercel/output/static/functions
-            echo "Functions directory copied to output"
-          else
-            echo "No functions directory found"
-          fi
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
