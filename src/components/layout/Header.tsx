@@ -35,6 +35,7 @@ export default function Header() {
   const [whatsapp, setWhatsapp] = useState("8612345678901");
   const [siteLogo, setSiteLogo] = useState("/images/logo.png");
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
+  const [socialLinks, setSocialLinks] = useState<{platform: string; url: string; icon: string}[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const whatsappUrl = `https://wa.me/${whatsapp}`;
 
@@ -51,6 +52,9 @@ export default function Header() {
           }
           if (data.navLinks && Array.isArray(data.navLinks)) {
             setNavLinks(data.navLinks);
+          }
+          if (data.socialLinks && Array.isArray(data.socialLinks)) {
+            setSocialLinks(data.socialLinks);
           }
         }
       })
@@ -181,42 +185,17 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {/* Social Media Icons - Desktop */}
           <div className="hidden items-center gap-1 md:flex">
-            <a
-              href="https://www.linkedin.com/company/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="LinkedIn"
-            >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href="https://www.facebook.com/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="Facebook"
-            >
-              <Facebook size={16} />
-            </a>
-            <a
-              href="https://www.instagram.com/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="Instagram"
-            >
-              <Instagram size={16} />
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-green-50 hover:text-green-600"
-              title="WhatsApp"
-            >
-              <MessageCircle size={16} />
-            </a>
+            {socialLinks.map((link, i) => {
+              const iconMap: Record<string, any> = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram, youtube: Youtube, twitter: Twitter, tiktok: MessageCircle, whatsapp: MessageCircle, custom: Globe };
+              const IconComp = iconMap[link.icon?.toLowerCase()] || Globe;
+              return (
+                <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
+                  title={link.platform}>
+                  <IconComp size={16} />
+                </a>
+              );
+            })}
           </div>
 
           <LanguageSwitcher />
@@ -296,42 +275,17 @@ export default function Header() {
             })}
             {/* Social Media Icons - Mobile */}
             <div className="mt-4 flex items-center justify-center gap-4 border-t border-border pt-4">
-              <a
-                href="https://www.linkedin.com/company/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-              <a
-                href="https://www.facebook.com/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="Facebook"
-              >
-                <Facebook size={16} />
-              </a>
-              <a
-                href="https://www.instagram.com/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="Instagram"
-              >
-                <Instagram size={16} />
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-green-500 hover:text-white"
-                title="WhatsApp"
-              >
-                <MessageCircle size={16} />
-              </a>
+              {socialLinks.map((link, i) => {
+                const iconMap: Record<string, any> = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram, youtube: Youtube, twitter: Twitter, tiktok: MessageCircle, whatsapp: MessageCircle, custom: Globe };
+                const IconComp = iconMap[link.icon?.toLowerCase()] || Globe;
+                return (
+                  <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
+                    title={link.platform}>
+                    <IconComp size={16} />
+                  </a>
+                );
+              })}
             </div>
 
             <Link
