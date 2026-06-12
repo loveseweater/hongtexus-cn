@@ -9,8 +9,19 @@ const defaultHero = {
   heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
 };
 
+const heroImages = [
+  "/images/product-knit-fabric.jpg",
+  "/images/product-tshirt.jpg",
+  "/images/product-hoodie.jpg",
+  "/images/product-gloves.jpg",
+  "/images/product-hat.jpg",
+  "/images/product-socks.jpg",
+  "/images/product-legwarmers.jpg",
+];
+
 export default function HeroSection({ locale }: { locale: string }) {
   const [hero, setHero] = useState(defaultHero);
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     fetch("/api/admin/settings")
@@ -26,16 +37,58 @@ export default function HeroSection({ locale }: { locale: string }) {
       .catch(() => {});
   }, []);
 
+  // Auto-rotate background images
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-primary">
-      <div className="absolute inset-0 opacity-10">
+    <section className="relative overflow-hidden">
+      {/* Background image carousel */}
+      {heroImages.map((img, index) => (
+        <div
+          key={img}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{
+            backgroundImage: `url(${img})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: index === currentImage ? 1 : 0,
+          }}
+        />
+      ))}
+
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60" />
+
+      {/* Decorative gradient accents */}
+      <div className="absolute inset-0">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 25% 25%, rgba(200,169,110,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+              "radial-gradient(circle at 25% 25%, rgba(200,169,110,0.15) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%)",
           }}
         />
+      </div>
+
+      {/* Carousel dots */}
+      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImage(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === currentImage
+                ? "w-8 bg-accent"
+                : "w-2 bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Slide ${index + 1}`}
+          />
+        ))}
       </div>
 
       <div className="container-custom relative py-24 md:py-32">
