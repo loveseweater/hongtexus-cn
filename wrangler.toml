@@ -1,8 +1,12 @@
-name = "hongtexus"
+name = "hongtexus-cn"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
 pages_build_output_dir = ".vercel/output/static"
+
+[[kv_namespaces]]
+binding = "HONGTE_KV"
+id = "4f0cc3f6db124d23ae17d3fb59d521d2"
 
 [placement]
 mode = "smart"
