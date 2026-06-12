@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     const textContent = `${typeLabel}更新\n\n${title}\n\n${excerpt || ""}\n\n查看详情: ${url}`;
 
     // Send via configured provider
-    const results = [];
+    const results: any[] = [];
     const batchSize = 50;
     const emailList = subscribers.map((s: any) => s.email);
 
