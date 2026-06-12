@@ -1,5 +1,5 @@
 [build]
-command = "npm run build"
+command = "bash build.sh"
 output_dir = ".vercel/output/static"
 
 [build.environment]
