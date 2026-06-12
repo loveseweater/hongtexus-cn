@@ -69,11 +69,26 @@ export default function AdminProductsPage() {
     const cleanImages = form.images.filter((img) => img.trim() !== "");
     const payload = { ...body, images: cleanImages };
 
-    await fetch("/api/admin/products", {
+    const res = await fetch("/api/admin/products", {
       method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+
+    if (!editing && res.ok) {
+      fetch("/api/admin/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "product",
+          title: form.title,
+          slug: form.slug,
+          excerpt: form.description?.substring(0, 200),
+        }),
+      }).then(r => r.json()).then(data => {
+        if (data.success) console.log("通知已发送");
+      }).catch(() => {});
+    }
 
     setShowForm(false);
     setEditing(null);
