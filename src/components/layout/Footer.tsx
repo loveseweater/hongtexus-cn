@@ -2,32 +2,50 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Globe, Youtube, Twitter, CheckCircle } from "lucide-react";
+
+const ICON_MAP: Record<string, any> = {
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+  youtube: Youtube,
+  twitter: Twitter,
+  tiktok: MessageCircle,
+  pinterest: Globe,
+  wechat: MessageCircle,
+  whatsapp: MessageCircle,
+  custom: Globe,
+};
 
 const defaultSettings = {
   contactPhone: "+86-769-8888-8888",
   contactWhatsapp: "+8612345678901",
   contactEmail: "info@hongtexus.cn",
   contactAddress: "Dongguan, Guangdong, China",
-  socialLinkedin: "https://www.linkedin.com/company/hongtexus",
-  socialFacebook: "https://www.facebook.com/hongtexus",
-  socialInstagram: "https://www.instagram.com/hongtexus",
+  socialLinks: [
+    { platform: "LinkedIn", url: "https://www.linkedin.com/company/hongtexus", icon: "linkedin", order: 0 },
+    { platform: "Facebook", url: "https://www.facebook.com/hongtexus", icon: "facebook", order: 1 },
+    { platform: "Instagram", url: "https://www.instagram.com/hongtexus", icon: "instagram", order: 2 },
+  ],
 };
 
 export default function Footer({ locale }: { locale: string }) {
   const [settings, setSettings] = useState(defaultSettings);
   const [year] = useState(new Date().getFullYear());
+  const [subEmail, setSubEmail] = useState("");
+  const [subStatus, setSubStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [subMsg, setSubMsg] = useState("");
 
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.contactWhatsapp) {
-          setSettings(data);
-        }
+        if (data) setSettings(data);
       })
       .catch(() => {});
   }, []);
+
+  const socialLinks = settings.socialLinks || [];
 
   return (
     <footer className="border-t border-border bg-primary-dark text-white">
@@ -45,42 +63,21 @@ export default function Footer({ locale }: { locale: string }) {
               Hongtexus is your trusted partner in premium textile solutions for global markets.
             </p>
             <div className="mt-6 flex gap-3">
-              <a
-                href={settings.socialLinkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
-                title="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href={settings.socialFacebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
-                title="Facebook"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href={settings.socialInstagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
-                title="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href={`https://wa.me/${(settings.contactWhatsapp || "8612345678901").replace(/[^0-9]/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-green-500"
-                title="WhatsApp"
-              >
-                <MessageCircle size={18} />
-              </a>
+              {socialLinks.map((link: any, i: number) => {
+                const IconComp = ICON_MAP[link.icon?.toLowerCase()] || Globe;
+                return (
+                  <a
+                    key={i}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
+                    title={link.platform}
+                  >
+                    <IconComp size={18} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -116,13 +113,69 @@ export default function Footer({ locale }: { locale: string }) {
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
                 <Phone size={16} className="shrink-0 text-accent" />
-                <span>{settings.contactPhone}</span>
+                <a href={`tel:${settings.contactPhone?.replace(/[^0-9+]/g, "")}`} className="hover:text-accent transition-colors">{settings.contactPhone}</a>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
                 <Mail size={16} className="shrink-0 text-accent" />
-                <span>{settings.contactEmail}</span>
+                <a href={`mailto:${settings.contactEmail}`} className="hover:text-accent transition-colors">{settings.contactEmail}</a>
               </li>
             </ul>
+
+            {/* Newsletter Subscription */}
+            <div className="mt-6">
+              <h4 className="text-sm font-semibold text-white mb-2">订阅我们的资讯</h4>
+              <p className="text-xs text-gray-400 mb-3">获取最新产品和行业动态</p>
+              {subStatus === "success" ? (
+                <div className="flex items-center gap-2 text-sm text-green-400">
+                  <CheckCircle size={16} />
+                  <span>{subMsg}</span>
+                </div>
+              ) : (
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!subEmail.trim()) return;
+                  setSubStatus("loading");
+                  try {
+                    const res = await fetch("/api/subscribe", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ email: subEmail.trim() }),
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                      setSubStatus("success");
+                      setSubMsg("感谢订阅！");
+                    } else {
+                      setSubStatus("error");
+                      setSubMsg(data.message || "订阅失败");
+                    }
+                  } catch {
+                    setSubStatus("error");
+                    setSubMsg("网络错误");
+                  }
+                }} className="flex gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={subEmail}
+                    onChange={(e) => setSubEmail(e.target.value)}
+                    placeholder="您的邮箱"
+                    className="flex-1 min-w-0 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-gray-400 focus:border-accent focus:outline-none"
+                    disabled={subStatus === "loading"}
+                  />
+                  <button
+                    type="submit"
+                    disabled={subStatus === "loading"}
+                    className="shrink-0 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/80 disabled:opacity-50"
+                  >
+                    {subStatus === "loading" ? "..." : "订阅"}
+                  </button>
+                </form>
+              )}
+              {subStatus === "error" && (
+                <p className="mt-1 text-xs text-red-400">{subMsg}</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -16,12 +16,26 @@ const locales: Record<string, string> = {
   de: "DE",
 };
 
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavLink {
+  label: string;
+  href: string;
+  children: NavChild[];
+}
+
 export default function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [whatsapp, setWhatsapp] = useState("8612345678901");
+  const [siteLogo, setSiteLogo] = useState("/images/logo.png");
+  const [navLinks, setNavLinks] = useState<NavLink[]>([]);
+  const [socialLinks, setSocialLinks] = useState<{platform: string; url: string; icon: string}[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const whatsappUrl = `https://wa.me/${whatsapp}`;
 
@@ -29,8 +43,19 @@ export default function Header() {
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.contactWhatsapp) {
-          setWhatsapp(data.contactWhatsapp.replace(/[^0-9]/g, ""));
+        if (data) {
+          if (data.contactWhatsapp) {
+            setWhatsapp(data.contactWhatsapp.replace(/[^0-9]/g, ""));
+          }
+          if (data.siteLogo) {
+            setSiteLogo(data.siteLogo);
+          }
+          if (data.navLinks && Array.isArray(data.navLinks)) {
+            setNavLinks(data.navLinks);
+          }
+          if (data.socialLinks && Array.isArray(data.socialLinks)) {
+            setSocialLinks(data.socialLinks);
+          }
         }
       })
       .catch(() => {});
@@ -38,22 +63,22 @@ export default function Header() {
 
   const locale = pathname.split("/")[1] || "en";
 
-  const navLinks = [
-    { href: `/${locale}`, label: t("home") },
-    { href: `/${locale}/products`, label: t("products") },
-    { href: `/${locale}/blog`, label: t("blog") },
-    { href: `/${locale}/about`, label: t("about") },
-    { href: `/${locale}/contact`, label: t("contact") },
-  ];
-
-  const productCategories = [
-    { href: `/${locale}/products?category=knit-fabrics`, label: "Knit Fabrics" },
-    { href: `/${locale}/products?category=t-shirts`, label: "T-Shirts" },
-    { href: `/${locale}/products?category=hoodies`, label: "Hoodies" },
-    { href: `/${locale}/products?category=leg-warmers`, label: "Leg Warmers" },
-    { href: `/${locale}/products?category=hats`, label: "Hats" },
-    { href: `/${locale}/products?category=gloves`, label: "Gloves" },
-    { href: `/${locale}/products?category=socks`, label: "Socks" },
+  // Default nav links if API hasn't loaded yet
+  const defaultNavLinks: NavLink[] = navLinks.length > 0 ? navLinks : [
+    { label: t("home"), href: `/${locale}`, children: [] },
+    { label: t("products"), href: `/${locale}/products`, children: [
+      { label: "All Products", href: `/${locale}/products` },
+      { label: "Knit Fabrics", href: `/${locale}/products?category=knit-fabrics` },
+      { label: "T-Shirts", href: `/${locale}/products?category=t-shirts` },
+      { label: "Hoodies", href: `/${locale}/products?category=hoodies` },
+      { label: "Leg Warmers", href: `/${locale}/products?category=leg-warmers` },
+      { label: "Hats", href: `/${locale}/products?category=hats` },
+      { label: "Gloves", href: `/${locale}/products?category=gloves` },
+      { label: "Socks", href: `/${locale}/products?category=socks` },
+    ]},
+    { label: t("blog"), href: `/${locale}/blog`, children: [] },
+    { label: t("about"), href: `/${locale}/about`, children: [] },
+    { label: t("contact"), href: `/${locale}/contact`, children: [] },
   ];
 
   // Close dropdown when clicking outside
@@ -72,6 +97,12 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
+  // Resolve href: if starts with /, prefix locale
+  const resolveHref = (href: string) => {
+    if (href.startsWith("/")) return `/${locale}${href === "/" ? "" : href}`;
+    return href;
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="container-custom flex h-16 items-center justify-between">
@@ -81,23 +112,25 @@ export default function Header() {
           className="flex items-center gap-3"
         >
           <img
-            src="/images/logo.png"
+            src={siteLogo}
             alt="HONGTEX"
             className="h-10 w-auto"
+            onError={(e) => { (e.target as HTMLImageElement).src = "/images/logo.png"; }}
           />
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => {
-            if (link.href.includes("/products")) {
+          {defaultNavLinks.map((link) => {
+            const href = resolveHref(link.href);
+            if (link.children && link.children.length > 0) {
               return (
                 <div key={link.href} className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setProductsOpen(!productsOpen)}
                     className={cn(
                       "flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                      isActive(link.href)
+                      isActive(href)
                         ? "bg-primary/10 text-primary"
                         : "text-text-muted hover:bg-bg-alt hover:text-text"
                     )}
@@ -113,38 +146,19 @@ export default function Header() {
                   </button>
                   {productsOpen && (
                     <div className="absolute left-0 top-full z-50 mt-1 w-48 rounded-xl border border-border bg-white py-2 shadow-lg">
-                      <Link
-                        href={`/${locale}/products`}
-                        className="block px-4 py-2 text-sm font-medium text-text-muted hover:bg-bg-alt hover:text-primary"
-                        onClick={() => setProductsOpen(false)}
-                      >
-                        All Products
-                      </Link>
-                      <div className="mx-3 my-1 border-t border-border" />
-                      <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-                        Knit Fabrics
-                      </div>
-                      <Link
-                        href={`/${locale}/products?category=knit-fabrics`}
-                        className="block px-4 py-1.5 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
-                        onClick={() => setProductsOpen(false)}
-                      >
-                        Knit Fabrics
-                      </Link>
-                      <div className="mx-3 my-1 border-t border-border" />
-                      <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-                        Finished Products
-                      </div>
-                      {productCategories.slice(1).map((cat) => (
-                        <Link
-                          key={cat.href}
-                          href={cat.href}
-                          className="block px-4 py-1.5 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
-                          onClick={() => setProductsOpen(false)}
-                        >
-                          {cat.label}
-                        </Link>
-                      ))}
+                      {link.children.map((child, ci) => {
+                        const childHref = resolveHref(child.href);
+                        return (
+                          <Link
+                            key={ci}
+                            href={childHref}
+                            className="block px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                            onClick={() => setProductsOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -153,10 +167,10 @@ export default function Header() {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={href}
                 className={cn(
                   "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                  isActive(link.href)
+                  isActive(href)
                     ? "bg-primary/10 text-primary"
                     : "text-text-muted hover:bg-bg-alt hover:text-text"
                 )}
@@ -171,42 +185,17 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {/* Social Media Icons - Desktop */}
           <div className="hidden items-center gap-1 md:flex">
-            <a
-              href="https://www.linkedin.com/company/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="LinkedIn"
-            >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href="https://www.facebook.com/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="Facebook"
-            >
-              <Facebook size={16} />
-            </a>
-            <a
-              href="https://www.instagram.com/hongtexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-              title="Instagram"
-            >
-              <Instagram size={16} />
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-green-50 hover:text-green-600"
-              title="WhatsApp"
-            >
-              <MessageCircle size={16} />
-            </a>
+            {socialLinks.map((link, i) => {
+              const iconMap: Record<string, any> = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram, youtube: Youtube, twitter: Twitter, tiktok: MessageCircle, whatsapp: MessageCircle, custom: Globe };
+              const IconComp = iconMap[link.icon?.toLowerCase()] || Globe;
+              return (
+                <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
+                  title={link.platform}>
+                  <IconComp size={16} />
+                </a>
+              );
+            })}
           </div>
 
           <LanguageSwitcher />
@@ -233,16 +222,17 @@ export default function Header() {
       {mobileOpen && (
         <div className="border-t border-border bg-white md:hidden">
           <div className="container-custom space-y-1 py-4">
-            {navLinks.map((link) => {
-              if (link.href.includes("/products")) {
+            {defaultNavLinks.map((link) => {
+              const href = resolveHref(link.href);
+              if (link.children && link.children.length > 0) {
                 return (
                   <div key={link.href}>
                     <Link
-                      href={link.href}
+                      href={href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
                         "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
-                        isActive(link.href)
+                        isActive(href)
                           ? "bg-primary/10 text-primary"
                           : "text-text-muted hover:bg-bg-alt hover:text-text"
                       )}
@@ -250,29 +240,19 @@ export default function Header() {
                       {link.label}
                     </Link>
                     <div className="ml-4 space-y-1 pb-2">
-                      <div className="px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-                        Knit Fabrics
-                      </div>
-                      <Link
-                        href={`/${locale}/products?category=knit-fabrics`}
-                        onClick={() => setMobileOpen(false)}
-                        className="block rounded-lg px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
-                      >
-                        Knit Fabrics
-                      </Link>
-                      <div className="px-4 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-                        Finished Products
-                      </div>
-                      {productCategories.slice(1).map((cat) => (
-                        <Link
-                          key={cat.href}
-                          href={cat.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="block rounded-lg px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
-                        >
-                          {cat.label}
-                        </Link>
-                      ))}
+                      {link.children.map((child, ci) => {
+                        const childHref = resolveHref(child.href);
+                        return (
+                          <Link
+                            key={ci}
+                            href={childHref}
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-lg px-4 py-2 text-sm text-text-muted hover:bg-bg-alt hover:text-primary"
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 );
@@ -280,11 +260,11 @@ export default function Header() {
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
                     "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
-                    isActive(link.href)
+                    isActive(href)
                       ? "bg-primary/10 text-primary"
                       : "text-text-muted hover:bg-bg-alt hover:text-text"
                   )}
@@ -295,42 +275,17 @@ export default function Header() {
             })}
             {/* Social Media Icons - Mobile */}
             <div className="mt-4 flex items-center justify-center gap-4 border-t border-border pt-4">
-              <a
-                href="https://www.linkedin.com/company/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-              <a
-                href="https://www.facebook.com/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="Facebook"
-              >
-                <Facebook size={16} />
-              </a>
-              <a
-                href="https://www.instagram.com/hongtexus"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                title="Instagram"
-              >
-                <Instagram size={16} />
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-green-500 hover:text-white"
-                title="WhatsApp"
-              >
-                <MessageCircle size={16} />
-              </a>
+              {socialLinks.map((link, i) => {
+                const iconMap: Record<string, any> = { linkedin: Linkedin, facebook: Facebook, instagram: Instagram, youtube: Youtube, twitter: Twitter, tiktok: MessageCircle, whatsapp: MessageCircle, custom: Globe };
+                const IconComp = iconMap[link.icon?.toLowerCase()] || Globe;
+                return (
+                  <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
+                    title={link.platform}>
+                    <IconComp size={16} />
+                  </a>
+                );
+              })}
             </div>
 
             <Link

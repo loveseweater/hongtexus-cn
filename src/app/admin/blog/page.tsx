@@ -12,6 +12,7 @@ interface BlogPost {
   date: string;
   image: string;
   tags: string[];
+  category?: string;
 }
 
 export default function AdminBlogPage() {
@@ -28,7 +29,9 @@ export default function AdminBlogPage() {
     date: new Date().toISOString().split("T")[0],
     image: "",
     tags: "",
+    category: "",
   });
+  const [blogCategories, setBlogCategories] = useState<{id: string; name: string; slug: string}[]>([]);
 
   const loadPosts = async () => {
     try {
@@ -44,6 +47,15 @@ export default function AdminBlogPage() {
 
   useEffect(() => {
     loadPosts();
+    // Load blog categories from settings
+    fetch("/api/admin/settings")
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.blogCategories) {
+          setBlogCategories(data.blogCategories);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const filtered = posts.filter((p) =>
@@ -66,15 +78,30 @@ export default function AdminBlogPage() {
       ? { ...form, id: editing.id, tags }
       : { ...form, tags, image: form.image || "/images/blog-placeholder.jpg" };
 
-    await fetch("/api/admin/blog", {
+    const res = await fetch("/api/admin/blog", {
       method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
 
+    if (!editing && res.ok) {
+      fetch("/api/admin/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "blog",
+          title: form.title,
+          slug: form.slug,
+          excerpt: form.excerpt,
+        }),
+      }).then(r => r.json()).then(data => {
+        if (data.success) console.log("通知已发送");
+      }).catch(() => {});
+    }
+
     setShowForm(false);
     setEditing(null);
-    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "" });
+    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
     loadPosts();
   };
 
@@ -87,6 +114,7 @@ export default function AdminBlogPage() {
       date: post.date,
       image: post.image || "",
       tags: post.tags.join(", "),
+      category: post.category || "",
     });
     setEditing(post);
     setShowForm(true);
@@ -122,7 +150,7 @@ export default function AdminBlogPage() {
         <button
           onClick={() => {
             setEditing(null);
-            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "" });
+            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
             setShowForm(true);
           }}
           className="btn-primary inline-flex items-center gap-2"
@@ -222,7 +250,20 @@ export default function AdminBlogPage() {
               </div>
 
               {/* Date & Tags */}
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div>
+                  <label className="block text-sm font-medium text-text">分类</label>
+                  <select
+                    value={form.category}
+                    onChange={(e) => setForm({ ...form, category: e.target.value })}
+                    className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none"
+                  >
+                    <option value="">无分类</option>
+                    {blogCategories.map((cat) => (
+                      <option key={cat.id} value={cat.slug}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-text">日期</label>
                   <input

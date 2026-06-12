@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SubscribePopup from "@/components/SubscribePopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 type Props = {
   children: React.ReactNode;
@@ -41,6 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <main className="flex-1">{children}</main>
             <Footer locale={locale} />
           </div>
+          <AnalyticsTracker />
           <SubscribePopup />
           <WhatsAppButton />
         </NextIntlClientProvider>

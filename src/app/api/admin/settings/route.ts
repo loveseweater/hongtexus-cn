@@ -7,15 +7,52 @@ const SETTINGS_KEY = "site_settings";
 const defaultSettings = {
   siteName: "HONGTEX",
   siteDescription: "Premium Knitwear & Textile Solutions",
+  // Logo
+  siteLogo: "/images/logo.png",
+  // Social links (dynamic array)
+  socialLinks: [
+    { platform: "LinkedIn", url: "https://www.linkedin.com/company/hongtexus", icon: "linkedin", order: 0 },
+    { platform: "Facebook", url: "https://www.facebook.com/hongtexus", icon: "facebook", order: 1 },
+    { platform: "Instagram", url: "https://www.instagram.com/hongtexus", icon: "instagram", order: 2 },
+  ],
+  // Email service config
+  emailService: {
+    provider: "", // "resend" | "mailgun" | "sendgrid"
+    apiKey: "",
+    fromEmail: "info@hongtexus.cn",
+    fromName: "HONGTEX",
+  },
+  // Navigation links
+  navLinks: [
+    { label: "Home", href: "/", children: [] },
+    { label: "Products", href: "/products", children: [
+      { label: "All Products", href: "/products" },
+      { label: "Knit Fabrics", href: "/products?category=knit-fabrics" },
+      { label: "T-Shirts", href: "/products?category=t-shirts" },
+      { label: "Hoodies", href: "/products?category=hoodies" },
+      { label: "Leg Warmers", href: "/products?category=leg-warmers" },
+      { label: "Hats", href: "/products?category=hats" },
+      { label: "Gloves", href: "/products?category=gloves" },
+      { label: "Socks", href: "/products?category=socks" },
+    ]},
+    { label: "Blog", href: "/blog", children: [] },
+    { label: "About", href: "/about", children: [] },
+    { label: "Contact", href: "/contact", children: [] },
+  ],
+  // Blog categories
+  blogCategories: [
+    { id: "trends", name: "Trends", slug: "trends" },
+    { id: "guide", name: "Guides", slug: "guide" },
+    { id: "sustainability", name: "Sustainability", slug: "sustainability" },
+    { id: "production", name: "Production", slug: "production" },
+    { id: "quality", name: "Quality", slug: "quality" },
+  ],
   heroTitle: "Premium Textile Solutions for Global Markets",
   heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
   contactEmail: "info@hongtexus.cn",
   contactPhone: "+86-769-8888-8888",
   contactWhatsapp: "+8612345678901",
   contactAddress: "Dongguan, Guangdong, China",
-  socialLinkedin: "https://www.linkedin.com/company/hongtexus",
-  socialFacebook: "https://www.facebook.com/hongtexus",
-  socialInstagram: "https://www.instagram.com/hongtexus",
   // Hero carousel images
   heroImages: [
     "/images/product-knit-fabric.jpg",
