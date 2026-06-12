@@ -114,8 +114,8 @@ export default function ContactPage() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid gap-6 sm:grid-cols-2">
                     <div>
                       <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.name")} *
@@ -126,7 +126,7 @@ export default function ContactPage() {
                         required
                         value={formState.name}
                         onChange={handleChange}
-                        className="input-field"
+                        className="w-full border-0 border-b-2 border-gray-200 bg-transparent px-0 py-2.5 text-sm text-text placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-0 transition-colors"
                         placeholder={t("form.name")}
                       />
                     </div>
@@ -140,13 +140,13 @@ export default function ContactPage() {
                         required
                         value={formState.email}
                         onChange={handleChange}
-                        className="input-field"
+                        className="w-full border-0 border-b-2 border-gray-200 bg-transparent px-0 py-2.5 text-sm text-text placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-0 transition-colors"
                         placeholder={t("form.email")}
                       />
                     </div>
                   </div>
 
-                  <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="grid gap-6 sm:grid-cols-2">
                     <div>
                       <label className="mb-1 block text-sm font-medium text-text">
                         {t("form.phone")}
@@ -156,7 +156,7 @@ export default function ContactPage() {
                         name="phone"
                         value={formState.phone}
                         onChange={handleChange}
-                        className="input-field"
+                        className="w-full border-0 border-b-2 border-gray-200 bg-transparent px-0 py-2.5 text-sm text-text placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-0 transition-colors"
                         placeholder={t("form.phone")}
                       />
                     </div>
@@ -169,7 +169,7 @@ export default function ContactPage() {
                         name="company"
                         value={formState.company}
                         onChange={handleChange}
-                        className="input-field"
+                        className="w-full border-0 border-b-2 border-gray-200 bg-transparent px-0 py-2.5 text-sm text-text placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-0 transition-colors"
                         placeholder={t("form.company")}
                       />
                     </div>
@@ -182,10 +182,10 @@ export default function ContactPage() {
                     <textarea
                       name="message"
                       required
-                      rows={5}
+                      rows={6}
                       value={formState.message}
                       onChange={handleChange}
-                      className="input-field"
+                      className="w-full resize-y border-0 border-b-2 border-gray-200 bg-transparent px-0 py-2.5 text-sm text-text placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-0 transition-colors min-h-[160px]"
                       placeholder={t("form.message")}
                     />
                   </div>
