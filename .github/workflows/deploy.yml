@@ -17,19 +17,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npx @cloudflare/next-on-pages
-
-      - name: Copy Functions and Routes
-        run: |
-          cp -r functions .vercel/output/static/functions
-          # _routes.json removed - let next-on-pages auto-generate
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
