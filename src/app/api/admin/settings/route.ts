@@ -84,7 +84,7 @@ export async function GET() {
 
     // Backward compatibility: convert old social fields to socialLinks array
     if (!merged.socialLinks || !Array.isArray(merged.socialLinks) || merged.socialLinks.length === 0) {
-      const oldSocial = [];
+      const oldSocial: { platform: string; url: string; icon: string; order: number }[] = [];
       const platformMap: Record<string, { platform: string; icon: string }> = {
         socialLinkedin: { platform: "LinkedIn", icon: "linkedin" },
         socialFacebook: { platform: "Facebook", icon: "facebook" },

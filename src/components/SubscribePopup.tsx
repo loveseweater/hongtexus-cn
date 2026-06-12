@@ -1,13 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { X, Mail, CheckCircle } from "lucide-react";
 
 export default function SubscribePopup() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+
+  const locale = pathname?.split("/")[1] || "en";
+  const isZh = locale === "zh";
 
   useEffect(() => {
     // Check if user has already subscribed or dismissed
@@ -15,10 +20,10 @@ export default function SubscribePopup() {
     const subscribed = localStorage.getItem("subscribe_subscribed");
     if (dismissed || subscribed) return;
 
-    // Show popup after 5 seconds
+    // Show popup after 3 seconds
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -42,16 +47,16 @@ export default function SubscribePopup() {
       const data = await res.json();
       if (data.success) {
         setStatus("success");
-        setMessage("感谢订阅！我们会及时向您发送最新资讯。");
+        setMessage(isZh ? "感谢订阅！我们会及时向您发送最新资讯。" : "Thank you! You'll receive the latest updates from us.");
         localStorage.setItem("subscribe_subscribed", "true");
         setTimeout(() => setVisible(false), 3000);
       } else {
         setStatus("error");
-        setMessage(data.message || "订阅失败，请重试。");
+        setMessage(data.message || (isZh ? "订阅失败，请重试。" : "Subscription failed, please try again."));
       }
     } catch {
       setStatus("error");
-      setMessage("网络错误，请稍后重试。");
+      setMessage(isZh ? "网络错误，请稍后重试。" : "Network error, please try again later.");
     }
   };
 
@@ -75,10 +80,12 @@ export default function SubscribePopup() {
 
         {/* Title */}
         <h3 className="mt-5 text-center font-display text-xl font-bold text-primary">
-          订阅我们的资讯
+          {isZh ? "订阅我们的资讯" : "Stay Updated"}
         </h3>
         <p className="mt-2 text-center text-sm leading-relaxed text-text-muted">
-          获取最新的产品信息、行业趋势和独家优惠，第一时间送达您的邮箱。
+          {isZh
+            ? "获取最新的产品信息、行业趋势和独家优惠，第一时间送达您的邮箱。"
+            : "Get the latest products, industry trends and exclusive offers delivered to your inbox."}
         </p>
 
         {status === "success" ? (
@@ -94,7 +101,7 @@ export default function SubscribePopup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="请输入您的邮箱地址"
+                placeholder={isZh ? "请输入您的邮箱地址" : "Enter your email address"}
                 className="w-full rounded-xl border border-border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                 disabled={status === "loading"}
               />
@@ -104,13 +111,15 @@ export default function SubscribePopup() {
               disabled={status === "loading"}
               className="w-full rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-primary-light disabled:opacity-50"
             >
-              {status === "loading" ? "提交中..." : "立即订阅"}
+              {status === "loading"
+                ? (isZh ? "提交中..." : "Submitting...")
+                : (isZh ? "立即订阅" : "Subscribe Now")}
             </button>
             {status === "error" && (
               <p className="text-center text-sm text-red-500">{message}</p>
             )}
             <p className="text-center text-xs text-text-muted">
-              我们尊重您的隐私，随时可以退订。
+              {isZh ? "我们尊重您的隐私，随时可以退订。" : "We respect your privacy. Unsubscribe anytime."}
             </p>
           </form>
         )}
@@ -121,7 +130,7 @@ export default function SubscribePopup() {
             onClick={handleDismiss}
             className="mt-4 block w-full text-center text-xs text-text-muted hover:text-text"
           >
-            暂时不需要
+            {isZh ? "暂时不需要" : "Not now"}
           </button>
         )}
       </div>
