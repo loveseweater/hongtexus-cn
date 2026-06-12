@@ -26,6 +26,11 @@ jobs:
       - name: Build
         run: npx @cloudflare/next-on-pages
 
+      - name: Copy Functions and Routes
+        run: |
+          cp -r functions .vercel/output/static/functions
+          cp _routes.json .vercel/output/static/_routes.json
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
