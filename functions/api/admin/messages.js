@@ -1,0 +1,3 @@
+import { getSubmissions, saveSubmissions, jsonResponse } from '../_kv.js';
+export async function onRequestGet(c) { try { return jsonResponse(await getSubmissions(c.env.HONGTE_KV)); } catch(e) { return jsonResponse({error:'Failed'},500); } }
+export async function onRequestDelete(c) { try { const id=new URL(c.request.url).searchParams.get('id'); if(!id) return jsonResponse({error:'ID required'},400); const s=await getSubmissions(c.env.HONGTE_KV); await saveSubmissions(c.env.HONGTE_KV,s.filter(x=>x.id!==id)); return jsonResponse({success:true}); } catch(e) { return jsonResponse({error:'Failed'},500); } }
