@@ -78,11 +78,26 @@ export default function AdminBlogPage() {
       ? { ...form, id: editing.id, tags }
       : { ...form, tags, image: form.image || "/images/blog-placeholder.jpg" };
 
-    await fetch("/api/admin/blog", {
+    const res = await fetch("/api/admin/blog", {
       method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
+
+    if (!editing && res.ok) {
+      fetch("/api/admin/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "blog",
+          title: form.title,
+          slug: form.slug,
+          excerpt: form.excerpt,
+        }),
+      }).then(r => r.json()).then(data => {
+        if (data.success) console.log("通知已发送");
+      }).catch(() => {});
+    }
 
     setShowForm(false);
     setEditing(null);
