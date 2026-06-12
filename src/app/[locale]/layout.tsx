@@ -8,6 +8,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SubscribePopup from "@/components/SubscribePopup";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 type Props = {
@@ -44,6 +45,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </div>
           <AnalyticsTracker />
           <SubscribePopup />
+          <MobileBottomNav locale={locale} />
           <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
