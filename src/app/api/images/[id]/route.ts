@@ -6,12 +6,13 @@ const IMAGES_KEY = "uploaded_images";
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const store = getStore();
     const images = (await store.get(IMAGES_KEY)) || {};
-    const image = images[params.id];
+    const image = images[id];
 
     if (!image) {
       return new Response("Image not found", { status: 404 });
