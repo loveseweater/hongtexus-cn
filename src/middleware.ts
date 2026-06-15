@@ -35,7 +35,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Non-admin routes: use next-intl locale routing
+  // Non-admin routes: use next-intl locale routing (ja/ru added)
   return intlMiddleware(request);
 }
 
