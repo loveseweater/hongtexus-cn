@@ -78,7 +78,16 @@
     "feature1": "Materiales de primera calidad",
     "feature2": "Cumplimiento de estándares internacionales",
     "feature3": "Especificaciones personalizables",
-    "feature4": "Envío rápido mundial"
+    "feature4": "Envío rápido mundial",
+    "categories": {
+      "knit-fabrics": "Tejidos de punto",
+      "t-shirts": "Camisetas",
+      "hoodies": "Sudaderas",
+      "leg-warmers": "Calentadores",
+      "hats": "Gorros",
+      "gloves": "Guantes",
+      "socks": "Calcetines"
+    }
   },
   "blog": {
     "title": "Blog y Noticias",

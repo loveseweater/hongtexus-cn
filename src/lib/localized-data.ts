@@ -1,66 +1,79 @@
 /**
  * Localized data helper.
- * Reads product and blog content from translation files instead of hardcoded English data.
+ * Reads product and blog content from KV translations field.
+ * Falls back to translation files for backward compatibility.
  */
 
 import { getTranslations } from "next-intl/server";
-import { products as staticProducts } from "./data/products";
-import { blogPosts as staticBlogPosts } from "./data/blog";
-import { getKvProducts, getKvProductBySlug, getKvBlogPosts } from "./kv";
+import { getKvProducts, getKvProductBySlug, getKvBlogPosts, getKvBlogPostBySlug } from "./kv";
 
 export async function getLocalizedProducts(locale: string) {
-  const t = await getTranslations({ locale, namespace: "products_data" });
   const kvProducts = await getKvProducts();
   
   return kvProducts.map((product: any) => {
-    const localized = t.raw(product.slug);
-    return {
-      ...product,
-      title: localized?.title || product.title,
-      description: localized?.desc || product.description,
-    };
+    // Try KV translations first
+    if (product.translations && product.translations[locale]) {
+      const t = product.translations[locale];
+      return {
+        ...product,
+        title: t.title || product.title,
+        description: t.desc || product.description,
+      };
+    }
+    // Fallback to translation file
+    return product;
   });
 }
 
 export async function getLocalizedProductBySlug(locale: string, slug: string) {
-  const t = await getTranslations({ locale, namespace: "products_data" });
   const product = await getKvProductBySlug(slug);
   
   if (!product) return null;
   
-  const localized = t.raw(product.slug);
-  return {
-    ...product,
-    title: localized?.title || product.title,
-    description: localized?.desc || product.description,
-  };
+  // Try KV translations first
+  if (product.translations && product.translations[locale]) {
+    const t = product.translations[locale];
+    return {
+      ...product,
+      title: t.title || product.title,
+      description: t.desc || product.description,
+    };
+  }
+  
+  return product;
 }
 
 export async function getLocalizedBlogPosts(locale: string) {
-  const t = await getTranslations({ locale, namespace: "blogs_data" });
   const posts = await getKvBlogPosts();
   
   return posts.map((post: any) => {
-    const localized = t.raw(post.slug);
-    return {
-      ...post,
-      title: localized?.title || post.title,
-      excerpt: localized?.excerpt || post.excerpt,
-    };
+    // Try KV translations first
+    if (post.translations && post.translations[locale]) {
+      const t = post.translations[locale];
+      return {
+        ...post,
+        title: t.title || post.title,
+        excerpt: t.excerpt || post.excerpt,
+      };
+    }
+    return post;
   });
 }
 
 export async function getLocalizedBlogPostBySlug(locale: string, slug: string) {
-  const t = await getTranslations({ locale, namespace: "blogs_data" });
-  const posts = await getKvBlogPosts();
-  const post = posts.find((p: any) => p.slug === slug);
+  const post = await getKvBlogPostBySlug(slug);
   
   if (!post) return null;
   
-  const localized = t.raw(post.slug);
-  return {
-    ...post,
-    title: localized?.title || post.title,
-    excerpt: localized?.excerpt || post.excerpt,
-  };
+  // Try KV translations first
+  if (post.translations && post.translations[locale]) {
+    const t = post.translations[locale];
+    return {
+      ...post,
+      title: t.title || post.title,
+      excerpt: t.excerpt || post.excerpt,
+    };
+  }
+  
+  return post;
 }

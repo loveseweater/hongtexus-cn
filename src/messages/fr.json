@@ -78,7 +78,16 @@
     "feature1": "Matériaux de qualité premium",
     "feature2": "Conforme aux normes internationales",
     "feature3": "Spécifications personnalisables",
-    "feature4": "Expédition rapide dans le monde"
+    "feature4": "Expédition rapide dans le monde",
+    "categories": {
+      "knit-fabrics": "Tissus maille",
+      "t-shirts": "T-shirts",
+      "hoodies": "Sweats à capuche",
+      "leg-warmers": "Jambières",
+      "hats": "Bonnets",
+      "gloves": "Gants",
+      "socks": "Chaussettes"
+    }
   },
   "blog": {
     "title": "Blog et Actualités",

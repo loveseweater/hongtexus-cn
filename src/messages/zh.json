@@ -78,7 +78,16 @@
     "feature1": "优质材料",
     "feature2": "符合国际标准",
     "feature3": "可定制规格",
-    "feature4": "全球快速发货"
+    "feature4": "全球快速发货",
+    "categories": {
+      "knit-fabrics": "针织布料",
+      "t-shirts": "T恤",
+      "hoodies": "卫衣",
+      "leg-warmers": "腿套",
+      "hats": "帽子",
+      "gloves": "手套",
+      "socks": "袜子"
+    }
   },
   "blog": {
     "title": "行业资讯",

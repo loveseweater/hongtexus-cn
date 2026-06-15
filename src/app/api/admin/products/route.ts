@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
       images: body.images || [],
       specs: body.specs || [],
       featured: body.featured || false,
+      translations: body.translations || {}, // KV multi-language support
     };
 
     products.push(newProduct);
@@ -47,7 +48,12 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    products[index] = { ...products[index], ...updates };
+    // Preserve translations if not overwritten
+    if (updates.translations) {
+      products[index] = { ...products[index], ...updates };
+    } else {
+      products[index] = { ...products[index], ...updates };
+    }
     await saveProducts(products);
 
     return NextResponse.json(products[index]);

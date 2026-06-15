@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
       ...body,
       id: Date.now().toString(),
       tags: body.tags || [],
+      translations: body.translations || {}, // KV multi-language support
     };
 
     posts.push(newPost);

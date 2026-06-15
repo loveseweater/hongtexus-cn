@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
+  const pt = await getTranslations({ locale, namespace: "products" });
   const c = await getTranslations({ locale, namespace: "common" });
 
   // Hero section is now a client component that fetches from API
@@ -89,10 +90,10 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg font-semibold text-primary capitalize">
-                    {cat.slug.replace("-", " ")}
+                    {pt(`categories.${cat.slug}`)}
                   </h3>
                   <p className="mt-1 text-sm text-text-muted capitalize">
-                    {cat.slug.split("-")[0]} textiles
+                    {pt(`categories.${cat.slug}`)}
                   </p>
                 </div>
                 <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/5" />
@@ -170,7 +171,7 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                    {product.category.replace("-", " ")}
+                    {pt(`categories.${product.category}`)}
                   </span>
                   <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
                     {product.title}

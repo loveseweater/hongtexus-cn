@@ -78,7 +78,16 @@
     "feature1": "プレミアム品質の素材",
     "feature2": "国際規格準拠",
     "feature3": "カスタム仕様対応",
-    "feature4": "迅速な世界配送"
+    "feature4": "迅速な世界配送",
+    "categories": {
+      "knit-fabrics": "ニット生地",
+      "t-shirts": "Tシャツ",
+      "hoodies": "パーカー",
+      "leg-warmers": "レッグウォーマー",
+      "hats": "帽子",
+      "gloves": "手袋",
+      "socks": "靴下"
+    }
   },
   "blog": {
     "title": "ブログ＆インサイト",

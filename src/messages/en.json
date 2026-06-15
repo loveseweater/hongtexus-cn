@@ -78,7 +78,16 @@
     "feature1": "Premium quality materials",
     "feature2": "International standards compliant",
     "feature3": "Custom specifications available",
-    "feature4": "Fast worldwide shipping"
+    "feature4": "Fast worldwide shipping",
+    "categories": {
+      "knit-fabrics": "Knit Fabrics",
+      "t-shirts": "T-Shirts",
+      "hoodies": "Hoodies",
+      "leg-warmers": "Leg Warmers",
+      "hats": "Hats",
+      "gloves": "Gloves",
+      "socks": "Socks"
+    }
   },
   "blog": {
     "title": "Blog & Insights",

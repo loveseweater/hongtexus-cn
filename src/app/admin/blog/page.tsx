@@ -13,7 +13,18 @@ interface BlogPost {
   image: string;
   tags: string[];
   category?: string;
+  translations?: Record<string, { title: string; excerpt: string }>;
 }
+
+const LOCALES = [
+  { code: "en", name: "English" },
+  { code: "zh", name: "中文" },
+  { code: "ja", name: "日本語" },
+  { code: "ru", name: "Русский" },
+  { code: "es", name: "Español" },
+  { code: "fr", name: "Français" },
+  { code: "de", name: "Deutsch" },
+];
 
 export default function AdminBlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -21,6 +32,7 @@ export default function AdminBlogPage() {
   const [search, setSearch] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<BlogPost | null>(null);
+  const [activeLangTab, setActiveLangTab] = useState("en");
   const [form, setForm] = useState({
     slug: "",
     title: "",
@@ -30,6 +42,7 @@ export default function AdminBlogPage() {
     image: "",
     tags: "",
     category: "",
+    translations: {} as Record<string, { title: string; excerpt: string }>,
   });
   const [blogCategories, setBlogCategories] = useState<{id: string; name: string; slug: string}[]>([]);
 
@@ -101,7 +114,8 @@ export default function AdminBlogPage() {
 
     setShowForm(false);
     setEditing(null);
-    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
+    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
+    setActiveLangTab("en");
     loadPosts();
   };
 
@@ -115,8 +129,10 @@ export default function AdminBlogPage() {
       image: post.image || "",
       tags: post.tags.join(", "),
       category: post.category || "",
+      translations: post.translations || {},
     });
     setEditing(post);
+    setActiveLangTab("en");
     setShowForm(true);
   };
 
@@ -126,6 +142,19 @@ export default function AdminBlogPage() {
       setForm({ ...form, image: e.target?.result as string });
     };
     reader.readAsDataURL(file);
+  };
+
+  const updateTranslation = (locale: string, field: "title" | "excerpt", value: string) => {
+    setForm({
+      ...form,
+      translations: {
+        ...form.translations,
+        [locale]: {
+          ...(form.translations[locale] || { title: "", excerpt: "" }),
+          [field]: value,
+        },
+      },
+    });
   };
 
   if (loading) {
@@ -150,7 +179,8 @@ export default function AdminBlogPage() {
         <button
           onClick={() => {
             setEditing(null);
-            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
+            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
+            setActiveLangTab("en");
             setShowForm(true);
           }}
           className="btn-primary inline-flex items-center gap-2"
@@ -188,7 +218,7 @@ export default function AdminBlogPage() {
               {/* Title & Slug */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-text">文章标题 *</label>
+                  <label className="block text-sm font-medium text-text">文章标题（默认英文）*</label>
                   <input
                     type="text"
                     required
@@ -213,7 +243,7 @@ export default function AdminBlogPage() {
 
               {/* Excerpt */}
               <div>
-                <label className="block text-sm font-medium text-text">文章摘要 *</label>
+                <label className="block text-sm font-medium text-text">文章摘要（默认英文）*</label>
                 <textarea
                   required
                   rows={2}
@@ -222,6 +252,55 @@ export default function AdminBlogPage() {
                   className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                   placeholder="文章简介，会显示在博客列表页..."
                 />
+              </div>
+
+              {/* Multi-language Translation Tabs */}
+              <div>
+                <label className="block text-sm font-medium text-text mb-2">
+                  多语言翻译 <span className="text-text-muted">（可选，留空则使用默认英文）</span>
+                </label>
+                <div className="flex flex-wrap gap-1 border-b border-border pb-2">
+                  {LOCALES.map((loc) => (
+                    <button
+                      key={loc.code}
+                      type="button"
+                      onClick={() => setActiveLangTab(loc.code)}
+                      className={`rounded-t-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                        activeLangTab === loc.code
+                          ? "bg-primary text-white"
+                          : "bg-bg-alt text-text-muted hover:bg-bg-alt/80"
+                      }`}
+                    >
+                      {loc.name}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-3 space-y-3">
+                  <div>
+                    <label className="block text-xs font-medium text-text-muted">
+                      翻译标题（{LOCALES.find(l => l.code === activeLangTab)?.name}）
+                    </label>
+                    <input
+                      type="text"
+                      value={form.translations[activeLangTab]?.title || ""}
+                      onChange={(e) => updateTranslation(activeLangTab, "title", e.target.value)}
+                      className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder={`${LOCALES.find(l => l.code === activeLangTab)?.name} 标题（留空使用默认英文）`}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-text-muted">
+                      翻译摘要（{LOCALES.find(l => l.code === activeLangTab)?.name}）
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={form.translations[activeLangTab]?.excerpt || ""}
+                      onChange={(e) => updateTranslation(activeLangTab, "excerpt", e.target.value)}
+                      className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      placeholder={`${LOCALES.find(l => l.code === activeLangTab)?.name} 摘要（留空使用默认英文）`}
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Content */}
@@ -299,7 +378,7 @@ export default function AdminBlogPage() {
                         alt="封面预览"
                         className="h-40 w-72 rounded-lg object-cover"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' font-size='10' text-anchor='middle' fill='%239ca3af'%3E加载失败%3C/text%3E%3C/svg%3E";
+                          (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' font-size='10' text-anchor='middle' fill='%239ca3af'%3E加载失败%3C/text%3E%3Csvg%3E";
                         }}
                       />
                       <button
