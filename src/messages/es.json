@@ -74,7 +74,11 @@
     "inquiryForm": "Enviar Consulta",
     "name": "Nombre del Producto",
     "category": "Categoría",
-    "noProducts": "No se encontraron productos en esta categoría."
+    "noProducts": "No se encontraron productos en esta categoría.",
+    "feature1": "Materiales de primera calidad",
+    "feature2": "Cumplimiento de estándares internacionales",
+    "feature3": "Especificaciones personalizables",
+    "feature4": "Envío rápido mundial"
   },
   "blog": {
     "title": "Blog y Noticias",
@@ -168,5 +172,97 @@
     "learnMore": "Más Información",
     "close": "Cerrar",
     "menu": "Menú"
+  },
+  "products_data": {
+    "premium-cotton-jersey-fabric": {
+      "title": "",
+      "desc": ""
+    },
+    "rib-knit-fabric": {
+      "title": "Tejido de punto acanalado",
+      "desc": "Tejido de punto acanalado 1x1 de alta calidad con excelente elasticidad y recuperación."
+    },
+    "french-terry-fabric": {
+      "title": "Tejido French Terry",
+      "desc": "Nuestro tejido French Terry orgánico combina sostenibilidad con comodidad."
+    },
+    "fleece-fabric": {
+      "title": "Tejido de forro polar cepillado",
+      "desc": "Tejido de forro polar cálido y acogedor hecho de mezcla de algodón y poliéster."
+    },
+    "classic-cotton-t-shirt": {
+      "title": "Camiseta clásica de algodón",
+      "desc": "Un clásico atemporal elaborado con jersey de algodón peinado 100% de 180 g/m²."
+    },
+    "premium-heavyweight-t-shirt": {
+      "title": "Camiseta premium de peso pesado",
+      "desc": "Camiseta de peso pesado de 240 g/m² hecha de algodón de fibra anillada 100%."
+    },
+    "classic-pullover-hoodie": {
+      "title": "Sudadera con capucha clásica",
+      "desc": "Cómoda sudadera con capucha de forro polar de algodón y poliéster de 300 g/m²."
+    },
+    "zip-up-hoodie": {
+      "title": "Sudadera con cremallera",
+      "desc": "Sudadera versátil con cremallera de French Terry 100% algodón de 320 g/m²."
+    },
+    "knit-leg-warmers": {
+      "title": "Calentadores de piernas de punto",
+      "desc": "Calentadores de piernas de punto cómodos y elegantes hechos de acrílico 100%."
+    },
+    "cable-knit-leg-warmers": {
+      "title": "Calentadores de punto de cable",
+      "desc": "Calentadores de punto de cable premium elaborados con una mezcla cálida de lana."
+    },
+    "classic-beanie-hat": {
+      "title": "Gorro clásico de punto",
+      "desc": "Gorro clásico de punto hecho de acrílico 100% de 200 g/m²."
+    },
+    "wool-blend-beanie": {
+      "title": "Gorro de mezcla de lana",
+      "desc": "Gorro premium de mezcla de lana que combina calidez natural con durabilidad."
+    },
+    "knit-gloves": {
+      "title": "Guantes de punto",
+      "desc": "Guantes de punto cálidos y cómodos hechos de acrílico 100% de 180 g/m²."
+    },
+    "touchscreen-knit-gloves": {
+      "title": "Guantes táctiles de punto",
+      "desc": "Guantes inteligentes con hilo conductor para compatibilidad con pantallas táctiles."
+    },
+    "crew-knit-socks": {
+      "title": "Calcetines de punto de tripulación",
+      "desc": "Cómodos calcetines de punto de longitud media hechos de suave mezcla de algodón."
+    },
+    "wool-knit-socks": {
+      "title": "Calcetines de lana de punto",
+      "desc": "Calcetines premium de lana de punto hasta la rodilla que ofrecen calidez natural."
+    },
+    "knit-fabrics": {
+      "title": "Tejido de punto de algodón premium",
+      "desc": "Nuestro tejido de punto de algodón premium está elaborado con algodón peinado 100%."
+    }
+  },
+  "blogs_data": {
+    "knitwear-trends-2026": {
+      "title": "Tendencias de punto 2026: dando forma al futuro de los textiles",
+      "excerpt": "Descubra las tendencias clave de punto que darán forma a 2026."
+    },
+    "choosing-knit-fabric-for-garments": {
+      "title": "Cómo elegir la tela de punto adecuada: guía completa",
+      "excerpt": "Guía completa para seleccionar la tela de punto perfecta para su producción de prendas."
+    },
+    "sustainable-knitwear-manufacturing": {
+      "title": "Fabricación sostenible de punto: prácticas e innovaciones",
+      "excerpt": "Explore las prácticas de fabricación sostenible que transforman la industria del punto."
+    },
+    "custom-knitwear-production-guide": {
+      "title": "Producción de punto personalizada: guía para marcas",
+      "excerpt": "Todo lo que necesita saber sobre la producción de punto personalizada."
+    },
+    "quality-control-knit-products": {
+      "title": "Control de calidad en productos de punto: estándares y procesos",
+      "excerpt": "Conozca los rigurosos procesos de control de calidad de Hongtexus."
+    }
   }
 }
