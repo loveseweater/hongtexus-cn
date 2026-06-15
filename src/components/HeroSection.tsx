@@ -2,12 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
-
-const defaultHero = {
-  heroTitle: "Premium Textile Solutions for Global Markets",
-  heroSubtitle: "From raw fabrics to finished products — Hongtexus delivers quality textiles tailored to your business needs.",
-};
 
 const defaultImages = [
   "/images/product-knit-fabric.jpg",
@@ -20,7 +16,7 @@ const defaultImages = [
 ];
 
 export default function HeroSection({ locale }: { locale: string }) {
-  const [hero, setHero] = useState(defaultHero);
+  const t = useTranslations("home.hero");
   const [heroImages, setHeroImages] = useState(defaultImages);
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -28,16 +24,8 @@ export default function HeroSection({ locale }: { locale: string }) {
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
-        if (data) {
-          if (data.heroTitle) {
-            setHero({
-              heroTitle: data.heroTitle,
-              heroSubtitle: data.heroSubtitle || defaultHero.heroSubtitle,
-            });
-          }
-          if (data.heroImages && Array.isArray(data.heroImages) && data.heroImages.length > 0) {
-            setHeroImages(data.heroImages);
-          }
+        if (data && data.heroImages && Array.isArray(data.heroImages) && data.heroImages.length > 0) {
+          setHeroImages(data.heroImages);
         }
       })
       .catch(() => {});
@@ -105,24 +93,24 @@ export default function HeroSection({ locale }: { locale: string }) {
       <div className="container-custom relative py-24 md:py-32">
         <div className="max-w-3xl">
           <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
-            {hero.heroTitle}
+            {t("title")}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl">
-            {hero.heroSubtitle}
+            {t("subtitle")}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href={`/${locale}/products`}
               className="btn-accent text-base"
             >
-              Explore Products
+              {t("cta")}
               <ArrowRight size={18} />
             </Link>
             <Link
               href={`/${locale}/contact`}
               className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-6 py-3 text-base font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white/10"
             >
-              Contact Us
+              {t("ctaSecondary")}
             </Link>
           </div>
         </div>
