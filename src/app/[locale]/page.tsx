@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t("hero.subtitle"),
       url: `https://hongtexus.cn/${locale}`,
       siteName: "Hongtexus",
-      locale: locale === "zh" ? "zh_CN" : locale === "es" ? "es_ES" : locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" : "en_US",
+      locale: locale === "zh" ? "zh_CN" : locale === "es" ? "es_ES" : locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" : locale === "ja" ? "ja_JP" : locale === "ru" ? "ru_RU" : "en_US",
       type: "website",
     },
     alternates: {
@@ -41,6 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         es: "https://hongtexus.cn/es",
         fr: "https://hongtexus.cn/fr",
         de: "https://hongtexus.cn/de",
+        ja: "https://hongtexus.cn/ja",
+        ru: "https://hongtexus.cn/ru",
       },
     },
   };
