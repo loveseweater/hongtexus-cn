@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Globe, Youtube, Twitter, CheckCircle, Send } from "lucide-react";
 
 const ICON_MAP: Record<string, any> = {
@@ -30,6 +31,7 @@ const defaultSettings = {
 };
 
 export default function Footer({ locale }: { locale: string }) {
+  const t = useTranslations("footer");
   const [settings, setSettings] = useState(defaultSettings);
   const [year] = useState(new Date().getFullYear());
   const [subEmail, setSubEmail] = useState("");
@@ -51,7 +53,7 @@ export default function Footer({ locale }: { locale: string }) {
 
   return (
     <footer className="border-t border-border bg-primary-dark text-white">
-      {/* Newsletter Banner - More prominent */}
+      {/* Newsletter Banner */}
       <div className="border-b border-white/10 bg-primary-dark/95">
         <div className="container-custom py-8">
           <div className="flex flex-col items-center justify-between gap-4 rounded-xl bg-white/5 px-6 py-6 md:flex-row md:px-10">
@@ -131,7 +133,7 @@ export default function Footer({ locale }: { locale: string }) {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-300">
-              Hongtexus is your trusted partner in premium textile solutions for global markets.
+              {t("description")}
             </p>
             <div className="mt-6 flex gap-3">
               {socialLinks.map((link: any, i: number) => {
@@ -153,17 +155,17 @@ export default function Footer({ locale }: { locale: string }) {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">Quick Links</h3>
+            <h3 className="font-display text-lg font-semibold text-white">{t("quickLinks")}</h3>
             <ul className="mt-4 space-y-3">
-              <li><Link href={`/${locale}/products`} className="text-sm text-gray-300 transition-colors hover:text-accent">Products</Link></li>
-              <li><Link href={`/${locale}/blog`} className="text-sm text-gray-300 transition-colors hover:text-accent">Blog</Link></li>
-              <li><Link href={`/${locale}/about`} className="text-sm text-gray-300 transition-colors hover:text-accent">About</Link></li>
-              <li><Link href={`/${locale}/contact`} className="text-sm text-gray-300 transition-colors hover:text-accent">Contact</Link></li>
+              <li><Link href={`/${locale}/products`} className="text-sm text-gray-300 transition-colors hover:text-accent">{t("products")}</Link></li>
+              <li><Link href={`/${locale}/blog`} className="text-sm text-gray-300 transition-colors hover:text-accent">{t("blog")}</Link></li>
+              <li><Link href={`/${locale}/about`} className="text-sm text-gray-300 transition-colors hover:text-accent">{t("about")}</Link></li>
+              <li><Link href={`/${locale}/contact`} className="text-sm text-gray-300 transition-colors hover:text-accent">{t("contact")}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">Products</h3>
+            <h3 className="font-display text-lg font-semibold text-white">{t("products")}</h3>
             <ul className="mt-4 space-y-3">
               <li><Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">Knit Fabrics</Link></li>
               <li><Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">T-Shirts</Link></li>
@@ -176,7 +178,7 @@ export default function Footer({ locale }: { locale: string }) {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold text-white">Contact</h3>
+            <h3 className="font-display text-lg font-semibold text-white">{t("contact")}</h3>
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3 text-sm text-gray-300">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
@@ -198,11 +200,11 @@ export default function Footer({ locale }: { locale: string }) {
       <div className="border-t border-white/10">
         <div className="container-custom flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
           <p className="text-sm text-gray-400">
-            &copy; {year} HONGTEX. All rights reserved.
+            &copy; {year} HONGTEX. {t("copyright")}
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
-            <a href="#" className="transition-colors hover:text-accent">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-accent">Terms of Service</a>
+            <a href="#" className="transition-colors hover:text-accent">{t("privacy")}</a>
+            <a href="#" className="transition-colors hover:text-accent">{t("terms")}</a>
           </div>
         </div>
       </div>
