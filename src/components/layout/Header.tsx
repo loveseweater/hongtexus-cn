@@ -63,11 +63,11 @@ export default function Header() {
 
   const locale = pathname.split("/")[1] || "en";
 
-  // Default nav links if API hasn't loaded yet
-  const defaultNavLinks: NavLink[] = navLinks.length > 0 ? navLinks : [
+  // Build nav links: standard pages always use translations, KV navLinks are appended as custom pages
+  const standardNavLinks: NavLink[] = [
     { label: t("home"), href: `/${locale}`, children: [] },
     { label: t("products"), href: `/${locale}/products`, children: [
-      { label: "All Products", href: `/${locale}/products` },
+      { label: t("home") === "首页" ? "全部产品" : "All Products", href: `/${locale}/products` },
       { label: "Knit Fabrics", href: `/${locale}/products?category=knit-fabrics` },
       { label: "T-Shirts", href: `/${locale}/products?category=t-shirts` },
       { label: "Hoodies", href: `/${locale}/products?category=hoodies` },
@@ -80,6 +80,12 @@ export default function Header() {
     { label: t("about"), href: `/${locale}/about`, children: [] },
     { label: t("contact"), href: `/${locale}/contact`, children: [] },
   ];
+  // Append custom nav links from KV (only non-standard pages)
+  const customNavLinks = navLinks.filter((nl) => {
+    const href = nl.href.replace(`/${locale}`, "") || "/";
+    return !["/", "/products", "/blog", "/about", "/contact"].includes(href);
+  });
+  const defaultNavLinks = [...standardNavLinks, ...customNavLinks];
 
   // Close dropdown when clicking outside
   useEffect(() => {
