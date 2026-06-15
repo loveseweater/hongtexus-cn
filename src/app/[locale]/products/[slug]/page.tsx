@@ -4,8 +4,13 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle } from "lucide-react";
-import { getKvProductBySlug, getKvProducts } from "@/lib/kv";
+import { getLocalizedProductBySlug, getLocalizedProducts } from "@/lib/localized-data";
 import type { Metadata } from "next";
+
+// Helper to get nav translations in server component
+async function getNavTranslations(locale: string) {
+  return getTranslations({ locale, namespace: "nav" });
+}
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -13,7 +18,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const product = await getKvProductBySlug(slug);
+  const product = await getLocalizedProductBySlug(locale, slug);
   if (!product) {
     return { title: "Product Not Found — Hongtexus" };
   }
@@ -29,14 +34,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
+  const nt = await getTranslations({ locale, namespace: "nav" });
 
-  const product = await getKvProductBySlug(slug);
+  const product = await getLocalizedProductBySlug(locale, slug);
 
   if (!product) {
     notFound();
   }
 
-  const allProducts = await getKvProducts();
+  const allProducts = await getLocalizedProducts(locale);
   const relatedProducts = allProducts.filter(
     (p: any) => p.category === product.category && p.id !== product.id
   );
@@ -46,7 +52,7 @@ export default async function ProductDetailPage({ params }: Props) {
       <section className="border-b border-border bg-bg-alt">
         <div className="container-custom flex items-center gap-2 py-4 text-sm text-text-muted">
           <Link href={`/${locale}`} className="hover:text-primary">
-            Home
+            {nt("home")}
           </Link>
           <span>/</span>
           <Link href={`/${locale}/products`} className="hover:text-primary">
@@ -113,10 +119,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
               <div className="mt-8 space-y-3">
                 {[
-                  "Premium quality materials",
-                  "International standards compliant",
-                  "Custom specifications available",
-                  "Fast worldwide shipping",
+                  t("feature1"),
+                  t("feature2"),
+                  t("feature3"),
+                  t("feature4"),
                 ].map((feature) => (
                   <div key={feature} className="flex items-center gap-3">
                     <CheckCircle size={18} className="shrink-0 text-accent" />

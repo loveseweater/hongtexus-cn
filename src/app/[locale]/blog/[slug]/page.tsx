@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { getKvBlogPostBySlug } from "@/lib/kv";
+import { getLocalizedBlogPostBySlug } from "@/lib/localized-data";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -14,7 +14,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = await getKvBlogPostBySlug(slug);
+  const post = await getLocalizedBlogPostBySlug(locale, slug);
   if (!post) {
     return { title: "Post Not Found — Hongtexus" };
   }
@@ -30,8 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
+  const nt = await getTranslations({ locale, namespace: "nav" });
 
-  const post = await getKvBlogPostBySlug(slug);
+  const post = await getLocalizedBlogPostBySlug(locale, slug);
 
   if (!post) {
     notFound();
@@ -124,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
       <section className="border-b border-border bg-bg-alt">
         <div className="container-custom flex items-center gap-2 py-4 text-sm text-text-muted">
           <Link href={`/${locale}`} className="hover:text-primary">
-            Home
+            {nt("home")}
           </Link>
           <span>/</span>
           <Link href={`/${locale}/blog`} className="hover:text-primary">

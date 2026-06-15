@@ -74,7 +74,11 @@
     "inquiryForm": "Send Inquiry",
     "name": "Product Name",
     "category": "Category",
-    "noProducts": "No products found in this category."
+    "noProducts": "No products found in this category.",
+    "feature1": "Premium quality materials",
+    "feature2": "International standards compliant",
+    "feature3": "Custom specifications available",
+    "feature4": "Fast worldwide shipping"
   },
   "blog": {
     "title": "Blog & Insights",
@@ -168,5 +172,72 @@
     "learnMore": "Learn More",
     "close": "Close",
     "menu": "Menu"
-  }
+  },
+  "products_data": {
+    "premium-cotton-jersey-fabric": {
+      "title": "Premium Cotton Jersey Fabric",
+      "desc": "Our premium cotton jersey fabric is crafted from 100% combed cotton with a smooth surface and excellent drape. Perfect for T-shirts, dresses, and lightweight apparel, this single jersey knit offers superior breathability and comfort for everyday wear."
+    },
+    "rib-knit-fabric": {
+      "title": "Rib Knit Fabric",
+      "desc": "High-quality 1x1 rib knit fabric with excellent stretch and recovery. The cotton-spandex blend provides a comfortable fit that maintains its shape wear after wear. Ideal for cuffs, collars, form-fitting garments, and accessories."
+    },
+    "french-terry-fabric": {
+      "title": "French Terry Fabric",
+      "desc": "Our organic French Terry fabric combines sustainability with comfort. The looped back construction offers excellent moisture absorption while the smooth face provides a clean finish. Perfect for hoodies, loungewear, and casual jackets."
+    },
+    "fleece-fabric": {
+      "title": "Brushed Fleece Fabric",
+      "desc": "Warm and cozy brushed fleece fabric made from a cotton-polyester blend. The brushed interior provides exceptional warmth and softness, making it the ideal choice for hoodies, sweatshirts, and cold-weather apparel."
+    },
+    "classic-cotton-t-shirt": {
+      "title": "Classic Cotton T-Shirt",
+      "desc": "A timeless essential crafted from 180gsm 100% combed cotton jersey. This classic T-shirt offers exceptional comfort, breathability, and durability. Available in 20+ colors with sizes from XS to 5XL, perfect for wholesale and custom branding."
+    },
+    "premium-heavyweight-t-shirt": {
+      "title": "Premium Heavyweight T-Shirt",
+      "desc": "A substantial 240gsm heavyweight T-shirt made from 100% ringspun cotton. This premium garment offers a structured fit and superior durability while maintaining exceptional softness. Ideal for high-end brands and custom printing."
+    },
+    "classic-pullover-hoodie": {
+      "title": "Classic Pullover Hoodie",
+      "desc": "A comfortable pullover hoodie crafted from 300gsm cotton-polyester fleece. Features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for casual wear, streetwear brands, and custom apparel lines."
+    },
+    "zip-up-hoodie": {
+      "title": "Zip-Up Hoodie",
+      "desc": "A versatile zip-up hoodie made from 320gsm 100% cotton French terry. Features a full-length YKK zipper, side pockets, and a lined hood. Ideal for layering and suitable for both casual and sportswear applications."
+    },
+    "knit-leg-warmers": {
+      "title": "Knit Leg Warmers",
+      "desc": "Cozy and stylish knit leg warmers made from 100% acrylic knit. These stretch-fit leg warmers offer excellent warmth and comfort for dance, yoga, or everyday fashion. Available in 10+ colors with a one-size stretch design."
+    },
+    "cable-knit-leg-warmers": {
+      "title": "Cable Knit Leg Warmers",
+      "desc": "Premium cable knit leg warmers crafted from a warm wool blend. The classic cable pattern adds a timeless aesthetic while the wool blend provides natural insulation. Perfect for winter fashion and cold-weather accessories."
+    },
+    "classic-beanie-hat": {
+      "title": "Classic Beanie Hat",
+      "desc": "A classic knit beanie hat made from 200gsm 100% acrylic knit. Features a comfortable stretch fit, fold-up brim, and seamless construction. Available in 15+ colors, perfect for wholesale, branding, and winter accessories."
+    },
+    "wool-blend-beanie": {
+      "title": "Wool Blend Beanie",
+      "desc": "A premium wool blend beanie combining natural warmth with durability. The 50% wool, 50% acrylic blend offers superior insulation while maintaining softness and shape retention. Ideal for cold climates and premium winter collections."
+    },
+    "knit-gloves": {
+      "title": "Knit Gloves",
+      "desc": "Warm and comfortable knit gloves made from 180gsm 100% acrylic knit. These stretch-fit gloves offer excellent dexterity and warmth for everyday winter wear. Available in 10+ colors with sizes S, M, and L."
+    },
+    "touchscreen-knit-gloves": {
+      "title": "Touchscreen Knit Gloves",
+      "desc": "Smart knit gloves with conductive yarn technology for touchscreen compatibility. Made from 200gsm acrylic blend, these gloves keep your hands warm while allowing you to use smartphones and tablets without removing them."
+    },
+    "crew-knit-socks": {
+      "title": "Crew Knit Socks",
+      "desc": "Comfortable crew-length knit socks made from a soft cotton-polyester-spandex blend. Features reinforced heel and toe for durability, with a cushioned sole for all-day comfort. Available in 12+ colors for men and women."
+    },
+    "wool-knit-socks": {
+      "title": "Wool Knit Socks",
+      "desc": "Premium knee-high wool knit socks offering natural warmth and moisture management. The wool-nylon-spandex blend provides durability, fit retention, and comfort. Perfect for cold weather, outdoor activities, and winter fashion."
+    }
+  },
+  "blogs_data": {}
 }

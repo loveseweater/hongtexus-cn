@@ -74,7 +74,11 @@
     "inquiryForm": "Envoyer une Demande",
     "name": "Nom du Produit",
     "category": "Catégorie",
-    "noProducts": "Aucun produit trouvé dans cette catégorie."
+    "noProducts": "Aucun produit trouvé dans cette catégorie.",
+    "feature1": "Matériaux de qualité premium",
+    "feature2": "Conforme aux normes internationales",
+    "feature3": "Spécifications personnalisables",
+    "feature4": "Expédition rapide dans le monde"
   },
   "blog": {
     "title": "Blog et Actualités",
@@ -168,5 +172,97 @@
     "learnMore": "En Savoir Plus",
     "close": "Fermer",
     "menu": "Menu"
+  },
+  "products_data": {
+    "premium-cotton-jersey-fabric": {
+      "title": "",
+      "desc": ""
+    },
+    "rib-knit-fabric": {
+      "title": "Tissu côtelé",
+      "desc": "Tissu côtelé 1x1 de haute qualité avec une excellente élasticité et récupération."
+    },
+    "french-terry-fabric": {
+      "title": "Tissu French Terry",
+      "desc": "Notre tissu French Terry biologique allie durabilité et confort."
+    },
+    "fleece-fabric": {
+      "title": "Tissu molleton brossé",
+      "desc": "Tissu molleton chaud et douillet en mélange coton-polyester."
+    },
+    "classic-cotton-t-shirt": {
+      "title": "T-shirt coton classique",
+      "desc": "Un classique intemporel en jersey de coton peigné 100% de 180 g/m²."
+    },
+    "premium-heavyweight-t-shirt": {
+      "title": "T-shirt premium poids lourd",
+      "desc": "T-shirt poids lourd de 240 g/m² en coton à fibres longues 100%."
+    },
+    "classic-pullover-hoodie": {
+      "title": "Sweat à capuche classique",
+      "desc": "Sweat à capuche confortable en molleton coton-polyester de 300 g/m²."
+    },
+    "zip-up-hoodie": {
+      "title": "Sweat à fermeture éclair",
+      "desc": "Sweat polyvalent à fermeture éclair en French Terry 100% coton de 320 g/m²."
+    },
+    "knit-leg-warmers": {
+      "title": "Jambières en tricot",
+      "desc": "Jambières en tricot confortables et élégantes en acrylique 100%."
+    },
+    "cable-knit-leg-warmers": {
+      "title": "Jambières torsadées",
+      "desc": "Jambières torsadées premium en mélange de laine chaude."
+    },
+    "classic-beanie-hat": {
+      "title": "Bonnet classique",
+      "desc": "Bonnet classique en tricot acrylique 100% de 200 g/m²."
+    },
+    "wool-blend-beanie": {
+      "title": "Bonnet en mélange de laine",
+      "desc": "Bonnet premium en mélange de laine alliant chaleur naturelle et durabilité."
+    },
+    "knit-gloves": {
+      "title": "Gants en tricot",
+      "desc": "Gants en tricot chauds et confortables en acrylique 100% de 180 g/m²."
+    },
+    "touchscreen-knit-gloves": {
+      "title": "Gants tactiles en tricot",
+      "desc": "Gants intelligents avec fil conducteur pour écrans tactiles."
+    },
+    "crew-knit-socks": {
+      "title": "Chaussettes en tricot",
+      "desc": "Chaussettes confortables en mélange coton-polyester-spandex."
+    },
+    "wool-knit-socks": {
+      "title": "Chaussettes en laine tricotée",
+      "desc": "Chaussettes montantes en laine tricotée offrant chaleur naturelle."
+    },
+    "knit-fabrics": {
+      "title": "Tissu jersey coton premium",
+      "desc": "Notre tissu jersey coton premium est fabriqué à partir de coton peigné 100%."
+    }
+  },
+  "blogs_data": {
+    "knitwear-trends-2026": {
+      "title": "Tendances maille 2026 : l'avenir des textiles tricotés",
+      "excerpt": "Découvrez les tendances clés de la maille qui façonneront 2026."
+    },
+    "choosing-knit-fabric-for-garments": {
+      "title": "Choisir le bon tissu maille : guide complet",
+      "excerpt": "Guide complet pour sélectionner le tissu maille parfait pour votre production."
+    },
+    "sustainable-knitwear-manufacturing": {
+      "title": "Fabrication durable de maille : pratiques et innovations",
+      "excerpt": "Explorez les pratiques de fabrication durable qui transforment l'industrie."
+    },
+    "custom-knitwear-production-guide": {
+      "title": "Production de maille personnalisée : guide pour les marques",
+      "excerpt": "Tout ce que vous devez savoir sur la production de maille personnalisée."
+    },
+    "quality-control-knit-products": {
+      "title": "Contrôle qualité des produits maille : normes et processus",
+      "excerpt": "Découvrez les processus rigoureux de contrôle qualité de Hongtexus."
+    }
   }
 }

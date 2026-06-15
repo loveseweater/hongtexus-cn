@@ -74,7 +74,11 @@
     "inquiryForm": "Anfrage Senden",
     "name": "Produktname",
     "category": "Kategorie",
-    "noProducts": "Keine Produkte in dieser Kategorie gefunden."
+    "noProducts": "Keine Produkte in dieser Kategorie gefunden.",
+    "feature1": "Premium-Materialien",
+    "feature2": "Internationale Normen eingehalten",
+    "feature3": "Anpassbare Spezifikationen",
+    "feature4": "Schneller weltweiter Versand"
   },
   "blog": {
     "title": "Blog & Einblicke",
@@ -168,5 +172,97 @@
     "learnMore": "Mehr Erfahren",
     "close": "Schließen",
     "menu": "Menü"
+  },
+  "products_data": {
+    "premium-cotton-jersey-fabric": {
+      "title": "",
+      "desc": ""
+    },
+    "rib-knit-fabric": {
+      "title": "Rippstrickstoff",
+      "desc": "Hochwertiger 1x1 Rippstrickstoff mit ausgezeichneter Dehnbarkeit und Formrückstellung."
+    },
+    "french-terry-fabric": {
+      "title": "French Terry Stoff",
+      "desc": "Unser Bio-French Terry vereint Nachhaltigkeit mit Komfort."
+    },
+    "fleece-fabric": {
+      "title": "Gebürsteter Fleecestoff",
+      "desc": "Warmer und kuscheliger gebürsteter Fleecestoff aus Baumwoll-Polyester-Mischung."
+    },
+    "classic-cotton-t-shirt": {
+      "title": "Klassisches Baumwoll-T-Shirt",
+      "desc": "Ein zeitloser Klassiker aus 100% gekämmter Baumwoll-Jersey mit 180 g/m²."
+    },
+    "premium-heavyweight-t-shirt": {
+      "title": "Premium Heavyweight T-Shirt",
+      "desc": "Ein schweres T-Shirt mit 240 g/m² aus 100% ringgesponnener Baumwolle."
+    },
+    "classic-pullover-hoodie": {
+      "title": "Klassischer Pullover-Hoodie",
+      "desc": "Bequemer Pullover-Hoodie aus 300 g/m² Baumwoll-Polyester-Fleece."
+    },
+    "zip-up-hoodie": {
+      "title": "Zip-Up Hoodie",
+      "desc": "Vielseitiger Zip-Up Hoodie aus 100% Baumwoll-French-Terry mit 320 g/m²."
+    },
+    "knit-leg-warmers": {
+      "title": "Gestrickte Beinwärmer",
+      "desc": "Kuschelige und stilvolle gestrickte Beinwärmer aus 100% Acryl."
+    },
+    "cable-knit-leg-warmers": {
+      "title": "Zopfmuster-Beinwärmer",
+      "desc": "Premium-Zopfmuster-Beinwärmer aus warmer Wollmischung."
+    },
+    "classic-beanie-hat": {
+      "title": "Klassische Beanie-Mütze",
+      "desc": "Klassische Strick-Beanie-Mütze aus 100% Acryl mit 200 g/m²."
+    },
+    "wool-blend-beanie": {
+      "title": "Wollmischungs-Beanie",
+      "desc": "Premium-Wollmischungs-Beanie mit natürlicher Wärme und Strapazierfähigkeit."
+    },
+    "knit-gloves": {
+      "title": "Strickhandschuhe",
+      "desc": "Warme und bequeme Strickhandschuhe aus 100% Acryl mit 180 g/m²."
+    },
+    "touchscreen-knit-gloves": {
+      "title": "Touchscreen-Strickhandschuhe",
+      "desc": "Intelligente Strickhandschuhe mit leitfähigem Garn für Touchscreen-Kompatibilität."
+    },
+    "crew-knit-socks": {
+      "title": "Crew-Stricksocken",
+      "desc": "Bequeme Knöchel-Stricksocken aus weicher Baumwoll-Polyester-Spandex-Mischung."
+    },
+    "wool-knit-socks": {
+      "title": "Woll-Stricksocken",
+      "desc": "Premium-Kniehohe-Woll-Stricksocken mit natürlicher Wärme."
+    },
+    "knit-fabrics": {
+      "title": "Premium-Baumwoll-Jersey-Stoff",
+      "desc": "Unser Premium-Baumwoll-Jersey wird aus 100% gekämmter Baumwolle hergestellt."
+    }
+  },
+  "blogs_data": {
+    "knitwear-trends-2026": {
+      "title": "Strickmodetrends 2026: Die Zukunft der Stricktextilien",
+      "excerpt": "Entdecken Sie die wichtigsten Strickmodetrends, die 2026 prägen werden."
+    },
+    "choosing-knit-fabric-for-garments": {
+      "title": "Den richtigen Strickstoff wählen: Ein vollständiger Leitfaden",
+      "excerpt": "Umfassender Leitfaden zur Auswahl des perfekten Strickstoffs für Ihre Bekleidungsproduktion."
+    },
+    "sustainable-knitwear-manufacturing": {
+      "title": "Nachhaltige Strickwarenherstellung: Praktiken und Innovationen",
+      "excerpt": "Entdecken Sie die nachhaltigen Herstellungspraktiken, die die Strickwarenindustrie verändern."
+    },
+    "custom-knitwear-production-guide": {
+      "title": "Maßgeschneiderte Strickwarenproduktion: Leitfaden für Marken",
+      "excerpt": "Alles, was Sie über die maßgeschneiderte Strickwarenproduktion wissen müssen."
+    },
+    "quality-control-knit-products": {
+      "title": "Qualitätskontrolle bei Strickprodukten: Standards und Prozesse",
+      "excerpt": "Erfahren Sie mehr über die strengen Qualitätskontrollprozesse von Hongtexus."
+    }
   }
 }

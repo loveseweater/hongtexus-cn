@@ -2,7 +2,8 @@ export const runtime = "edge";
 
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { getKvBlogPosts } from "@/lib/kv";
+import { getLocalizedBlogPosts } from "@/lib/localized-data";
+
 import type { Metadata } from "next";
 
 type Props = {
@@ -25,7 +26,7 @@ export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
 
-  const posts = await getKvBlogPosts();
+  const posts = await getLocalizedBlogPosts(locale);
 
   return (
     <>
