@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Menu, X, ChevronDown, Linkedin, Facebook, Instagram, Youtube, Twitter, Globe, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -29,6 +29,7 @@ interface NavLink {
 
 export default function Header() {
   const t = useTranslations("nav");
+  const tc = useTranslations("common");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function Header() {
   const standardNavLinks: NavLink[] = [
     { label: t("home"), href: `/${locale}`, children: [] },
     { label: t("products"), href: `/${locale}/products`, children: [
-      { label: t("home") === "首页" ? "全部产品" : "All Products", href: `/${locale}/products` },
+      { label: tc("viewAll"), href: `/${locale}/products` },
       { label: "Knit Fabrics", href: `/${locale}/products?category=knit-fabrics` },
       { label: "T-Shirts", href: `/${locale}/products?category=t-shirts` },
       { label: "Hoodies", href: `/${locale}/products?category=hoodies` },
