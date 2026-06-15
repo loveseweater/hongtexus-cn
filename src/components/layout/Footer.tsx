@@ -38,8 +38,6 @@ export default function Footer({ locale }: { locale: string }) {
   const [subStatus, setSubStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [subMsg, setSubMsg] = useState("");
 
-  const isZh = locale === "zh";
-
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((res) => res.json())
@@ -59,17 +57,17 @@ export default function Footer({ locale }: { locale: string }) {
           <div className="flex flex-col items-center justify-between gap-4 rounded-xl bg-white/5 px-6 py-6 md:flex-row md:px-10">
             <div>
               <h3 className="font-display text-lg font-semibold text-white">
-                {isZh ? "订阅我们的资讯" : "Stay Updated"}
+                {t("newsletterTitle")}
               </h3>
               <p className="mt-1 text-sm text-gray-400">
-                {isZh ? "获取最新产品和行业动态" : "Get the latest products and industry news delivered to your inbox."}
+                {t("newsletterDesc")}
               </p>
             </div>
             <div className="w-full md:w-auto md:min-w-[400px]">
               {subStatus === "success" ? (
                 <div className="flex items-center gap-2 rounded-lg bg-green-500/10 px-4 py-3 text-sm text-green-400">
                   <CheckCircle size={18} />
-                  <span>{isZh ? "感谢订阅！" : subMsg || "Thank you for subscribing!"}</span>
+                  <span>{t("newsletterSuccess")}</span>
                 </div>
               ) : (
                 <form onSubmit={async (e) => {
@@ -85,14 +83,13 @@ export default function Footer({ locale }: { locale: string }) {
                     const data = await res.json();
                     if (data.success) {
                       setSubStatus("success");
-                      setSubMsg(isZh ? "感谢订阅！" : "Thank you for subscribing!");
                     } else {
                       setSubStatus("error");
-                      setSubMsg(data.message || (isZh ? "订阅失败" : "Subscription failed"));
+                      setSubMsg(data.message || t("newsletterError"));
                     }
                   } catch {
                     setSubStatus("error");
-                    setSubMsg(isZh ? "网络错误" : "Network error");
+                    setSubMsg(t("newsletterNetworkError"));
                   }
                 }} className="flex gap-2">
                   <input
@@ -100,7 +97,7 @@ export default function Footer({ locale }: { locale: string }) {
                     required
                     value={subEmail}
                     onChange={(e) => setSubEmail(e.target.value)}
-                    placeholder={isZh ? "您的邮箱" : "Your email address"}
+                    placeholder={t("newsletterPlaceholder")}
                     className="flex-1 min-w-0 rounded-lg border border-white/20 bg-white/10 px-4 py-2.5 text-sm text-white placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50"
                     disabled={subStatus === "loading"}
                   />
@@ -110,7 +107,7 @@ export default function Footer({ locale }: { locale: string }) {
                     className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent/80 disabled:opacity-50"
                   >
                     <Send size={16} />
-                    {subStatus === "loading" ? "..." : (isZh ? "订阅" : "Subscribe")}
+                    {subStatus === "loading" ? "..." : t("newsletterButton")}
                   </button>
                 </form>
               )}

@@ -25,6 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface MobileNavItem {
   id: string;
@@ -65,6 +66,7 @@ const DEFAULT_ITEMS: MobileNavItem[] = [
 
 export default function MobileBottomNav({ locale }: { locale: string }) {
   const pathname = usePathname();
+  const t = useTranslations("footer");
   const [items, setItems] = useState<MobileNavItem[]>(DEFAULT_ITEMS);
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -135,7 +137,7 @@ export default function MobileBottomNav({ locale }: { locale: string }) {
                   })}
                 </div>
               </div>
-              <span>More</span>
+              <span>{t("mobileMore")}</span>
             </button>
           )}
         </div>
@@ -147,7 +149,7 @@ export default function MobileBottomNav({ locale }: { locale: string }) {
           <div className="absolute inset-0 bg-black/50" onClick={() => setMoreOpen(false)} />
           <div className="absolute bottom-0 left-0 right-0 rounded-t-2xl bg-white p-6 pb-10 shadow-xl animate-slide-up">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-display text-lg font-semibold text-primary">更多导航</h3>
+              <h3 className="font-display text-lg font-semibold text-primary">{t("mobileMoreTitle")}</h3>
               <button onClick={() => setMoreOpen(false)} className="rounded-lg p-2 text-text-muted hover:bg-bg-alt">
                 <X size={20} />
               </button>
