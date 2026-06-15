@@ -11,6 +11,8 @@ const languages = [
   { code: "es", label: "Español", short: "ES" },
   { code: "fr", label: "Français", short: "FR" },
   { code: "de", label: "Deutsch", short: "DE" },
+  { code: "ja", label: "日本語", short: "日本語" },
+  { code: "ru", label: "Русский", short: "RU" },
 ];
 
 export default function LanguageSwitcher() {
