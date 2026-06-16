@@ -102,7 +102,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
                       {product.title}
                     </h3>
                     <p className="mt-2 text-xs text-text-muted">
-                      {product.specs[0]?.value} &middot; {product.specs[1]?.value}
+                      {t(`categories.${product.category}`)}
                     </p>
                   </div>
                 </Link>

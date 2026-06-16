@@ -177,7 +177,7 @@ export default async function HomePage({ params }: Props) {
                     {product.title}
                   </h3>
                   <p className="mt-2 text-xs text-text-muted">
-                    {product.specs[0]?.value} &middot; {product.specs[1]?.value}
+                    {pt(`categories.${product.category}`)}
                   </p>
                 </div>
               </Link>

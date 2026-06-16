@@ -87,6 +87,18 @@
       "hats": "帽子",
       "gloves": "手套",
       "socks": "袜子"
+    },
+    "specLabels": {
+      "weight": "克重",
+      "width": "幅宽",
+      "composition": "成分",
+      "type": "类型",
+      "moq": "起订量",
+      "fabric": "面料",
+      "sizes": "尺码",
+      "colors": "颜色",
+      "length": "长度",
+      "pattern": "花型"
     }
   },
   "blog": {
@@ -115,10 +127,33 @@
       "quality": "品质至上",
       "integrity": "诚信为本",
       "innovation": "持续创新",
-      "sustainability": "可持续发展"
+      "sustainability": "可持续发展",
+      "qualityDesc": "我们从不妥协品质。每一件产品在交付客户前都经过严格检测。",
+      "integrityDesc": "诚实和透明是我们与合作伙伴建立关系的基石。",
+      "innovationDesc": "我们持续投入研发，为市场带来创新的纺织品解决方案。",
+      "sustainabilityDesc": "致力于环保实践和可持续制造工艺。"
     },
     "timeline": {
-      "title": "发展历程"
+      "title": "发展历程",
+      "events": {
+        "2010": "公司成立，致力于连接全球纺织品市场",
+        "2013": "扩建生产设施，引入先进生产线",
+        "2016": "服务超过200家国际客户，覆盖30个国家",
+        "2019": "推出可持续纺织品产品线",
+        "2022": "设立海外办事处和配送中心",
+        "2025": "被评为地区顶级纺织品供应商"
+      }
+    },
+    "stats": {
+      "years": "年行业经验",
+      "clients": "全球客户",
+      "products": "产品种类",
+      "countries": "出口国家"
+    },
+    "cta": {
+      "title": "准备好与 Hongtexus 合作了吗？",
+      "subtitle": "联系我们的团队，讨论您的纺织品需求。",
+      "button": "联系我们"
     }
   },
   "contact": {
@@ -133,7 +168,10 @@
       "submit": "发送消息",
       "success": "感谢您！您的消息已成功发送。",
       "error": "抱歉，出了点问题，请稍后重试。",
-      "placeholder": "请描述您的需求..."
+      "placeholder": "请描述您的需求...",
+      "successMessage": "我们会在24小时内回复您。",
+      "sendAnother": "再发一条消息",
+      "sending": "发送中..."
     },
     "info": {
       "title": "联系方式",

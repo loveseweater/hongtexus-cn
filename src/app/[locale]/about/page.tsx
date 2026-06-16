@@ -27,34 +27,34 @@ export default async function AboutPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "about" });
 
   const timeline = [
-    { year: "2010", event: "Company founded with a vision to connect global textile markets" },
-    { year: "2013", event: "Expanded manufacturing facilities with advanced production lines" },
-    { year: "2016", event: "Reached 200+ international clients across 30 countries" },
-    { year: "2019", event: "Launched sustainable textile product line" },
-    { year: "2022", event: "Opened overseas office and distribution center" },
-    { year: "2025", event: "Recognized as top textile supplier in the region" },
+    { year: "2010", event: t("timeline.events.2010") },
+    { year: "2013", event: t("timeline.events.2013") },
+    { year: "2016", event: t("timeline.events.2016") },
+    { year: "2019", event: t("timeline.events.2019") },
+    { year: "2022", event: t("timeline.events.2022") },
+    { year: "2025", event: t("timeline.events.2025") },
   ];
 
   const values = [
     {
       icon: ShieldCheck,
       title: t("values.quality"),
-      desc: "We never compromise on quality. Every product undergoes rigorous testing before reaching our clients.",
+      desc: t("values.qualityDesc"),
     },
     {
       icon: Heart,
       title: t("values.integrity"),
-      desc: "Honesty and transparency form the foundation of every relationship we build with our partners.",
+      desc: t("values.integrityDesc"),
     },
     {
       icon: Lightbulb,
       title: t("values.innovation"),
-      desc: "We continuously invest in R&D to bring innovative textile solutions to the market.",
+      desc: t("values.innovationDesc"),
     },
     {
       icon: Leaf,
       title: t("values.sustainability"),
-      desc: "Committed to eco-friendly practices and sustainable manufacturing processes.",
+      desc: t("values.sustainabilityDesc"),
     },
   ];
 
@@ -89,10 +89,10 @@ export default async function AboutPage({ params }: Props) {
         <div className="container-custom">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {[
-              { value: "15+", label: "Years of Experience" },
-              { value: "500+", label: "Global Clients" },
-              { value: "2000+", label: "Product Varieties" },
-              { value: "50+", label: "Export Countries" },
+              { value: "15+", label: t("stats.years") },
+              { value: "500+", label: t("stats.clients") },
+              { value: "2000+", label: t("stats.products") },
+              { value: "50+", label: t("stats.countries") },
             ].map((stat) => (
               <div key={stat.label} className="text-center text-white">
                 <div className="font-display text-4xl font-bold md:text-5xl">
@@ -175,16 +175,16 @@ export default async function AboutPage({ params }: Props) {
       <section className="section-padding bg-primary text-center text-white">
         <div className="container-custom">
           <h2 className="font-display text-3xl font-bold md:text-4xl">
-            Ready to Partner with Hongtexus?
+            {t("cta.title")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-gray-200">
-            Get in touch with our team to discuss your textile needs.
+            {t("cta.subtitle")}
           </p>
           <Link
             href={`/${locale}/contact`}
             className="btn-accent mt-8 inline-flex text-base"
           >
-            Contact Us
+            {t("cta.button")}
             <ArrowRight size={18} />
           </Link>
         </div>
