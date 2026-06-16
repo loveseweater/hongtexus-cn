@@ -52,7 +52,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
-  const pt = await getTranslations({ locale, namespace: "products" });
   const c = await getTranslations({ locale, namespace: "common" });
 
   // Hero section is now a client component that fetches from API
@@ -90,10 +89,10 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg font-semibold text-primary capitalize">
-                    {pt(`categories.${cat.slug}`)}
+                    {cat.slug.replace("-", " ")}
                   </h3>
                   <p className="mt-1 text-sm text-text-muted capitalize">
-                    {pt(`categories.${cat.slug}`)}
+                    {cat.slug.split("-")[0]} textiles
                   </p>
                 </div>
                 <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/5" />
@@ -171,13 +170,13 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                    {pt(`categories.${product.category}`)}
+                    {product.category.replace("-", " ")}
                   </span>
                   <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
                     {product.title}
                   </h3>
                   <p className="mt-2 text-xs text-text-muted">
-                    {pt(`categories.${product.category}`)}
+                    {product.specs[0]?.value} &middot; {product.specs[1]?.value}
                   </p>
                 </div>
               </Link>

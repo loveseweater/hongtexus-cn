@@ -78,69 +78,7 @@
     "feature1": "Premium quality materials",
     "feature2": "International standards compliant",
     "feature3": "Custom specifications available",
-    "feature4": "Fast worldwide shipping",
-    "categories": {
-      "knit-fabrics": "Knit Fabrics",
-      "t-shirts": "T-Shirts",
-      "hoodies": "Hoodies",
-      "leg-warmers": "Leg Warmers",
-      "hats": "Hats",
-      "gloves": "Gloves",
-      "socks": "Socks"
-    },
-    "specLabels": {
-      "weight": "Weight",
-      "width": "Width",
-      "composition": "Composition",
-      "type": "Type",
-      "moq": "MOQ",
-      "fabric": "Fabric",
-      "sizes": "Sizes",
-      "colors": "Colors",
-      "length": "Length",
-      "pattern": "Pattern"
-    },
-    "specValues": {
-      "220 gsm": "220 gsm",
-      "150 cm": "150 cm",
-      "95% Cotton, 5% Spandex": "95% Cotton, 5% Spandex",
-      "1x1 Rib Knit": "1x1 Rib Knit",
-      "200 kg": "200 kg",
-      "260 gsm": "260 gsm",
-      "170 cm": "170 cm",
-      "100% Organic Cotton": "100% Organic Cotton",
-      "French Terry": "French Terry",
-      "150 kg": "150 kg",
-      "300 gsm": "300 gsm",
-      "180 cm": "180 cm",
-      "80% Cotton, 20% Polyester": "80% Cotton, 20% Polyester",
-      "Brushed Fleece": "Brushed Fleece",
-      "180 gsm": "180 gsm",
-      "100% Combed Cotton Jersey": "100% Combed Cotton Jersey",
-      "XS - 5XL": "XS - 5XL",
-      "20+ colors available": "20+ colors available",
-      "500 pcs": "500 pcs",
-      "240 gsm": "240 gsm",
-      "100% Ringspun Cotton": "100% Ringspun Cotton",
-      "15+ colors available": "15+ colors available",
-      "300 pcs": "300 pcs",
-      "80% Cotton, 20% Polyester Fleece": "80% Cotton, 20% Polyester Fleece",
-      "12+ colors available": "12+ colors available",
-      "320 gsm": "320 gsm",
-      "100% Cotton French Terry": "100% Cotton French Terry",
-      "10+ colors available": "10+ colors available",
-      "40 cm": "40 cm",
-      "100% Acrylic": "100% Acrylic",
-      "One Size": "One Size",
-      "45 cm": "45 cm",
-      "50% Wool, 50% Acrylic": "50% Wool, 50% Acrylic",
-      "200 gsm": "200 gsm",
-      "100% Acrylic Knit": "100% Acrylic Knit",
-      "S, M, L": "S, M, L",
-      "200 gsm Acrylic Blend": "200 gsm Acrylic Blend",
-      "Cotton-Polyester-Spandex": "Cotton-Polyester-Spandex",
-      "Wool-Nylon-Spandex": "Wool-Nylon-Spandex"
-    }
+    "feature4": "Fast worldwide shipping"
   },
   "blog": {
     "title": "Blog & Insights",
@@ -168,33 +106,10 @@
       "quality": "Quality First",
       "integrity": "Integrity & Trust",
       "innovation": "Continuous Innovation",
-      "sustainability": "Sustainability",
-      "qualityDesc": "We never compromise on quality. Every product undergoes rigorous testing before reaching our clients.",
-      "integrityDesc": "Honesty and transparency form the foundation of every relationship we build with our partners.",
-      "innovationDesc": "We continuously invest in R&D to bring innovative textile solutions to the market.",
-      "sustainabilityDesc": "Committed to eco-friendly practices and sustainable manufacturing processes."
+      "sustainability": "Sustainability"
     },
     "timeline": {
-      "title": "Our Journey",
-      "events": {
-        "2010": "Company founded with a vision to connect global textile markets",
-        "2013": "Expanded manufacturing facilities with advanced production lines",
-        "2016": "Reached 200+ international clients across 30 countries",
-        "2019": "Launched sustainable textile product line",
-        "2022": "Opened overseas office and distribution center",
-        "2025": "Recognized as top textile supplier in the region"
-      }
-    },
-    "stats": {
-      "years": "Years of Experience",
-      "clients": "Global Clients",
-      "products": "Product Varieties",
-      "countries": "Countries Exported"
-    },
-    "cta": {
-      "title": "Ready to Partner with Hongtexus?",
-      "subtitle": "Get in touch with our team to discuss your textile needs.",
-      "button": "Contact Us"
+      "title": "Our Journey"
     }
   },
   "contact": {
@@ -209,10 +124,7 @@
       "submit": "Send Message",
       "success": "Thank you! Your message has been sent successfully.",
       "error": "Sorry, something went wrong. Please try again.",
-      "placeholder": "Tell us about your requirements...",
-      "successMessage": "We'll get back to you within 24 hours.",
-      "sendAnother": "Send Another Message",
-      "sending": "Sending..."
+      "placeholder": "Tell us about your requirements..."
     },
     "info": {
       "title": "Contact Information",

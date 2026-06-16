@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Omit<Props, "children">) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "nav" });
   return {
-    title: `HONGTEX — ${t("home")}`,
+    title: "HONGTEX — Premium Knitwear & Textile Solutions",
     description: t("home"),
   };
 }

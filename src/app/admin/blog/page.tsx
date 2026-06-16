@@ -13,7 +13,6 @@ interface BlogPost {
   image: string;
   tags: string[];
   category?: string;
-  translations?: Record<string, { title: string; excerpt: string }>;
 }
 
 const LOCALES = [
@@ -42,7 +41,6 @@ export default function AdminBlogPage() {
     image: "",
     tags: "",
     category: "",
-    translations: {} as Record<string, { title: string; excerpt: string }>,
   });
   const [blogCategories, setBlogCategories] = useState<{id: string; name: string; slug: string}[]>([]);
 
@@ -114,8 +112,7 @@ export default function AdminBlogPage() {
 
     setShowForm(false);
     setEditing(null);
-    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
-    setActiveLangTab("en");
+    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
     loadPosts();
   };
 
@@ -129,7 +126,6 @@ export default function AdminBlogPage() {
       image: post.image || "",
       tags: post.tags.join(", "),
       category: post.category || "",
-      translations: post.translations || {},
     });
     setEditing(post);
     setActiveLangTab("en");
@@ -179,8 +175,7 @@ export default function AdminBlogPage() {
         <button
           onClick={() => {
             setEditing(null);
-            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
-            setActiveLangTab("en");
+            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
             setShowForm(true);
           }}
           className="btn-primary inline-flex items-center gap-2"

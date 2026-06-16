@@ -70,7 +70,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
                     : "bg-white text-text-muted hover:bg-white/80"
                 }`}
               >
-                {t(`categories.${cat.slug}`)}
+                {cat.slug.replace("-", " ")}
               </Link>
             ))}
           </div>
@@ -96,13 +96,13 @@ export default async function ProductsPage({ params, searchParams }: Props) {
                   </div>
                   <div className="p-5">
                     <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                      {t(`categories.${product.category}`)}
+                      {product.category.replace("-", " ")}
                     </span>
                     <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
                       {product.title}
                     </h3>
                     <p className="mt-2 text-xs text-text-muted">
-                      {t(`categories.${product.category}`)}
+                      {product.specs[0]?.value} &middot; {product.specs[1]?.value}
                     </p>
                   </div>
                 </Link>

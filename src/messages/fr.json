@@ -78,28 +78,7 @@
     "feature1": "Matériaux de qualité premium",
     "feature2": "Conforme aux normes internationales",
     "feature3": "Spécifications personnalisables",
-    "feature4": "Expédition rapide dans le monde",
-    "categories": {
-      "knit-fabrics": "Tissus maille",
-      "t-shirts": "T-shirts",
-      "hoodies": "Sweats à capuche",
-      "leg-warmers": "Jambières",
-      "hats": "Bonnets",
-      "gloves": "Gants",
-      "socks": "Chaussettes"
-    },
-    "specLabels": {
-      "weight": "Grammage",
-      "width": "Largeur",
-      "composition": "Composition",
-      "type": "Type",
-      "moq": "Quantité minimale",
-      "fabric": "Tissu",
-      "sizes": "Tailles",
-      "colors": "Couleurs",
-      "length": "Longueur",
-      "pattern": "Motif"
-    }
+    "feature4": "Expédition rapide dans le monde"
   },
   "blog": {
     "title": "Blog et Actualités",
@@ -127,33 +106,10 @@
       "quality": "Qualité Avant Tout",
       "integrity": "Intégrité et Confiance",
       "innovation": "Innovation Continue",
-      "sustainability": "Durabilité",
-      "qualityDesc": "Nous ne faisons jamais de compromis sur la qualité. Chaque produit est rigoureusement testé avant d'atteindre nos clients.",
-      "integrityDesc": "L'honnêteté et la transparence sont le fondement de chaque relation.",
-      "innovationDesc": "Nous investissons continuellement en R&D pour apporter des solutions textiles innovantes.",
-      "sustainabilityDesc": "Engagés dans des pratiques écologiques et des processus de fabrication durables."
+      "sustainability": "Durabilité"
     },
     "timeline": {
-      "title": "Notre Parcours",
-      "events": {
-        "2010": "Fondation de l'entreprise avec la vision de connecter les marchés textiles mondiaux",
-        "2013": "Extension des installations avec des lignes de production avancées",
-        "2016": "200+ clients internationaux dans 30 pays",
-        "2019": "Lancement d'une ligne de produits textiles durables",
-        "2022": "Ouverture d'un bureau à l'étranger et d'un centre de distribution",
-        "2025": "Reconnu comme fournisseur textile de premier plan dans la région"
-      }
-    },
-    "stats": {
-      "years": "Années d'expérience",
-      "clients": "Clients mondiaux",
-      "products": "Variétés de produits",
-      "countries": "Pays d'exportation"
-    },
-    "cta": {
-      "title": "Prêt à vous associer à Hongtexus ?",
-      "subtitle": "Contactez notre équipe pour discuter de vos besoins textiles.",
-      "button": "Contactez-nous"
+      "title": "Notre Parcours"
     }
   },
   "contact": {
@@ -168,10 +124,7 @@
       "submit": "Envoyer le Message",
       "success": "Merci! Votre message a été envoyé avec succès.",
       "error": "Désolé, une erreur s'est produite. Veuillez réessayer.",
-      "placeholder": "Parlez-nous de vos besoins...",
-      "successMessage": "Nous vous répondrons sous 24 heures.",
-      "sendAnother": "Envoyer un autre message",
-      "sending": "Envoi en cours..."
+      "placeholder": "Parlez-nous de vos besoins..."
     },
     "info": {
       "title": "Informations de Contact",

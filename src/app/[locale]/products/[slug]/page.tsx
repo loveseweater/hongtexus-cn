@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
             <div>
               <span className="text-sm font-medium uppercase tracking-wider text-accent">
-                {t(`categories.${product.category}`)}
+                {product.category.replace("-", " ")}
               </span>
               <h1 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
                 {product.title}
@@ -101,23 +101,19 @@ export default async function ProductDetailPage({ params }: Props) {
                   {t("specs")}
                 </h3>
                 <div className="mt-4 divide-y divide-border rounded-xl border border-border">
-                  {product.specs.map((spec) => {
-                    const specKey = spec.label.toLowerCase().replace(/\s+/g, '');
-                    const translatedLabel = t(`specLabels.${specKey}`);
-                    return (
-                      <div
-                        key={spec.label}
-                        className="flex items-center justify-between px-5 py-3"
-                      >
-                        <span className="text-sm font-medium text-text-muted">
-                          {translatedLabel || spec.label}
-                        </span>
-                        <span className="text-sm font-semibold text-primary">
-                          {spec.value}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {product.specs.map((spec) => (
+                    <div
+                      key={spec.label}
+                      className="flex items-center justify-between px-5 py-3"
+                    >
+                      <span className="text-sm font-medium text-text-muted">
+                        {spec.label}
+                      </span>
+                      <span className="text-sm font-semibold text-primary">
+                        {spec.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
 

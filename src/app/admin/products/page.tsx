@@ -12,20 +12,9 @@ interface Product {
   images: string[];
   specs: { label: string; value: string }[];
   featured: boolean;
-  translations?: Record<string, { title: string; desc: string }>;
 }
 
 const MAX_IMAGES = 5;
-
-const LOCALES = [
-  { code: "en", name: "English" },
-  { code: "zh", name: "中文" },
-  { code: "ja", name: "日本語" },
-  { code: "ru", name: "Русский" },
-  { code: "es", name: "Español" },
-  { code: "fr", name: "Français" },
-  { code: "de", name: "Deutsch" },
-];
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,7 +22,6 @@ export default function AdminProductsPage() {
   const [search, setSearch] = useState("");
   const [editing, setEditing] = useState<Product | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [activeLangTab, setActiveLangTab] = useState("en");
   const [form, setForm] = useState({
     slug: "",
     title: "",
@@ -42,7 +30,6 @@ export default function AdminProductsPage() {
     featured: false,
     images: ["", "", "", "", ""] as string[],
     specs: [{ label: "", value: "" }],
-    translations: {} as Record<string, { title: string; desc: string }>,
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -118,9 +105,7 @@ export default function AdminProductsPage() {
       featured: false,
       images: ["", "", "", "", ""],
       specs: [{ label: "", value: "" }],
-      translations: {},
     });
-    setActiveLangTab("en");
   };
 
   const startEdit = (product: Product) => {
@@ -134,10 +119,8 @@ export default function AdminProductsPage() {
       featured: product.featured,
       images: images.slice(0, MAX_IMAGES),
       specs: product.specs.length > 0 ? product.specs : [{ label: "", value: "" }],
-      translations: product.translations || {},
     });
     setEditing(product);
-    setActiveLangTab("en");
     setShowForm(true);
   };
 
@@ -170,19 +153,6 @@ export default function AdminProductsPage() {
 
   const removeSpec = (index: number) => {
     setForm({ ...form, specs: form.specs.filter((_, i) => i !== index) });
-  };
-
-  const updateTranslation = (locale: string, field: "title" | "desc", value: string) => {
-    setForm({
-      ...form,
-      translations: {
-        ...form.translations,
-        [locale]: {
-          ...(form.translations[locale] || { title: "", desc: "" }),
-          [field]: value,
-        },
-      },
-    });
   };
 
   if (loading) {
@@ -232,7 +202,7 @@ export default function AdminProductsPage() {
       {/* Product Form Modal */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="max-h-[95vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="max-h-[95vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h2 className="font-display text-lg font-semibold text-primary">
                 {editing ? "编辑产品" : "添加产品"}
@@ -245,7 +215,7 @@ export default function AdminProductsPage() {
               {/* Basic Info */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-text">产品名称（默认英文）*</label>
+                  <label className="block text-sm font-medium text-text">产品名称 *</label>
                   <input
                     type="text"
                     required
@@ -268,9 +238,9 @@ export default function AdminProductsPage() {
                 </div>
               </div>
 
-              {/* Description (default English) */}
+              {/* Description */}
               <div>
-                <label className="block text-sm font-medium text-text">产品描述（默认英文）*</label>
+                <label className="block text-sm font-medium text-text">产品描述 *</label>
                 <textarea
                   required
                   rows={4}
@@ -279,55 +249,6 @@ export default function AdminProductsPage() {
                   className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                   placeholder="详细描述产品材质、特点、适用场景等..."
                 />
-              </div>
-
-              {/* Multi-language Translation Tabs */}
-              <div>
-                <label className="block text-sm font-medium text-text mb-2">
-                  多语言翻译 <span className="text-text-muted">（可选，留空则使用默认英文）</span>
-                </label>
-                <div className="flex flex-wrap gap-1 border-b border-border pb-2">
-                  {LOCALES.map((loc) => (
-                    <button
-                      key={loc.code}
-                      type="button"
-                      onClick={() => setActiveLangTab(loc.code)}
-                      className={`rounded-t-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                        activeLangTab === loc.code
-                          ? "bg-primary text-white"
-                          : "bg-bg-alt text-text-muted hover:bg-bg-alt/80"
-                      }`}
-                    >
-                      {loc.name}
-                    </button>
-                  ))}
-                </div>
-                <div className="mt-3 space-y-3">
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted">
-                      翻译标题（{LOCALES.find(l => l.code === activeLangTab)?.name}）
-                    </label>
-                    <input
-                      type="text"
-                      value={form.translations[activeLangTab]?.title || ""}
-                      onChange={(e) => updateTranslation(activeLangTab, "title", e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder={`${LOCALES.find(l => l.code === activeLangTab)?.name} 标题（留空使用默认英文）`}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-text-muted">
-                      翻译描述（{LOCALES.find(l => l.code === activeLangTab)?.name}）
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={form.translations[activeLangTab]?.desc || ""}
-                      onChange={(e) => updateTranslation(activeLangTab, "desc", e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder={`${LOCALES.find(l => l.code === activeLangTab)?.name} 描述（留空使用默认英文）`}
-                    />
-                  </div>
-                </div>
               </div>
 
               {/* Category & Featured */}

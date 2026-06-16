@@ -62,3 +62,5 @@ hongtexus/
 ## 部署
 
 域名托管在 Cloudflare，可通过 Cloudflare Pages 部署。
+
+<!-- Auto-deploy trigger -->
