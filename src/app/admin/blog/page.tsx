@@ -13,6 +13,7 @@ interface BlogPost {
   image: string;
   tags: string[];
   category?: string;
+  translations?: Record<string, { title: string; excerpt: string }>;
 }
 
 const LOCALES = [
@@ -32,7 +33,17 @@ export default function AdminBlogPage() {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState<BlogPost | null>(null);
   const [activeLangTab, setActiveLangTab] = useState("en");
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    slug: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    date: string;
+    image: string;
+    tags: string;
+    category: string;
+    translations: Record<string, { title: string; excerpt: string }>;
+  }>({
     slug: "",
     title: "",
     excerpt: "",
@@ -41,6 +52,7 @@ export default function AdminBlogPage() {
     image: "",
     tags: "",
     category: "",
+    translations: {},
   });
   const [blogCategories, setBlogCategories] = useState<{id: string; name: string; slug: string}[]>([]);
 
