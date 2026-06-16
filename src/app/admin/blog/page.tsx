@@ -138,6 +138,7 @@ export default function AdminBlogPage() {
       image: post.image || "",
       tags: post.tags.join(", "),
       category: post.category || "",
+      translations: post.translations || {},
     });
     setEditing(post);
     setActiveLangTab("en");
