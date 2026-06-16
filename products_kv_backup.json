@@ -1,0 +1,946 @@
+[
+  {
+    "id": "1",
+    "slug": "premium-cotton-jersey-fabric",
+    "title": "Premium Cotton Jersey Fabric",
+    "description": "Our premium cotton jersey fabric is crafted from 100% combed cotton with a smooth surface and excellent drape. Perfect for T-shirts, dresses, and lightweight apparel, this single jersey knit offers superior breathability and comfort for everyday wear.",
+    "category": "knit-fabrics",
+    "images": [
+      "/images/product-knit-fabric.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "180 gsm"
+      },
+      {
+        "label": "Width",
+        "value": "160 cm"
+      },
+      {
+        "label": "Composition",
+        "value": "100% Combed Cotton"
+      },
+      {
+        "label": "Type",
+        "value": "Single Jersey"
+      },
+      {
+        "label": "MOQ",
+        "value": "200 kg"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "优质棉质平纹针织面料",
+        "desc": "我们的优质棉质平纹针织面料采用100%精梳棉制成，表面光滑，手感柔软。这种多功能面料透气性好，适合各种服装应用，是T恤、连衣裙和轻便上衣的理想选择。"
+      },
+      "ja": {
+        "title": "プレミアムコットンジャージー生地",
+        "desc": "100%コーマ綿を使用した高級コットンジャージー生地で、なめらかな表面と柔らかな肌触りが特長です。"
+      },
+      "ru": {
+        "title": "Премиальная хлопковая джерси",
+        "desc": "Наша премиальная хлопковая джерси изготовлена из 100% гребенного хлопка с гладкой поверхностью и мягкой текстурой."
+      },
+      "es": {
+        "title": "Tejido de punto de algodón premium",
+        "desc": "Nuestro tejido de punto de algodón premium está elaborado con algodón peinado 100%."
+      },
+      "fr": {
+        "title": "Tissu jersey coton premium",
+        "desc": "Notre tissu jersey coton premium est fabriqué à partir de coton peigné 100%."
+      },
+      "de": {
+        "title": "Premium-Baumwoll-Jersey-Stoff",
+        "desc": "Unser Premium-Baumwoll-Jersey wird aus 100% gekämmter Baumwolle hergestellt."
+      }
+    }
+  },
+  {
+    "id": "2",
+    "slug": "rib-knit-fabric",
+    "title": "Rib Knit Fabric",
+    "description": "High-quality 1x1 rib knit fabric with excellent stretch and recovery. The cotton-spandex blend provides a comfortable fit that maintains its shape wear after wear. Ideal for cuffs, collars, form-fitting garments, and accessories.",
+    "category": "knit-fabrics",
+    "images": [
+      "/images/product-knit-fabric.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "220 gsm"
+      },
+      {
+        "label": "Width",
+        "value": "150 cm"
+      },
+      {
+        "label": "Composition",
+        "value": "95% Cotton, 5% Spandex"
+      },
+      {
+        "label": "Type",
+        "value": "1x1 Rib Knit"
+      },
+      {
+        "label": "MOQ",
+        "value": "200 kg"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "罗纹针织面料",
+        "desc": "高品质1x1罗纹针织面料，具有出色的弹性和回复力。棉涤混纺结构确保耐用性和形状保持性，非常适合袖口、领口和修身服装。"
+      },
+      "ja": {
+        "title": "リブニット生地",
+        "desc": "優れた伸縮性と回復力を備えた高品質1x1リブニット生地。綿ポリエステル混紡が耐久性と形状保持を保証します。"
+      },
+      "ru": {
+        "title": "Рибан (ластик)",
+        "desc": "Высококачественный трикотаж рибана 1x1 с отличной растяжимостью и восстановлением. Смесовая ткань обеспечивает долговечность."
+      },
+      "es": {
+        "title": "Tejido de punto acanalado",
+        "desc": "Tejido de punto acanalado 1x1 de alta calidad con excelente elasticidad y recuperación."
+      },
+      "fr": {
+        "title": "Tissu côtelé",
+        "desc": "Tissu côtelé 1x1 de haute qualité avec une excellente élasticité et récupération."
+      },
+      "de": {
+        "title": "Rippstrickstoff",
+        "desc": "Hochwertiger 1x1 Rippstrickstoff mit ausgezeichneter Dehnbarkeit und Formrückstellung."
+      }
+    }
+  },
+  {
+    "id": "3",
+    "slug": "french-terry-fabric",
+    "title": "French Terry Fabric",
+    "description": "Our organic French Terry fabric combines sustainability with comfort. The looped back construction offers excellent moisture absorption while the smooth face provides a clean finish. Perfect for hoodies, loungewear, and casual jackets.",
+    "category": "knit-fabrics",
+    "images": [
+      "/images/product-knit-fabric.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "260 gsm"
+      },
+      {
+        "label": "Width",
+        "value": "170 cm"
+      },
+      {
+        "label": "Composition",
+        "value": "100% Organic Cotton"
+      },
+      {
+        "label": "Type",
+        "value": "French Terry"
+      },
+      {
+        "label": "MOQ",
+        "value": "150 kg"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "法式毛圈面料",
+        "desc": "我们的有机法式毛圈面料将可持续性与舒适性相结合。毛圈背面提供吸湿排汗性能，同时保持柔软触感，是卫衣和休闲装的完美选择。"
+      },
+      "ja": {
+        "title": "フレンチテリー生地",
+        "desc": "サステナビリティと快適さを両立したオーガニックフレンチテリー生地。ループバックが吸湿発散性を提供します。"
+      },
+      "ru": {
+        "title": "Французский футер",
+        "desc": "Наш органический французский футер сочетает экологичность с комфортом. Петли с изнанки обеспечивают впитывание влаги."
+      },
+      "es": {
+        "title": "Tejido French Terry",
+        "desc": "Nuestro tejido French Terry orgánico combina sostenibilidad con comodidad."
+      },
+      "fr": {
+        "title": "Tissu French Terry",
+        "desc": "Notre tissu French Terry biologique allie durabilité et confort."
+      },
+      "de": {
+        "title": "French Terry Stoff",
+        "desc": "Unser Bio-French Terry vereint Nachhaltigkeit mit Komfort."
+      }
+    }
+  },
+  {
+    "id": "4",
+    "slug": "fleece-fabric",
+    "title": "Brushed Fleece Fabric",
+    "description": "Warm and cozy brushed fleece fabric made from a cotton-polyester blend. The brushed interior provides exceptional warmth and softness, making it the ideal choice for hoodies, sweatshirts, and cold-weather apparel.",
+    "category": "knit-fabrics",
+    "images": [
+      "/images/product-knit-fabric.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "300 gsm"
+      },
+      {
+        "label": "Width",
+        "value": "180 cm"
+      },
+      {
+        "label": "Composition",
+        "value": "80% Cotton, 20% Polyester"
+      },
+      {
+        "label": "Type",
+        "value": "Brushed Fleece"
+      },
+      {
+        "label": "MOQ",
+        "value": "150 kg"
+      }
+    ],
+    "featured": false,
+    "translations": {
+      "zh": {
+        "title": "拉绒抓绒面料",
+        "desc": "温暖舒适的拉绒抓绒面料，采用棉涤混纺制成。拉绒表面提供卓越的隔热性能，同时保持透气性，非常适合卫衣、运动衫和寒冷天气服装。"
+      },
+      "ja": {
+        "title": "ブラシフリース生地",
+        "desc": "綿ポリエステル混紡で作られた暖かく心地よいブラシフリース生地。ブラシ加工された表面が優れた断熱性を提供します。"
+      },
+      "ru": {
+        "title": "Начесанный флис",
+        "desc": "Теплая и уютная ткань из смеси хлопка и полиэстера. Начесанная поверхность обеспечивает превосходную теплоизоляцию."
+      },
+      "es": {
+        "title": "Tejido de forro polar cepillado",
+        "desc": "Tejido de forro polar cálido y acogedor hecho de mezcla de algodón y poliéster."
+      },
+      "fr": {
+        "title": "Tissu molleton brossé",
+        "desc": "Tissu molleton chaud et douillet en mélange coton-polyester."
+      },
+      "de": {
+        "title": "Gebürsteter Fleecestoff",
+        "desc": "Warmer und kuscheliger gebürsteter Fleecestoff aus Baumwoll-Polyester-Mischung."
+      }
+    }
+  },
+  {
+    "id": "5",
+    "slug": "classic-cotton-t-shirt",
+    "title": "Classic Cotton T-Shirt",
+    "description": "A timeless essential crafted from 180gsm 100% combed cotton jersey. This classic T-shirt offers exceptional comfort, breathability, and durability. Available in 20+ colors with sizes from XS to 5XL, perfect for wholesale and custom branding.",
+    "category": "t-shirts",
+    "images": [
+      "/images/product-tshirt.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "180 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Combed Cotton Jersey"
+      },
+      {
+        "label": "Sizes",
+        "value": "XS - 5XL"
+      },
+      {
+        "label": "Colors",
+        "value": "20+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pcs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "经典棉质T恤",
+        "desc": "采用180gsm 100%精梳棉平纹针织面料制成的永恒经典。这款经典T恤具有日常穿着的舒适性和耐用性，是衣橱必备单品。"
+      },
+      "ja": {
+        "title": "クラシックコットンTシャツ",
+        "desc": "180gsmの100%コーマ綿ジャージーで作られたタイムレスな定番アイテム。毎日の着用に最適な快適さと耐久性を備えています。"
+      },
+      "ru": {
+        "title": "Классическая хлопковая футболка",
+        "desc": "Вечная классика из 100% гребенного хлопкового джерси плотностью 180 г/м². Комфорт и долговечность для повседневной носки."
+      },
+      "es": {
+        "title": "Camiseta clásica de algodón",
+        "desc": "Un clásico atemporal elaborado con jersey de algodón peinado 100% de 180 g/m²."
+      },
+      "fr": {
+        "title": "T-shirt coton classique",
+        "desc": "Un classique intemporel en jersey de coton peigné 100% de 180 g/m²."
+      },
+      "de": {
+        "title": "Klassisches Baumwoll-T-Shirt",
+        "desc": "Ein zeitloser Klassiker aus 100% gekämmter Baumwoll-Jersey mit 180 g/m²."
+      }
+    }
+  },
+  {
+    "id": "6",
+    "slug": "premium-heavyweight-t-shirt",
+    "title": "Premium Heavyweight T-Shirt",
+    "description": "A substantial 240gsm heavyweight T-shirt made from 100% ringspun cotton. This premium garment offers a structured fit and superior durability while maintaining exceptional softness. Ideal for high-end brands and custom printing.",
+    "category": "t-shirts",
+    "images": [
+      "/images/product-tshirt.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "240 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Ringspun Cotton"
+      },
+      {
+        "label": "Sizes",
+        "value": "XS - 5XL"
+      },
+      {
+        "label": "Colors",
+        "value": "15+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "300 pcs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "高级重磅T恤",
+        "desc": "采用240gsm重磅T恤，由100%环锭纺棉制成。这款高级T恤具有卓越的耐用性和结构感，同时保持柔软舒适。"
+      },
+      "ja": {
+        "title": "プレミアムヘビーウェイトTシャツ",
+        "desc": "240gsmのヘビーウェイトTシャツで、100%リング紡績綿を使用。優れた耐久性と構造感を備えています。"
+      },
+      "ru": {
+        "title": "Премиальная тяжелая футболка",
+        "desc": "Тяжелая футболка плотностью 240 г/м² из 100% кольцевой пряжи. Превосходная долговечность и структурность."
+      },
+      "es": {
+        "title": "Camiseta premium de peso pesado",
+        "desc": "Camiseta de peso pesado de 240 g/m² hecha de algodón de fibra anillada 100%."
+      },
+      "fr": {
+        "title": "T-shirt premium poids lourd",
+        "desc": "T-shirt poids lourd de 240 g/m² en coton à fibres longues 100%."
+      },
+      "de": {
+        "title": "Premium Heavyweight T-Shirt",
+        "desc": "Ein schweres T-Shirt mit 240 g/m² aus 100% ringgesponnener Baumwolle."
+      }
+    }
+  },
+  {
+    "id": "7",
+    "slug": "classic-pullover-hoodie",
+    "title": "Classic Pullover Hoodie",
+    "description": "A comfortable pullover hoodie crafted from 300gsm cotton-polyester fleece. Features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for casual wear, streetwear brands, and custom apparel lines.",
+    "category": "hoodies",
+    "images": [
+      "/images/product-hoodie.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "300 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "80% Cotton, 20% Polyester Fleece"
+      },
+      {
+        "label": "Sizes",
+        "value": "XS - 5XL"
+      },
+      {
+        "label": "Colors",
+        "value": "12+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "300 pcs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "经典套头卫衣",
+        "desc": "采用300gsm棉涤抓绒制成的舒适套头卫衣。配有可调节拉绳兜帽、袋鼠口袋和罗纹袖口下摆，兼具风格与功能性。"
+      },
+      "ja": {
+        "title": "クラシックプルオーバーパーカー",
+        "desc": "300gsmの綿ポリエステルフリースで作られた快適なプルオーバーパーカー。調節可能なドローコードフードとカンガルーポケット付き。"
+      },
+      "ru": {
+        "title": "Классическая худи",
+        "desc": "Удобная худи из флиса 300 г/м². Регулируемый капюшон, кенгуру-карман и ребристые манжеты."
+      },
+      "es": {
+        "title": "Sudadera con capucha clásica",
+        "desc": "Cómoda sudadera con capucha de forro polar de algodón y poliéster de 300 g/m²."
+      },
+      "fr": {
+        "title": "Sweat à capuche classique",
+        "desc": "Sweat à capuche confortable en molleton coton-polyester de 300 g/m²."
+      },
+      "de": {
+        "title": "Klassischer Pullover-Hoodie",
+        "desc": "Bequemer Pullover-Hoodie aus 300 g/m² Baumwoll-Polyester-Fleece."
+      }
+    }
+  },
+  {
+    "id": "8",
+    "slug": "zip-up-hoodie",
+    "title": "Zip-Up Hoodie",
+    "description": "A versatile zip-up hoodie made from 320gsm 100% cotton French terry. Features a full-length YKK zipper, side pockets, and a lined hood. Ideal for layering and suitable for both casual and sportswear applications.",
+    "category": "hoodies",
+    "images": [
+      "/images/product-hoodie.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "320 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Cotton French Terry"
+      },
+      {
+        "label": "Sizes",
+        "value": "XS - 5XL"
+      },
+      {
+        "label": "Colors",
+        "value": "10+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "300 pcs"
+      }
+    ],
+    "featured": false,
+    "translations": {
+      "zh": {
+        "title": "拉链卫衣",
+        "desc": "采用320gsm 100%棉质法式毛圈面料制成的多功能拉链卫衣。配有前拉链、侧口袋和罗纹袖口下摆。"
+      },
+      "ja": {
+        "title": "ジップアップパーカー",
+        "desc": "320gsmの100%コットンフレンチテリーで作られた多用途ジップアップパーカー。フロントジッパーとサイドポケット付き。"
+      },
+      "ru": {
+        "title": "Худи на молнии",
+        "desc": "Универсальная худи на молнии из 100% хлопкового французского футера 320 г/м². Передняя молния и боковые карманы."
+      },
+      "es": {
+        "title": "Sudadera con cremallera",
+        "desc": "Sudadera versátil con cremallera de French Terry 100% algodón de 320 g/m²."
+      },
+      "fr": {
+        "title": "Sweat à fermeture éclair",
+        "desc": "Sweat polyvalent à fermeture éclair en French Terry 100% coton de 320 g/m²."
+      },
+      "de": {
+        "title": "Zip-Up Hoodie",
+        "desc": "Vielseitiger Zip-Up Hoodie aus 100% Baumwoll-French-Terry mit 320 g/m²."
+      }
+    }
+  },
+  {
+    "id": "9",
+    "slug": "knit-leg-warmers",
+    "title": "Knit Leg Warmers",
+    "description": "Cozy and stylish knit leg warmers made from 100% acrylic knit. These stretch-fit leg warmers offer excellent warmth and comfort for dance, yoga, or everyday fashion. Available in 10+ colors with a one-size stretch design.",
+    "category": "leg-warmers",
+    "images": [
+      "/images/product-legwarmers.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Length",
+        "value": "40 cm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Acrylic Knit"
+      },
+      {
+        "label": "Sizes",
+        "value": "One Size (Stretch Fit)"
+      },
+      {
+        "label": "Colors",
+        "value": "10+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pairs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "针织腿套",
+        "desc": "舒适时尚的针织腿套，采用100%腈纶针织制成。弹力贴合设计，提供温暖和支撑，适合舞蹈、运动或日常穿着。"
+      },
+      "ja": {
+        "title": "ニットレッグウォーマー",
+        "desc": "100%アクリルニットで作られた暖かくスタイリッシュなレッグウォーマー。伸縮性のあるフィット感で暖かさとサポートを提供。"
+      },
+      "ru": {
+        "title": "Вязаные гетры",
+        "desc": "Уютные и стильные вязаные гетры из 100% акрила. Эластичная посадка обеспечивает тепло и поддержку."
+      },
+      "es": {
+        "title": "Calentadores de piernas de punto",
+        "desc": "Calentadores de piernas de punto cómodos y elegantes hechos de acrílico 100%."
+      },
+      "fr": {
+        "title": "Jambières en tricot",
+        "desc": "Jambières en tricot confortables et élégantes en acrylique 100%."
+      },
+      "de": {
+        "title": "Gestrickte Beinwärmer",
+        "desc": "Kuschelige und stilvolle gestrickte Beinwärmer aus 100% Acryl."
+      }
+    }
+  },
+  {
+    "id": "10",
+    "slug": "cable-knit-leg-warmers",
+    "title": "Cable Knit Leg Warmers",
+    "description": "Premium cable knit leg warmers crafted from a warm wool blend. The classic cable pattern adds a timeless aesthetic while the wool blend provides natural insulation. Perfect for winter fashion and cold-weather accessories.",
+    "category": "leg-warmers",
+    "images": [
+      "/images/product-legwarmers.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Length",
+        "value": "45 cm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Wool Blend"
+      },
+      {
+        "label": "Pattern",
+        "value": "Cable Knit"
+      },
+      {
+        "label": "Colors",
+        "value": "8+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "300 pairs"
+      }
+    ],
+    "featured": false,
+    "translations": {
+      "zh": {
+        "title": "麻花针织腿套",
+        "desc": "优质麻花针织腿套，采用温暖的羊毛混纺制成。经典麻花图案增添优雅气息，加长设计提供额外覆盖。"
+      },
+      "ja": {
+        "title": "ケーブルニットレッグウォーマー",
+        "desc": "暖かいウール混紡で作られたプレミアムケーブルニットレッグウォーマー。クラシックなケーブル模様がエレガントな雰囲気を添えます。"
+      },
+      "ru": {
+        "title": "Гетры с косами",
+        "desc": "Премиальные вязаные гетры из теплой шерстяной смеси. Классический узор «коса» придает элегантность."
+      },
+      "es": {
+        "title": "Calentadores de punto de cable",
+        "desc": "Calentadores de punto de cable premium elaborados con una mezcla cálida de lana."
+      },
+      "fr": {
+        "title": "Jambières torsadées",
+        "desc": "Jambières torsadées premium en mélange de laine chaude."
+      },
+      "de": {
+        "title": "Zopfmuster-Beinwärmer",
+        "desc": "Premium-Zopfmuster-Beinwärmer aus warmer Wollmischung."
+      }
+    }
+  },
+  {
+    "id": "11",
+    "slug": "classic-beanie-hat",
+    "title": "Classic Beanie Hat",
+    "description": "A classic knit beanie hat made from 200gsm 100% acrylic knit. Features a comfortable stretch fit, fold-up brim, and seamless construction. Available in 15+ colors, perfect for wholesale, branding, and winter accessories.",
+    "category": "hats",
+    "images": [
+      "/images/product-hat.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "200 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Acrylic Knit"
+      },
+      {
+        "label": "Sizes",
+        "value": "One Size (Stretch Fit)"
+      },
+      {
+        "label": "Colors",
+        "value": "15+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pcs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "经典无檐便帽",
+        "desc": "采用200gsm 100%腈纶针织制成的经典针织无檐便帽。舒适的罗纹结构确保紧密贴合，是日常佩戴的理想选择。"
+      },
+      "ja": {
+        "title": "クラシックビーニー帽",
+        "desc": "200gsmの100%アクリルニットで作られたクラシックなニットビーニー帽。快適なリブ構造でぴったりフィット。"
+      },
+      "ru": {
+        "title": "Классическая шапка-бини",
+        "desc": "Классическая вязаная шапка-бини из 100% акрила плотностью 200 г/м². Ребристая структура обеспечивает плотную посадку."
+      },
+      "es": {
+        "title": "Gorro clásico de punto",
+        "desc": "Gorro clásico de punto hecho de acrílico 100% de 200 g/m²."
+      },
+      "fr": {
+        "title": "Bonnet classique",
+        "desc": "Bonnet classique en tricot acrylique 100% de 200 g/m²."
+      },
+      "de": {
+        "title": "Klassische Beanie-Mütze",
+        "desc": "Klassische Strick-Beanie-Mütze aus 100% Acryl mit 200 g/m²."
+      }
+    }
+  },
+  {
+    "id": "12",
+    "slug": "wool-blend-beanie",
+    "title": "Wool Blend Beanie",
+    "description": "A premium wool blend beanie combining natural warmth with durability. The 50% wool, 50% acrylic blend offers superior insulation while maintaining softness and shape retention. Ideal for cold climates and premium winter collections.",
+    "category": "hats",
+    "images": [
+      "/images/product-hat.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "240 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "50% Wool, 50% Acrylic"
+      },
+      {
+        "label": "Sizes",
+        "value": "One Size (Stretch Fit)"
+      },
+      {
+        "label": "Colors",
+        "value": "10+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "300 pcs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "羊毛混纺便帽",
+        "desc": "优质羊毛混纺便帽，兼具天然保暖性和耐用性。50%羊毛50%腈纶混纺提供卓越的隔热性能，同时保持柔软不刺痒。"
+      },
+      "ja": {
+        "title": "ウールブレンドビーニー",
+        "desc": "天然の暖かさと耐久性を兼ね備えたプレミアムウールブレンドビーニー。50%ウール50%アクリル混紡。"
+      },
+      "ru": {
+        "title": "Шапка из шерстяной смеси",
+        "desc": "Премиальная шапка из смеси шерсти, сочетающая естественное тепло и долговечность. Состав: 50% шерсть, 50% акрил."
+      },
+      "es": {
+        "title": "Gorro de mezcla de lana",
+        "desc": "Gorro premium de mezcla de lana que combina calidez natural con durabilidad."
+      },
+      "fr": {
+        "title": "Bonnet en mélange de laine",
+        "desc": "Bonnet premium en mélange de laine alliant chaleur naturelle et durabilité."
+      },
+      "de": {
+        "title": "Wollmischungs-Beanie",
+        "desc": "Premium-Wollmischungs-Beanie mit natürlicher Wärme und Strapazierfähigkeit."
+      }
+    }
+  },
+  {
+    "id": "13",
+    "slug": "knit-gloves",
+    "title": "Knit Gloves",
+    "description": "Warm and comfortable knit gloves made from 180gsm 100% acrylic knit. These stretch-fit gloves offer excellent dexterity and warmth for everyday winter wear. Available in 10+ colors with sizes S, M, and L.",
+    "category": "gloves",
+    "images": [
+      "/images/product-gloves.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "180 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "100% Acrylic Knit"
+      },
+      {
+        "label": "Sizes",
+        "value": "S / M / L"
+      },
+      {
+        "label": "Colors",
+        "value": "10+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pairs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "针织手套",
+        "desc": "温暖舒适的针织手套，采用180gsm 100%腈纶针织制成。弹力贴合设计确保紧密贴合，罗纹袖口提供额外保暖。"
+      },
+      "ja": {
+        "title": "ニット手袋",
+        "desc": "180gsmの100%アクリルニットで作られた暖かく快適なニット手袋。伸縮性のあるフィット感でしっかりとフィット。"
+      },
+      "ru": {
+        "title": "Вязаные перчатки",
+        "desc": "Теплые и удобные вязаные перчатки из 100% акрила плотностью 180 г/м². Эластичная посадка и ребристые манжеты."
+      },
+      "es": {
+        "title": "Guantes de punto",
+        "desc": "Guantes de punto cálidos y cómodos hechos de acrílico 100% de 180 g/m²."
+      },
+      "fr": {
+        "title": "Gants en tricot",
+        "desc": "Gants en tricot chauds et confortables en acrylique 100% de 180 g/m²."
+      },
+      "de": {
+        "title": "Strickhandschuhe",
+        "desc": "Warme und bequeme Strickhandschuhe aus 100% Acryl mit 180 g/m²."
+      }
+    }
+  },
+  {
+    "id": "14",
+    "slug": "touchscreen-knit-gloves",
+    "title": "Touchscreen Knit Gloves",
+    "description": "Smart knit gloves with conductive yarn technology for touchscreen compatibility. Made from 200gsm acrylic blend, these gloves keep your hands warm while allowing you to use smartphones and tablets without removing them.",
+    "category": "gloves",
+    "images": [
+      "/images/product-gloves.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Weight",
+        "value": "200 gsm"
+      },
+      {
+        "label": "Fabric",
+        "value": "95% Acrylic, 5% Conductive Yarn"
+      },
+      {
+        "label": "Sizes",
+        "value": "S / M / L"
+      },
+      {
+        "label": "Colors",
+        "value": "6+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pairs"
+      }
+    ],
+    "featured": false,
+    "translations": {
+      "zh": {
+        "title": "触屏针织手套",
+        "desc": "智能针织手套，采用导电纱线技术，支持触屏操作。指尖区域的导电纱线让您无需脱下手套即可使用智能手机。"
+      },
+      "ja": {
+        "title": "タッチスクリーンニット手袋",
+        "desc": "導電性ヤーン技術を採用したスマートニット手袋。指先の導電性糸で手袋を外さずにスマートフォン操作が可能。"
+      },
+      "ru": {
+        "title": "Сенсорные перчатки",
+        "desc": "Умные вязаные перчатки с токопроводящей пряжей для сенсорных экранов. Позволяют пользоваться смартфоном не снимая перчаток."
+      },
+      "es": {
+        "title": "Guantes táctiles de punto",
+        "desc": "Guantes inteligentes con hilo conductor para compatibilidad con pantallas táctiles."
+      },
+      "fr": {
+        "title": "Gants tactiles en tricot",
+        "desc": "Gants intelligents avec fil conducteur pour écrans tactiles."
+      },
+      "de": {
+        "title": "Touchscreen-Strickhandschuhe",
+        "desc": "Intelligente Strickhandschuhe mit leitfähigem Garn für Touchscreen-Kompatibilität."
+      }
+    }
+  },
+  {
+    "id": "15",
+    "slug": "crew-knit-socks",
+    "title": "Crew Knit Socks",
+    "description": "Comfortable crew-length knit socks made from a soft cotton-polyester-spandex blend. Features reinforced heel and toe for durability, with a cushioned sole for all-day comfort. Available in 12+ colors for men and women.",
+    "category": "socks",
+    "images": [
+      "/images/product-socks.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Length",
+        "value": "Crew (15 cm)"
+      },
+      {
+        "label": "Fabric",
+        "value": "80% Cotton, 18% Polyester, 2% Spandex"
+      },
+      {
+        "label": "Sizes",
+        "value": "One Size (Men/Women)"
+      },
+      {
+        "label": "Colors",
+        "value": "12+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "1000 pairs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "中筒针织袜",
+        "desc": "舒适的中筒针织袜，采用柔软的棉涤氨纶混纺制成。罗纹袜口确保不滑落，加厚袜底提供额外缓冲和耐用性。"
+      },
+      "ja": {
+        "title": "クルーニットソックス",
+        "desc": "柔らかな綿ポリエステルスパンデックス混紡で作られた快適なクルー丈ニットソックス。リブ編みの履き口でずり落ち防止。"
+      },
+      "ru": {
+        "title": "Хлопковые носки",
+        "desc": "Удобные носки средней длины из мягкой смеси хлопка, полиэстера и спандекса. Ребристый верх предотвращает сползание."
+      },
+      "es": {
+        "title": "Calcetines de punto de tripulación",
+        "desc": "Cómodos calcetines de punto de longitud media hechos de suave mezcla de algodón."
+      },
+      "fr": {
+        "title": "Chaussettes en tricot",
+        "desc": "Chaussettes confortables en mélange coton-polyester-spandex."
+      },
+      "de": {
+        "title": "Crew-Stricksocken",
+        "desc": "Bequeme Knöchel-Stricksocken aus weicher Baumwoll-Polyester-Spandex-Mischung."
+      }
+    }
+  },
+  {
+    "id": "16",
+    "slug": "wool-knit-socks",
+    "title": "Wool Knit Socks",
+    "description": "Premium knee-high wool knit socks offering natural warmth and moisture management. The wool-nylon-spandex blend provides durability, fit retention, and comfort. Perfect for cold weather, outdoor activities, and winter fashion.",
+    "category": "socks",
+    "images": [
+      "/images/product-socks.jpg"
+    ],
+    "specs": [
+      {
+        "label": "Length",
+        "value": "Knee High (35 cm)"
+      },
+      {
+        "label": "Fabric",
+        "value": "60% Wool, 30% Nylon, 10% Spandex"
+      },
+      {
+        "label": "Sizes",
+        "value": "S / M / L"
+      },
+      {
+        "label": "Colors",
+        "value": "8+ colors available"
+      },
+      {
+        "label": "MOQ",
+        "value": "500 pairs"
+      }
+    ],
+    "featured": true,
+    "translations": {
+      "zh": {
+        "title": "羊毛针织袜",
+        "desc": "优质过膝羊毛针织袜，提供天然保暖和湿气管理功能。美利奴羊毛混纺确保柔软舒适，适合寒冷天气穿着。"
+      },
+      "ja": {
+        "title": "ウールニットソックス",
+        "desc": "天然の保温性と湿気管理機能を提供するプレミアムニーハイウールニットソックス。メリノウール混紡で柔らかな履き心地。"
+      },
+      "ru": {
+        "title": "Шерстяные носки",
+        "desc": "Премиальные высокие шерстяные носки с естественным теплом и влагоотведением. Мериносовая смесь для мягкости."
+      },
+      "es": {
+        "title": "Calcetines de lana de punto",
+        "desc": "Calcetines premium de lana de punto hasta la rodilla que ofrecen calidez natural."
+      },
+      "fr": {
+        "title": "Chaussettes en laine tricotée",
+        "desc": "Chaussettes montantes en laine tricotée offrant chaleur naturelle."
+      },
+      "de": {
+        "title": "Woll-Stricksocken",
+        "desc": "Premium-Kniehohe-Woll-Stricksocken mit natürlicher Wärme."
+      }
+    }
+  }
+]

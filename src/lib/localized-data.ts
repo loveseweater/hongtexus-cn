@@ -14,10 +14,13 @@ export async function getLocalizedProducts(locale: string) {
   
   return kvProducts.map((product: any) => {
     const localized = t.raw(product.slug);
+    // Also check KV translations for specs
+    const kvTrans = product.translations?.[locale]?.specs;
     return {
       ...product,
       title: localized?.title || product.title,
       description: localized?.desc || product.description,
+      specs: kvTrans || product.specs,
     };
   });
 }
@@ -29,10 +32,13 @@ export async function getLocalizedProductBySlug(locale: string, slug: string) {
   if (!product) return null;
   
   const localized = t.raw(product.slug);
+  // Also check KV translations for specs
+  const kvTrans = product.translations?.[locale]?.specs;
   return {
     ...product,
     title: localized?.title || product.title,
     description: localized?.desc || product.description,
+    specs: kvTrans || product.specs,
   };
 }
 

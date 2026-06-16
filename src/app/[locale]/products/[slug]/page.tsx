@@ -59,8 +59,8 @@ export default async function ProductDetailPage({ params }: Props) {
             {t("title")}
           </Link>
           <span>/</span>
-          <span className="text-primary capitalize">
-            {product.slug.replace(/-/g, " ")}
+          <span className="text-primary">
+            {product.title}
           </span>
         </div>
       </section>
