@@ -106,6 +106,9 @@ export default function Header() {
 
   // Resolve href: if starts with /, prefix locale
   const resolveHref = (href: string) => {
+    // If href already contains the locale prefix, use as-is
+    if (href.startsWith(`/${locale}/`) || href === `/${locale}`) return href;
+    // Otherwise, add locale prefix
     if (href.startsWith("/")) return `/${locale}${href === "/" ? "" : href}`;
     return href;
   };
