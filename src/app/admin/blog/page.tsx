@@ -124,7 +124,7 @@ export default function AdminBlogPage() {
 
     setShowForm(false);
     setEditing(null);
-    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
+    setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
     loadPosts();
   };
 
@@ -187,7 +187,7 @@ export default function AdminBlogPage() {
         <button
           onClick={() => {
             setEditing(null);
-            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "" });
+            setForm({ slug: "", title: "", excerpt: "", content: "", date: new Date().toISOString().split("T")[0], image: "", tags: "", category: "", translations: {} });
             setShowForm(true);
           }}
           className="btn-primary inline-flex items-center gap-2"
