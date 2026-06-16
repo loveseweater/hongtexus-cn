@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function WhatsAppButton() {
   const [whatsapp, setWhatsapp] = useState("");
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false);
+  const dragRef = useRef<{ startX: number; startY: number; elX: number; elY: number } | null>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const initialized = useRef(false);
 
   useEffect(() => {
     fetch("/api/admin/settings")
@@ -16,18 +22,95 @@ export default function WhatsAppButton() {
       .catch(() => {});
   }, []);
 
-  if (!whatsapp) return null;
+  // Initialize position: bottom-right on desktop, bottom-center on mobile
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Bottom center on mobile
+      setPosition({ x: window.innerWidth / 2 - 28, y: window.innerHeight - 80 });
+    } else {
+      // Bottom right on desktop
+      setPosition({ x: window.innerWidth - 80, y: window.innerHeight - 80 });
+    }
+  }, []);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    e.preventDefault();
+    const btn = btnRef.current;
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    dragRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      elX: rect.left,
+      elY: rect.top,
+    };
+    setIsDragging(true);
+    setHasMoved(false);
+    btn.setPointerCapture(e.pointerId);
+  }, []);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!dragRef.current || !isDragging) return;
+    const dx = e.clientX - dragRef.current.startX;
+    const dy = e.clientY - dragRef.current.startY;
+
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+      setHasMoved(true);
+    }
+
+    let newX = dragRef.current.elX + dx;
+    let newY = dragRef.current.elY + dy;
+
+    // Keep within viewport
+    const btn = btnRef.current;
+    if (btn) {
+      const w = btn.offsetWidth;
+      const h = btn.offsetHeight;
+      newX = Math.max(0, Math.min(window.innerWidth - w, newX));
+      newY = Math.max(0, Math.min(window.innerHeight - h, newY));
+    }
+
+    setPosition({ x: newX, y: newY });
+  }, [isDragging]);
+
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    setIsDragging(false);
+    const btn = btnRef.current;
+    if (btn) {
+      btn.releasePointerCapture(e.pointerId);
+    }
+    dragRef.current = null;
+  }, []);
 
   const handleClick = () => {
+    // Only open WhatsApp if user didn't drag
+    if (hasMoved) return;
     const url = `https://wa.me/${whatsapp}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  if (!whatsapp) return null;
+
   return (
     <button
+      ref={btnRef}
       onClick={handleClick}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-all hover:scale-110 hover:shadow-xl active:scale-95"
+      style={{
+        left: position.x,
+        top: position.y,
+        touchAction: "none",
+        cursor: isDragging ? "grabbing" : "grab",
+      }}
+      className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-shadow hover:shadow-xl active:scale-95"
     >
       <svg
         viewBox="0 0 24 24"
