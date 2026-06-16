@@ -30,6 +30,7 @@ interface NavLink {
 export default function Header() {
   const t = useTranslations("nav");
   const tc = useTranslations("common");
+  const pt = useTranslations("products");
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
@@ -69,13 +70,13 @@ export default function Header() {
     { label: t("home"), href: `/${locale}`, children: [] },
     { label: t("products"), href: `/${locale}/products`, children: [
       { label: tc("viewAll"), href: `/${locale}/products` },
-      { label: "Knit Fabrics", href: `/${locale}/products?category=knit-fabrics` },
-      { label: "T-Shirts", href: `/${locale}/products?category=t-shirts` },
-      { label: "Hoodies", href: `/${locale}/products?category=hoodies` },
-      { label: "Leg Warmers", href: `/${locale}/products?category=leg-warmers` },
-      { label: "Hats", href: `/${locale}/products?category=hats` },
-      { label: "Gloves", href: `/${locale}/products?category=gloves` },
-      { label: "Socks", href: `/${locale}/products?category=socks` },
+      { label: pt("categories.knit-fabrics"), href: `/${locale}/products?category=knit-fabrics` },
+      { label: pt("categories.t-shirts"), href: `/${locale}/products?category=t-shirts` },
+      { label: pt("categories.hoodies"), href: `/${locale}/products?category=hoodies` },
+      { label: pt("categories.leg-warmers"), href: `/${locale}/products?category=leg-warmers` },
+      { label: pt("categories.hats"), href: `/${locale}/products?category=hats` },
+      { label: pt("categories.gloves"), href: `/${locale}/products?category=gloves` },
+      { label: pt("categories.socks"), href: `/${locale}/products?category=socks` },
     ]},
     { label: t("blog"), href: `/${locale}/blog`, children: [] },
     { label: t("about"), href: `/${locale}/about`, children: [] },
