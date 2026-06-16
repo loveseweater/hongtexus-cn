@@ -12,7 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { getKvFeaturedProducts } from "@/lib/kv";
+import { getLocalizedProducts } from "@/lib/localized-data";
 import { getLocalizedBlogPosts } from "@/lib/localized-data";
 import HeroSection from "@/components/HeroSection";
 
@@ -56,7 +56,8 @@ export default async function HomePage({ params }: Props) {
 
   // Hero section is now a client component that fetches from API
 
-  const featuredProducts = await getKvFeaturedProducts();
+  const allProducts = await getLocalizedProducts(locale);
+  const featuredProducts = allProducts.filter((p: any) => p.featured);
   const allPosts = await getLocalizedBlogPosts(locale);
   const latestPosts = allPosts.slice(0, 3);
 
