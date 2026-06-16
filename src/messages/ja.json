@@ -78,7 +78,28 @@
     "feature1": "プレミアム品質の素材",
     "feature2": "国際規格準拠",
     "feature3": "カスタム仕様対応",
-    "feature4": "迅速な世界配送"
+    "feature4": "迅速な世界配送",
+    "categories": {
+      "knit-fabrics": "ニット生地",
+      "t-shirts": "Tシャツ",
+      "hoodies": "パーカー",
+      "leg-warmers": "レッグウォーマー",
+      "hats": "帽子",
+      "gloves": "手袋",
+      "socks": "靴下"
+    },
+    "specLabels": {
+      "weight": "重量",
+      "width": "幅",
+      "composition": "組成",
+      "type": "タイプ",
+      "moq": "最小注文数",
+      "fabric": "生地",
+      "sizes": "サイズ",
+      "colors": "色",
+      "length": "長さ",
+      "pattern": "柄"
+    }
   },
   "blog": {
     "title": "ブログ＆インサイト",
@@ -175,8 +196,8 @@
   },
   "products_data": {
     "premium-cotton-jersey-fabric": {
-      "title": "",
-      "desc": ""
+      "title": "プレミアムコットンジャージー生地",
+      "desc": "100%コーマコットン製のプレミアムコットンジャージー生地。滑らかな表面と優れたドレープ性が特徴です。Tシャツやドレス、軽量アパレルに最適なシングルジャージーニットで、優れた通気性と快適さを提供します。"
     },
     "rib-knit-fabric": {
       "title": "リブニット生地",

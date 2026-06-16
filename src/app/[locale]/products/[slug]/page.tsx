@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
             <div>
               <span className="text-sm font-medium uppercase tracking-wider text-accent">
-                {product.category.replace("-", " ")}
+                {t("categories." + product.category)}
               </span>
               <h1 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">
                 {product.title}
@@ -107,7 +107,7 @@ export default async function ProductDetailPage({ params }: Props) {
                       className="flex items-center justify-between px-5 py-3"
                     >
                       <span className="text-sm font-medium text-text-muted">
-                        {spec.label}
+                        {t("specLabels." + spec.label.toLowerCase().replace(/\s+/g, "-"))}
                       </span>
                       <span className="text-sm font-semibold text-primary">
                         {spec.value}

@@ -34,3 +34,7 @@ next-env.d.ts
 
 # cloudflare
 .wrangler/
+
+# Deploy scripts
+cf_*.js
+deploy*.bat

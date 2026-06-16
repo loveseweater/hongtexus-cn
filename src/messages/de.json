@@ -78,7 +78,28 @@
     "feature1": "Premium-Materialien",
     "feature2": "Internationale Normen eingehalten",
     "feature3": "Anpassbare Spezifikationen",
-    "feature4": "Schneller weltweiter Versand"
+    "feature4": "Schneller weltweiter Versand",
+    "categories": {
+      "knit-fabrics": "Strickstoffe",
+      "t-shirts": "T-Shirts",
+      "hoodies": "Hoodies",
+      "leg-warmers": "Beinwärmer",
+      "hats": "Mützen",
+      "gloves": "Handschuhe",
+      "socks": "Socken"
+    },
+    "specLabels": {
+      "weight": "Gewicht",
+      "width": "Breite",
+      "composition": "Zusammensetzung",
+      "type": "Typ",
+      "moq": "Mindestbestellmenge",
+      "fabric": "Stoff",
+      "sizes": "Größen",
+      "colors": "Farben",
+      "length": "Länge",
+      "pattern": "Muster"
+    }
   },
   "blog": {
     "title": "Blog & Einblicke",

@@ -32,6 +32,7 @@ const defaultSettings = {
 
 export default function Footer({ locale }: { locale: string }) {
   const t = useTranslations("footer");
+  const pt = useTranslations("products");
   const [settings, setSettings] = useState(defaultSettings);
   const [year] = useState(new Date().getFullYear());
   const [subEmail, setSubEmail] = useState("");
@@ -164,13 +165,13 @@ export default function Footer({ locale }: { locale: string }) {
           <div>
             <h3 className="font-display text-lg font-semibold text-white">{t("products")}</h3>
             <ul className="mt-4 space-y-3">
-              <li><Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">Knit Fabrics</Link></li>
-              <li><Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">T-Shirts</Link></li>
-              <li><Link href={`/${locale}/products?category=hoodies`} className="text-sm text-gray-300 transition-colors hover:text-accent">Hoodies</Link></li>
-              <li><Link href={`/${locale}/products?category=leg-warmers`} className="text-sm text-gray-300 transition-colors hover:text-accent">Leg Warmers</Link></li>
-              <li><Link href={`/${locale}/products?category=hats`} className="text-sm text-gray-300 transition-colors hover:text-accent">Hats</Link></li>
-              <li><Link href={`/${locale}/products?category=gloves`} className="text-sm text-gray-300 transition-colors hover:text-accent">Gloves</Link></li>
-              <li><Link href={`/${locale}/products?category=socks`} className="text-sm text-gray-300 transition-colors hover:text-accent">Socks</Link></li>
+              <li><Link href={`/${locale}/products?category=knit-fabrics`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.knit-fabrics")}</Link></li>
+              <li><Link href={`/${locale}/products?category=t-shirts`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.t-shirts")}</Link></li>
+              <li><Link href={`/${locale}/products?category=hoodies`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.hoodies")}</Link></li>
+              <li><Link href={`/${locale}/products?category=leg-warmers`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.leg-warmers")}</Link></li>
+              <li><Link href={`/${locale}/products?category=hats`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.hats")}</Link></li>
+              <li><Link href={`/${locale}/products?category=gloves`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.gloves")}</Link></li>
+              <li><Link href={`/${locale}/products?category=socks`} className="text-sm text-gray-300 transition-colors hover:text-accent">{pt("categories.socks")}</Link></li>
             </ul>
           </div>
 

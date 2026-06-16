@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
   return {
-    title: "HONGTEX — Premium Knitwear & Textile Solutions",
+    title: `HONGTEX — ${t("hero.subtitle")}`,
     description: t("hero.subtitle"),
     openGraph: {
-      title: "HONGTEX — Premium Knitwear & Textile Solutions",
+      title: `HONGTEX — ${t("hero.subtitle")}`,
       description: t("hero.subtitle"),
       url: `https://hongtexus.cn/${locale}`,
       siteName: "Hongtexus",
@@ -170,7 +170,7 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="p-5">
                   <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                    {product.category.replace("-", " ")}
+                    {t("categories." + product.category)}
                   </span>
                   <h3 className="mt-1 font-display text-base font-semibold text-primary group-hover:text-primary-light">
                     {product.title}
