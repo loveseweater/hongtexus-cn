@@ -260,5 +260,42 @@
       "desc": "Premium knee-high wool knit socks offering natural warmth and moisture management. The wool-nylon-spandex blend provides durability, fit retention, and comfort. Perfect for cold weather, outdoor activities, and winter fashion."
     }
   },
-  "blogs_data": {}
+  "blogs_data": {},
+  "community": {
+    "title": "Knitwear Buyer Community",
+    "subtitle": "Connect global knitwear buyers, suppliers, and industry experts — share resources, discover trends, and expand business opportunities",
+    "joinButton": "Join Community",
+    "learnMore": "Learn More",
+    "aboutTitle": "About the Community",
+    "aboutP1": "KnitConnect is an international community built for knitwear buyers. We bring together sourcing experts, brand buyers, fabric suppliers, and industry consultants from around the world, creating an open, professional, and efficient platform for industry exchange.",
+    "aboutP2": "Whether you're looking for premium knit fabric suppliers, want to stay ahead of the latest trends, or hope to expand your industry network, KnitConnect delivers value. Through online discussions, resource sharing, and offline events, we help every member succeed in the knitwear industry.",
+    "benefitsTitle": "Why Join",
+    "benefits.network.title": "Industry Network",
+    "benefits.network.desc": "Connect with 500+ knitwear buyers and suppliers worldwide to expand your business network",
+    "benefits.discussion.title": "Expert Discussions",
+    "benefits.discussion.desc": "Participate in industry discussions, share sourcing experience and market insights",
+    "benefits.sourcing.title": "Sourcing Resources",
+    "benefits.sourcing.desc": "Access quality fabric supplier information and optimize your supply chain choices",
+    "benefits.insights.title": "Trend Insights",
+    "benefits.insights.desc": "Stay ahead of the latest knitwear industry trends and market dynamics",
+    "topicsTitle": "Hot Topics",
+    "topics.0": "🧶 Knit Fabric Sourcing Experience",
+    "topics.1": "📊 Global Knitwear Market Trends",
+    "topics.2": "🏭 Supplier Recommendations & Reviews",
+    "topics.3": "🎨 Color Trends & Fabric Techniques",
+    "topics.4": "💼 Buyer Career Development",
+    "topics.5": "🌐 Cross-border E-commerce & Knitwear Export",
+    "stats.members": "Members",
+    "stats.countries": "Countries",
+    "stats.companies": "Companies",
+    "stats.posts": "Discussions",
+    "joinTitle": "Join KnitConnect Now",
+    "joinDesc": "Join our LinkedIn group or send us an email to connect with global knitwear buyers",
+    "joinLinkedin": "Join LinkedIn Group",
+    "joinEmail": "Send Email",
+    "joinNote": "After submitting your request, we will review and invite you within 1-2 business days",
+    "cta.title": "Ready to Connect Global Knitwear Resources?",
+    "cta.subtitle": "Join KnitConnect and drive knitwear trade development with industry leaders",
+    "cta.button": "Contact Us"
+  }
 }
