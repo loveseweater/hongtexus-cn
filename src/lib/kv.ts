@@ -201,3 +201,26 @@ export async function getKvBlogPostBySlug(slug: string) {
   const posts = await getKvBlogPosts();
   return posts.find((p: any) => p.slug === slug) || null;
 }
+
+// ---- Blog View Counts ----
+
+const VIEWS_KEY = "blog_views";
+
+export async function getBlogViewCounts(): Promise<Record<string, number>> {
+  const store = getStore();
+  const data = await store.get(VIEWS_KEY);
+  return data || {};
+}
+
+export async function incrementBlogView(slug: string): Promise<number> {
+  const store = getStore();
+  const views = await getBlogViewCounts();
+  views[slug] = (views[slug] || 0) + 1;
+  await store.put(VIEWS_KEY, views);
+  return views[slug];
+}
+
+export async function getBlogView(slug: string): Promise<number> {
+  const views = await getBlogViewCounts();
+  return views[slug] || 0;
+}

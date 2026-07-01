@@ -2,7 +2,9 @@ export const runtime = "edge";
 
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { Eye } from "lucide-react";
 import { getLocalizedBlogPosts } from "@/lib/localized-data";
+import { getBlogViewCounts } from "@/lib/kv";
 
 import type { Metadata } from "next";
 
@@ -27,6 +29,7 @@ export default async function BlogPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "blog" });
 
   const posts = await getLocalizedBlogPosts(locale);
+  const allViews = await getBlogViewCounts();
 
   return (
     <>
@@ -69,6 +72,10 @@ export default async function BlogPage({ params }: Props) {
                           {tag}
                         </span>
                       ))}
+                      <span className="flex items-center gap-1">
+                        <Eye size={12} />
+                        {(allViews[post.slug] || 0).toLocaleString()}
+                      </span>
                     </div>
                     <h3 className="mt-3 font-display text-lg font-semibold text-primary group-hover:text-primary-light">
                       {post.title}

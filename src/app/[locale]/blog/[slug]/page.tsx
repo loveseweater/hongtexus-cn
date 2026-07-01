@@ -3,8 +3,10 @@ export const runtime = "edge";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Eye, Tag } from "lucide-react";
 import { getLocalizedBlogPostBySlug } from "@/lib/localized-data";
+import { getBlogView } from "@/lib/kv";
+import ViewTracker from "@/components/ViewTracker";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -33,6 +35,7 @@ export default async function BlogPostPage({ params }: Props) {
   const nt = await getTranslations({ locale, namespace: "nav" });
 
   const post = await getLocalizedBlogPostBySlug(locale, slug);
+  const views = await getBlogView(slug);
 
   if (!post) {
     notFound();
@@ -162,6 +165,10 @@ export default async function BlogPostPage({ params }: Props) {
                     {tag}
                   </span>
                 ))}
+                <span className="flex items-center gap-1.5 text-xs text-text-muted">
+                  <Eye size={14} />
+                  <span>{(views || 0).toLocaleString()} views</span>
+                </span>
               </div>
               <h1 className="mt-4 font-display text-3xl font-bold text-primary md:text-4xl">
                 {post.title}
@@ -179,6 +186,8 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="mt-10">
               {renderContent(post.content)}
             </div>
+
+            <ViewTracker slug={post.slug} />
           </div>
         </div>
       </article>

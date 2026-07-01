@@ -143,7 +143,7 @@ export default function Footer({ locale }: { locale: string }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
-                    title={link.platform}
+
                   >
                     <IconComp size={18} />
                   </a>

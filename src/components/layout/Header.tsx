@@ -202,7 +202,7 @@ export default function Header() {
               return (
                 <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted transition-colors hover:bg-bg-alt hover:text-primary"
-                  title={link.platform}>
+>
                   <IconComp size={16} />
                 </a>
               );
@@ -292,7 +292,7 @@ export default function Header() {
                 return (
                   <a key={i} href={link.url} target="_blank" rel="noopener noreferrer"
                     className="flex h-9 w-9 items-center justify-center rounded-full bg-bg-alt text-text-muted transition-colors hover:bg-primary hover:text-white"
-                    title={link.platform}>
+>
                     <IconComp size={16} />
                   </a>
                 );
