@@ -7,6 +7,7 @@ import { ArrowLeft, Calendar, Eye, Tag } from "lucide-react";
 import { getLocalizedBlogPostBySlug } from "@/lib/localized-data";
 import { getBlogView } from "@/lib/kv";
 import ViewTracker from "@/components/ViewTracker";
+import CommentSection from "@/components/CommentSection";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -188,6 +189,8 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
 
             <ViewTracker slug={post.slug} />
+
+            <CommentSection slug={post.slug} />
           </div>
         </div>
       </article>

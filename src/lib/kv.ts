@@ -224,3 +224,28 @@ export async function getBlogView(slug: string): Promise<number> {
   const views = await getBlogViewCounts();
   return views[slug] || 0;
 }
+
+// ---- Blog Comments ----
+
+const COMMENTS_KEY = "blog_comments";
+
+export async function getBlogComments(slug: string): Promise<any[]> {
+  const store = getStore();
+  const all = await store.get(COMMENTS_KEY);
+  return (all && all[slug]) || [];
+}
+
+export async function addBlogComment(slug: string, data: { name: string; content: string }): Promise<any> {
+  const store = getStore();
+  const all = (await store.get(COMMENTS_KEY)) || {};
+  if (!all[slug]) all[slug] = [];
+  const comment = {
+    id: Date.now().toString(),
+    name: data.name,
+    content: data.content,
+    createdAt: new Date().toISOString(),
+  };
+  all[slug].unshift(comment);
+  await store.put(COMMENTS_KEY, all);
+  return comment;
+}
