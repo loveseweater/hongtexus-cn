@@ -260,7 +260,24 @@
       "desc": "Premium knee-high wool knit socks offering natural warmth and moisture management. The wool-nylon-spandex blend provides durability, fit retention, and comfort. Perfect for cold weather, outdoor activities, and winter fashion."
     }
   },
-  "blogs_data": {},
+  "blogs_data": {
+    "bio-based-sustainable-textile-innovations-2026": {
+      "title": "Bio-based and Sustainable Textile Innovations 2026: Redefining Eco-Friendly Fashion",
+      "excerpt": "Explore how bio-based fibers like SORONA, recycled polyester, and plant-based alternatives are transforming the textile industry in 2026."
+    },
+    "ai-textile-manufacturing-smart-factory-2026": {
+      "title": "AI in Textile Manufacturing 2026: The Smart Factory Revolution",
+      "excerpt": "Discover how artificial intelligence is transforming textile manufacturing in 2026, from AI-powered quality inspection to smart production planning."
+    },
+    "us-china-tariff-textile-industry-2026": {
+      "title": "US-China Tariff Changes 2026: What Textile and Apparel Businesses Need to Know",
+      "excerpt": "A comprehensive analysis of the 2026 US-China tariff adjustments and their impact on the textile and apparel industry."
+    },
+    "functional-knit-fabrics-smart-textiles-2026": {
+      "title": "Functional Knit Fabrics 2026: Smart Textiles, Temperature Control and Performance Innovation",
+      "excerpt": "Discover the latest innovations in functional knit fabrics for 2026, including smart temperature regulation and bio-based performance materials."
+    }
+  },
   "community": {
     "title": "Knitwear Buyer Community",
     "subtitle": "Connect global knitwear buyers, suppliers, and industry experts — share resources, discover trends, and expand business opportunities",
